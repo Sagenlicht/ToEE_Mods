@@ -1,0 +1,5 @@
+ID_string: CLOAK_OF_BRAVERY
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\Inspire Courage.tga
+help_topic: TAG_SPELLS_CLOAK_OF_BRAVERY
+tooltip_base_text: Cloak of Bravery

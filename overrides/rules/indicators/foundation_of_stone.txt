@@ -1,0 +1,5 @@
+ID_string: FOUNDATION_OF_STONE
+effect_type: 0
+texture_file: art\interface\player_conditions\conditions\spell Meld into stone.tga
+help_topic: TAG_SPELLS_FOUNDATION_OF_STONE
+tooltip_base_text: Foundation of Stone

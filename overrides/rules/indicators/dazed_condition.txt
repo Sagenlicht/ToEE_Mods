@@ -1,0 +1,5 @@
+ID_string: DAZED_CONDITION
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\dazed condition.tga
+help_topic: TAG_ROOT
+tooltip_base_text: Dazed: Cannot act

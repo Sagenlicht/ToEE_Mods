@@ -1,0 +1,5 @@
+ID_string: STRATEGIC_CHARGE
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\Spell Expeditious Retreat.tga
+help_topic: TAG_SPELLS_STRATEGIC_CHARGE
+tooltip_base_text: Strategic Charge

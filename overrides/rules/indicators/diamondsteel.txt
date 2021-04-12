@@ -1,0 +1,5 @@
+ID_string: DIAMONDSTEEL
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell stoneskin.tga
+help_topic: TAG_SPELLS_DIAMONDSTEEL
+tooltip_base_text: Diamondsteel

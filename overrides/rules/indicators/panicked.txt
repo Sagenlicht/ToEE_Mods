@@ -1,0 +1,5 @@
+ID_string: PANICKED
+effect_type: 1
+texture_file: art\interface\Player_Conditions\Ailments\Spell Fear.tga
+help_topic: TAG_ROOT
+tooltip_base_text: Panicked: flees at top speed

@@ -1,0 +1,5 @@
+ID_string: SHIELD_OF_WARDING
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell shield of faith.tga
+help_topic: TAG_SPELLS_SHIELD_OF_WARDING
+tooltip_base_text: Shield of Warding

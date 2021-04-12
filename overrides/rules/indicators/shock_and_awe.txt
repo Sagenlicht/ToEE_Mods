@@ -1,0 +1,5 @@
+ID_string: SHOCK_AND_AWE
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\Spell Command.tga
+help_topic: TAG_SPELLS_SHOCK_AND_AWE
+tooltip_base_text: Shock and Awe

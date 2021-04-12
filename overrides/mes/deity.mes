@@ -1,0 +1,141 @@
+// Deity names go between 0 and 999
+// Deity descriptions go between 1000 and 1999
+// Brief deity descriptions go between 2000 and 2999
+
+{0}{None}
+{1}{Boccob}
+{2}{Corellon Larethian}
+{3}{Ehlonna}
+{4}{Erythnul}
+{5}{Fharlanghn}
+{6}{Garl Glittergold}
+{7}{Gruumsh}
+{8}{Heironeous}
+{9}{Hextor}
+{10}{Kord}
+{11}{Moradin}
+{12}{Nerull}
+{13}{Obad-Hai}
+{14}{Olidammara}
+{15}{Pelor}
+{16}{St. Cuthbert}
+{17}{Vecna}
+{18}{Wee Jas}
+{19}{Yondalla}
+{20}{Old Faith}
+{21}{Zuggtmoy}
+{22}{Iuz}
+{23}{Lolth}
+{24}{Procan}
+{25}{Norebo}
+{26}{Pyremius}
+{27}{Ralishaz}
+
+{1000}{Agnostic or Atheist. In either case, nothing is coming to help you in your time of need.}
+{1001}{The god of magic, Boccob (bock-obb), is neutral. His titles include the Uncaring, Lord of All Magics, and Archmage of the Deities. Boccob is a distant deity who promotes no special agenda in the world of mortals. As a god of magic and knowledge, he is worshiped by wizards, sorcerers, and sages. The domains he is associated with are Knowledge, Magic, and Trickery. The quarterstaff is his favored weapon.}
+{1002}{The god of elves, Corellon Larethian (Core-eh-lon lah-reth-ee-yen), is chaotic good. He is known as the Creator of the Elves, the Protector, Protector and Preserver of Life, and Ruler of All Elves. Corellon Larethian is the creator and protector of the elven race. He governs those things held in highest esteem among elves, such as magic, music, arts, crafts, poetry, and warfare. Elves, half-elves, and bards worship him. The domains he is associated with are Chaos, Good, Protection, and War. His favored weapon is the longsword. Gruumsh is his nemesis, and it is because of Corellon's battle prowess that Gruumsh is called "One-Eye."}
+{1003}{Ehlonna (eh-loan-nuh), goddess of the woodlands, is neutral good. Her most commonly encountered title is Ehlonna of the Forests. Ehlonna watches over all good people who live in the forest, love the woodlands, or make their livelihood there. She is pictured sometimes as an elf and sometimes as a human. She is especially close to elves, gnomes, half-elves, halflings, and brownies. She is also worshiped by rangers and some druids. The domains she is associated with are Animal, Good, Plant, and Sun. Her favored weapon is the longsword.}
+{1004}{The god of slaughter, Erythnul (eh-rith-null), is chaotic evil. His title is the Many. Erythnul delights in panic and slaughter. In civilized lands, his followers (including evil fighters, barbarians, and rogues) form small, criminal cults. In savage lands, evil barbarians, gnolls, bugbears, ogres, and trolls commonly worship him. The domains he is associated with are Chaos, Evil, Trickery, and War. His favored weapon is a morningstar with a blunt stone head.}
+{1005}{Fharlanghn (far-lahng-un), the god of roads, is neutral. His title is Dweller on the Horizon. Fharlanghn's wayside shrines are common on well-used roads, for he is the god of travel, roads, distance, and horizons. Bards, other wandering adventurers, and merchants favor Fharlanghn. The domains he is associated with are Luck, Protection, and Travel. The quarterstaff is his favored weapon.}
+{1006}{The god of gnomes, Garl Glittergold (garl gliht-er-gold), is neutral good. He is known as the Joker, the Watchful Protector, the Priceless Gem, and the Sparkling Wit. Garl Glittergold discovered the gnomes and led them into the world. Since then, he has been their protector. He governs humor, wit, gemcutting, and jewelrymaking. The domains he is associated with are Good, Protection, and Trickery. Garl's favored weapon is the battleaxe. He is renowned for the jokes and pranks he pulls on other deities, though not all his victims laugh off his jests. Garl once collapsed the cavern of Kurtulmak, the god of the kobolds. Since then, the two deities have been sworn enemies.}
+{1007}{Gruumsh (groomsh), god of orcs, is chaotic evil. His titles are One-Eye and He-Who-Never-Sleeps. Gruumsh is the chief god of the orcs. He calls on his followers to be strong, to cull the weak from their numbers, and to take all the territory that Gruumsh thinks is rightfully theirs (which is almost everything). The domains he is associated with are Chaos, Evil, Strength, and War. Gruumsh's favored weapon is the spear. He harbors a special hatred for Corellon Larethian, Moradin, and their followers. In ages past, Corellon Larethian put out Gruumsh's left eye in a fight.}
+{1008}{The god of valor, Heironeous (high-roe-nee-us), is lawful good. His title is the Invincible. Heironeous promotes justice, valor, chivalry, and honor. The domains he is associated with are Good, Law, and War. His favored weapon is the longsword, and he is worshiped by paladins, good fighters, and good monks. His archenemy is Hextor, his half-brother.}
+{1009}{The god of tyranny, Hextor (heks-tore), is lawful evil. His titles are Champion of Evil, Herald of Hell, and Scourge of Battle. Hextor is the six-armed god of war, conflict, and destruction. Hextor's worshipers include evil fighters and monks, and his favored weapon is the flail. The domains he is associated with are Destruction, Evil, Law, and War. He sends his followers to commit evil, and their special purpose is to overthrow the followers of Heironeous wherever they are found. Heironeous is Hextor's half-brother.}
+{1010}{Kord (kord), god of strength, is chaotic good. He is known as the Brawler. Kord is the patron of athletes, especially wrestlers. His worshipers include good fighters, barbarians, and rogues. The domains he is associated with are Chaos, Good, Luck, and Strength. Kord's favored weapon is the greatsword.}
+{1011}{The god of dwarves, Moradin (moar-uh-din), is lawful good. His titles include the Soul Forger, Dwarffather, the All-Father, and the Creator. Moradin forged the first dwarves out of metal and gems and breathed life into them. He governs the arts and sciences of the dwarves: smithing, metalworking, engineering, and war. The domains he is associated with are Earth, Good, Law, and Protection. His favored weapon is the warhammer.}
+{1012}{The god of death, Nerull (nare-ul), is neutral evil. He is known as the Reaper, the Foe of All Good, Hater of Life, Bringer of Darkness, King of All Gloom, and Reaper of Flesh. Nerull is the patron of those who seek the greatest evil for their own enjoyment or gain. The domains he is associated with are Death, Evil, and Trickery. His worshipers, who include evil necromancers and rogues, depict him as an almost skeletal cloaked figure who bears a scythe, his favored weapon.}
+{1013}{Obad-Hai (oh-bod-high), god of nature, is neutral. He is known as the Shalm. Obad-Hai rules nature and the wilderness, and he is a friend to all who live in harmony with the natural world. Barbarians, rangers, and druids sometimes worship him. The domains he is associated with are Air, Animal, Earth, Fire, Plant, and Water. Because Obad-Hai strictly adheres to neutrality, he is a rival of Ehlonna. Obad-Hai plays a shalm (a double-reed woodwind musical instrument, also spelled "shawm") and takes his title from this instrument. His favored weapon is the quarterstaff.}
+{1014}{The god of rogues, Olidammara (oh-lih-duh-mar-uh), is chaotic neutral. His title is the Laughing Rogue. Olidammara delights in wine, women, and song. He is a vagabond, a prankster, and a master of disguise. His temples are few, but many people are willing to raise a glass in his honor. Rogues and bards are frequently among his worshipers. The domains he is associated with are Chaos, Luck, and Trickery. The rapier is his favored weapon.}
+{1015}{Pelor (pay-lore), god of the sun, is neutral good. His title is the Shining One. Pelor is the creator of many good things, a supporter of those in need, and an adversary of all that is evil. He is the most commonly worshiped deity among ordinary humans, and his priests are well received wherever they go. Rangers and bards are found among his worshipers. The domains he is associated with are Good, Healing, Strength, and Sun. The mace is his favored weapon.}
+{1016}{The god of retribution, St. Cuthbert (saint cuhth-burt), is lawful neutral. He is known as St. Cuthbert of the Cudgel. St. Cuthbert exacts revenge and just punishment on those who transgress the law. Because evil creatures more commonly and flagrantly violate laws than good creatures do, St. Cuthbert favors good over evil, though he is not good himself. (His clerics cannot be evil.) The domains he is associated with are Destruction, Law, Protection, and Strength. His favored weapon is the mace.}
+{1017}{Vecna (veck-nuh), god of secrets, is neutral evil. He is known as the Maimed Lord, the Whispered One, and the Master of All That Is Secret and Hidden. Vecna rules that which is not meant to be known and that which people wish to keep secret. The domains he is associated with are Evil, Knowledge, and Magic. He usually appears as a lich who is missing his left hand and left eye. He lost his hand and eye in a fight with his traitorous lieutenant, Kas. Vecna's favored weapon is the dagger.}
+{1018}{Wee Jas (wee jass), goddess of death and magic, is lawful neutral. Her titles are Witch Goddess, Ruby Sorceress, Stern Lady, and Death's Guardian. Wee Jas is a demanding goddess who expects obedience from her followers. Her temples are few and far between, but she counts many powerful sorcerers and wizards (especially necromancers) among her worshipers. The domains she is associated with are Death, Law, and Magic. Her favored weapon is the dagger.}
+{1019}{The goddess of halflings, Yondalla (yon-dah-lah), is lawful good. Her titles include the Protector and Provider, the Nurturing Matriarch, and the Blessed One. Yondalla is the creator and protector of the halfling race. She espouses harmony within the halfling race and stalwart defense against its enemies. Her followers hope to lead safe, prosperous lives by following her guidance. The domains she is associated with are Good, Law, and Protection. The short sword is her favored weapon.}
+{1020}{Oerth's natural fertility has inspired the devotion of its people. The cult of the Oerth Mother (Beory) once dominated the entire Flanaess, and the traditions of her worship persist in many lands. The present hierarchy of the old Faith is built upon the ancient religion of the druids, though deities in addition to Beory are worshiped. Of course, other nature religions exist outside the old Faith, even different branches of the druidic heritage, but few of these are in the Flanaess. The druids of the inner circles of the Old Faith gain far more prestige and respect than these other groups. Mistletoe, oak leaves, and holly leaves are their common emblems. Druids of the old Faith are completely neutral in philosophy and personal alignment. They yield only to the world-spanning authority of the legendary Grand Druid.}
+{1021}{Zuggtmoy, Demoness Lady of Fungi, dread and fell ruler of the 222nd ghastly plane of the Abyss, aspired to establish her rule over a portion of the world. With the aid of luz, she formed the Temple of Elemental Evil and for a time wrought death, destruction, and great suffering. Then the forces of Good fought a campaign against her, and she was surprised and bound during the intaking of the Temple. The opposing clerics and magic-users confined her somewhere beneath the ground, reputedly with the aid of one or more deities.}
+{1022}{Whether luz (eye-ooze) is a human who has become demon-like through the centuries, or whether he is a semi-demon, a cambion (as some suggest, a by-blow of Orcus), no mortal knows. He is, however, the first known godling of Chaotic Evil, whose wickedness and treachery are infamous throughout the Flanaess. This cruel being can appear as either a massive (7' tall) fat man with demoniac features, reddish skin, pointed ears, and long steely fingers, or as an old and wrinkled manikin scarcely 5 feet in height. Either might be luz' true form—or even both. luz rules a portion of Oerth, a horrid territory which bears its master's name, from the cursed city of Molag. Few creatures beyond the boundaries of this domain will even speak his name, let alone adore him.}
+{1023}{Lolth, the Spider Goddess is worshipped by the drow and very few other cults.}
+
+
+{2000}{Agnostic or Atheist.}
+{2001}{The god of magic, neutral. Domains are Knowledge, Magic, and Trickery.}
+{2002}{The god of elves, chaotic good. Domains are Chaos, Good, Protection, and War.}
+{2003}{The goddess of the woodlands, neutral good. Domains are Animal, Good, Plant, and Sun. }
+{2004}{The god of slaughter, chaotic evil. Domains are Chaos, Evil, Trickery, and War.}
+{2005}{The god of roads, neutral. Domains are Luck, Protection, and Travel.}
+{2006}{The god of gnomes, neutral good. Domains are Good, Protection, and Trickery.}
+{2007}{The god of orcs, chaotic evil. Domains are Chaos, Evil, Strength, and War.}
+{2008}{The god of valor, lawful good. Domains are Good, Law, and War.}
+{2009}{The god of tyranny, lawful evil. Domains are Destruction, Evil, Law, and War.}
+{2010}{The god of strength, chaotic good. Domains are Chaos, Good, Luck, and Strength.}
+{2011}{The god of dwarves, lawful good. Domains are Earth, Good, Law, and Protection.}
+{2012}{The god of death, neutral evil. Domains are Death, Evil, and Trickery.}
+{2013}{The god of nature, neutral. Domains are Air, Animal, Earth, Fire, Plant, and Water.}
+{2014}{The god of rogues, chaotic neutral. Domains are Chaos, Luck, and Trickery.}
+{2015}{The god of the sun, neutral good. Domains are Good, Healing, Strength, and Sun.}
+{2016}{The god of retribution, lawful neutral. Domains are Destruction, Law, Protection, and Strength.}
+{2017}{The god of secrets, neutral evil. Domains are Evil, Knowledge, and Magic.}
+{2018}{The goddess of death and magic, lawful neutral. Domains are Death, Law, and Magic.}
+{2019}{The goddess of halflings, lawful good. Domains are Good, Law, and Protection.}
+{2020}{Ancient druidical religion, neutral.}
+{2021}{Demoness Lady of Fungi, chaotic evil.}
+{2022}{The first known godling of Chaotic Evil, chaotic evil.}
+{2023}{The Spider Goddess, chaotic evil.}
+
+{3000}{I rule!}
+{3001}{By the thirteen staves of Boccob!}
+{3002}{Corellon protect me!}
+{3003}{May Ehlonna warm your backs.}
+{3004}{Blood for Erythnul!}
+{3005}{Fharlanghn!!}
+{3006}{By Garl's sparkling wit!}
+{3007}{GRRUUUUUUMMMMMSSSSSHHHH!!}
+{3008}{None may doubt the valor of Heironeous!}
+{3009}{Hextor's maw, on our foes, clamp shut!}
+{3010}{By the sinewy thews of Kord!}
+{3011}{Moradin shall forge our victory!}
+{3012}{Nerull shall reap your flesh!}
+{3013}{By the groves of Obad-Hai!}
+{3014}{Olidammara laughs this day!}
+{3015}{Witness the radiance of Pelor!}
+{3016}{Cuthbert shield me and destroy my foes!}
+{3017}{By the eye and hand of Vecna!}
+{3018}{Praise to the Ruby Sorceress!}
+{3019}{By Yondalla's shining skirts!}
+{3020}{By the Old Gods!}
+{3021}{By the fungus queen!}
+{3022}{The Old One shall feast on your bones!}
+{3023}{The webs of Lolth shall enslave you!}
+{3024}{To the glory of the open sea!}
+{3025}{By Norebo!}
+{3026}{By Pyremius!}
+{3027}{By Ralishaz!}
+
+{5000}{None}
+{5001}{ALIGNMENT_TRUE_NEUTRAL}
+{5002}{ALIGNMENT_CHAOTIC_GOOD}
+{5003}{ALIGNMENT_NEUTRAL_GOOD}
+{5004}{ALIGNMENT_CHAOTIC_EVIL}
+{5005}{ALIGNMENT_TRUE_NEUTRAL}
+{5006}{ALIGNMENT_NEUTRAL_GOOD}
+{5007}{ALIGNMENT_CHAOTIC_EVIL}
+{5008}{ALIGNMENT_LAWFUL_GOOD}
+{5009}{ALIGNMENT_LAWFUL_EVIL}
+{5010}{ALIGNMENT_CHAOTIC_GOOD}
+{5011}{ALIGNMENT_LAWFUL_GOOD}
+{5012}{ALIGNMENT_NEUTRAL_EVIL}
+{5013}{ALIGNMENT_TRUE_NEUTRAL}
+{5014}{ALIGNMENT_CHAOTIC_NEUTRAL}
+{5015}{ALIGNMENT_NEUTRAL_GOOD}
+{5016}{ALIGNMENT_LAWFUL_NEUTRAL}
+{5017}{ALIGNMENT_NEUTRAL_EVIL}
+{5018}{ALIGNMENT_LAWFUL_NEUTRAL}
+{5019}{ALIGNMENT_LAWFUL_GOOD}
+{5020}{ALIGNMENT_TRUE_NEUTRAL}
+{5021}{ALIGNMENT_CHAOTIC_EVIL}
+{5022}{ALIGNMENT_CHAOTIC_EVIL}
+{5023}{ALIGNMENT_CHAOTIC_EVIL}
+{5024}{ALIGNMENT_CHAOTIC_NEUTRAL}
+{5025}{ALIGNMENT_CHAOTIC_NEUTRAL}
+{5026}{ALIGNMENT_NEUTRAL_EVIL}
+{5027}{ALIGNMENT_CHAOTIC_NEUTRAL}

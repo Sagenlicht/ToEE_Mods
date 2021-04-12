@@ -1,0 +1,5 @@
+ID_string: WEAPON_OF_THE_DEITY
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell heroism.tga
+help_topic: TAG_SPELLS_WEAPON_OF_THE_DEITY
+tooltip_base_text: Weapon of the Deity

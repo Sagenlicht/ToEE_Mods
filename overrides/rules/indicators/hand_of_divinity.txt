@@ -1,0 +1,5 @@
+ID_string: HAND_OF_DIVINITY
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell heroism.tga
+help_topic: TAG_SPELLS_HAND_OF_DIVINITY
+tooltip_base_text: Hand of Divinity

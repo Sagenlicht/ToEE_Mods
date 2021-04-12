@@ -1,0 +1,5 @@
+ID_string: SHAKEN_CONDITION
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\spell fear.tga
+help_topic: TAG_ROOT
+tooltip_base_text: Shaken: -2 penalty on attack rolls, saving throws, skill checks, and ability checks.

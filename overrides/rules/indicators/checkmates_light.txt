@@ -1,0 +1,5 @@
+ID_string: CHECKMATES_LIGHT
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\Spell True Strike.tga
+help_topic: TAG_SPELLS_CHECKMATES_LIGHT
+tooltip_base_text: Checkmate's Light

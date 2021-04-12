@@ -1,0 +1,5 @@
+ID_string: DEAFENING_CLANG
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\Spell Sonic Weapon.tga
+help_topic: TAG_SPELLS_DEAFENING_CLANG
+tooltip_base_text: Deafening Clang

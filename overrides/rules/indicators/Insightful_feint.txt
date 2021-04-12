@@ -1,0 +1,5 @@
+ID_string: INSIGHTFUL_FEINT
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell heroism.tga
+help_topic: TAG_SPELLS_INSIGHTFUL_FEINT
+tooltip_base_text: Insightful Feint
