@@ -662,21 +662,28 @@ Duration:      10 min/level,  Save: None,  SR: No}
 
 {6146} Foundation of Stone {+2 to AC and +4 to Strength checks to avoid bull rushed or being tripped.
 School:          Transmutation[Earth]
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Close (25ft. + 5ft./2 lvls)
 Target:             Multi
-Duration:      1,  Save: None negates,  SR: No}
+Duration:      1 round/level,  Save: None,  SR: No}
 
 {6147} Nightshield {+1 (+2 at level 6 and +3 at level 9) bonus to saving throws and immunity to Magic Missile.
 School:          Abjuration
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Personal 
 Target:             Personal
-Duration:      10,  Save: None negates,  SR: No}
+Duration:      1 min/level,  Save: None,  SR: No}
 
 {6148} Nimbus of Light {Deal 1d8 + 1 point of damage per round elapsed since spell was cast (max is your level).
 School:          Evocation[Light]
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Personal 
 Target:             Personal
-Duration:      10,  Save: None negates,  SR: No}
+Duration:      1 min/level,  Save: None,  SR: No}
+
+{6149} Brambles {Wood melee weapon gets +1 bonus to hit and +1 per casterlevel (max +10) on damage rolls.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Touch 
+Target:             Touch
+Duration:      1 round/level,  Save: None,  SR: No}

@@ -96,6 +96,7 @@
 {1146}{Foundation of Stone}
 {1147}{Nightshield}
 {1148}{Nimbus of Light}
+{1149}{Brambles}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -193,6 +194,7 @@
 {6146}{Foundation of Stone}
 {6147}{Nightshield}
 {6148}{Nimbus of Light}
+{6149}{Brambles}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -290,3 +292,4 @@
 {21146}{TAG_SPELLS_FOUNDATION_OF_STONE}
 {21147}{TAG_SPELLS_NIGHTSHIELD}
 {21148}{TAG_SPELLS_NIMBUS_OF_LIGHT}
+{21149}{TAG_SPELLS_BRAMBLES}

@@ -1099,6 +1099,18 @@
 {28967}{} // spell hit
 {28968}{} // spell struck
 
+// [1149] *[Brambles]
+{28980}{spells\sp_tree_shape.WAV} // spell begin
+{28981}{spells\sp_tree_shape_end.WAV} // spell end
+{28982}{} // spell effect
+{28983}{} // spell new round
+{28984}{} // spell projectile begin
+{28985}{} // spell projectile end
+{28986}{} // spell projectile in-flight
+{28987}{} // spell hit
+{28988}{} // spell struck
+
+
 
 
 

@@ -96,7 +96,7 @@ ID      Spell Name                  SC Page Status      Comments
 1138    Unholy Storm                227     finished
 1139    Summon Undead III           215     finished
 1140    Visage of the Deity, lesser 231     finished
-1141    Lawful Sword                131     finished    no buff symbol
+1141    Lawful Sword                131     finished    no buff symbol; needs to add magic dr breaking
 1142    Summon Undead IV            215     finished
 1143    Castigate                    44     finished
 1144    Summon Undead V             215     finished
@@ -104,6 +104,7 @@ ID      Spell Name                  SC Page Status      Comments
 1146    Foundation of Stone          98     Needs check if own round
 1147    Nightshield                 148     finished
 1148    Nimbus of Light             148     no buff symbol
+1149    Brambles                     38     finished
 
 
 
@@ -111,7 +112,7 @@ Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects;
 
 Latest Changes:
 Fixed: 
-Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate
+Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)

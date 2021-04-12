@@ -1,0 +1,5 @@
+ID_string: BRAMBLES
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell tree shape.tga
+help_topic: TAG_SPELLS_BRAMBLES
+tooltip_base_text: Brambles

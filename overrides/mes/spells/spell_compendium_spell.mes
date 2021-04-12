@@ -97,6 +97,7 @@
 {1146}{Foundation of Stone}
 {1147}{Nightshield}
 {1148}{Nimbus of Light}
+{1149}{Brambles}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -195,3 +196,4 @@
 {6146} Foundation of Stone {Transmutation[Earth] +2 to AC and +4 to Strength checks to avoid bull rushed or being tripped.}
 {6147} Nightshield {Abjuration +1 (+2 at level 6 and +3 at level 9) bonus to saving throws and immunity to Magic Missile.}
 {6148} Nimbus of Light {Evocation[Light] Deal 1d8 + 1 point of damage per round elapsed since spell was cast (max is your level).}
+{6149} Brambles {[Transmutation] Wood melee weapon gets +1 bonus to hit and +1 per casterlevel (max +10) on damage rolls.}

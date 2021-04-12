@@ -92,11 +92,12 @@ def nimbusOfLightSpellWfRayFix(attachee, args, evt_obj):
     if not evt_obj.attack_packet.get_flags() & D20CAF_TOUCH_ATTACK:
         return 0
     if not evt_obj.attack_packet.get_flags() & D20CAF_RANGED:
-        return 0
+        return 
+    #add_from_feat does not allow freetext
     if attachee.has_feat(feat_greater_weapon_focus_ray):
-        evt_obj.bonus_list.add(2, 0, "~Greater Weapon Foucs(Ray)~[TAG_WEAPON_FOCUS]")
+        evt_obj.bonus_list.add(2, 0, "Feat: ~Greater Weapon Foucs (Ray)~[TAG_WEAPON_FOCUS]")
     elif attachee.has_feat(feat_weapon_focus_ray):
-        evt_obj.bonus_list.add(1, 0, "~Weapon Foucs(Ray)~[TAG_WEAPON_FOCUS]")
+        evt_obj.bonus_list.add(1, 0, "Feat: ~Weapon Foucs (Ray)~[TAG_WEAPON_FOCUS]")
     return 0
 ####### Weapon Focus Ray Fix END #######
 
