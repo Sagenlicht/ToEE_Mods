@@ -1,5 +1,5 @@
 ID_string: LAWFUL_SWORD
 effect_type: 0
-texture_file: art\interface\player_conditions\spell heroism.tga
+texture_file: art\interface\player_conditions\buffs\spell sonic weapon.tga
 help_topic: TAG_SPELLS_LAWFUL_SWORD
 tooltip_base_text: Lawful Sword

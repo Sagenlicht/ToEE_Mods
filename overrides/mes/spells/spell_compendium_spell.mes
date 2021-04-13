@@ -98,6 +98,8 @@
 {1147}{Nightshield}
 {1148}{Nimbus of Light}
 {1149}{Brambles}
+{1150}{Deific Vengeance}
+{1151}{Frost Breath}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -197,3 +199,5 @@
 {6147} Nightshield {Abjuration +1 (+2 at level 6 and +3 at level 9) bonus to saving throws and immunity to Magic Missile.}
 {6148} Nimbus of Light {Evocation[Light] Deal 1d8 + 1 point of damage per round elapsed since spell was cast (max is your level).}
 {6149} Brambles {[Transmutation] Wood melee weapon gets +1 bonus to hit and +1 per casterlevel (max +10) on damage rolls.}
+{6150} Deific Vengeance {[Conjuration](Summoning) Deal 1d6/two levels(max 5d6) damage or 1d6/level damage if target is undead.}
+{6151} Frost Breath {Evocation[Cold] Deal 1d4 cold per two caster levels (max 5d4). Creatures that fail the save are dazed for 1 round.}

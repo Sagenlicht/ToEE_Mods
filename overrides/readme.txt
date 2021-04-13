@@ -96,23 +96,42 @@ ID      Spell Name                  SC Page Status      Comments
 1138    Unholy Storm                227     finished
 1139    Summon Undead III           215     finished
 1140    Visage of the Deity, lesser 231     finished
-1141    Lawful Sword                131     finished    no buff symbol; needs to add magic dr breaking
+1141    Lawful Sword                131     finished
 1142    Summon Undead IV            215     finished
 1143    Castigate                    44     finished
 1144    Summon Undead V             215     finished
-1145    Conviction                   52     no buff symbol
-1146    Foundation of Stone          98     Needs check if own round
+1145    Conviction                   52     finished    check if buff symbol works
+1146    Foundation of Stone          98     WIP         Needs check if own round
 1147    Nightshield                 148     finished
-1148    Nimbus of Light             148     no buff symbol
+1148    Nimbus of Light             148     finished
 1149    Brambles                     38     finished
+1150    Deific Vengeance             62     finished
+1151    Frost Breath                100     finished
 
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects;
 
 Latest Changes:
+Added a pyton script(wf_ray_fix.py) that fixes WF(Ray) and switched all my ray spells to use it. Spells that do no call that script are NOT affected by this fix.
+
+The two major advantages of this fix are you can a) now see it in the to hit history and b) it does not temporarily modify any attributes but behaves like the feat should behave in the first place.
+This fix only works with temple+ !!
+
+If you want to use the fix for your spells please feel free to do so.
+
+Simply add in your ray spell in the "def OnBeginSpellCast(spell):" section the lines:
+############   Weapon Focus Ray Fix   ############
+    spell.caster.condition_add('Wf Ray Fix', 0)
+############ Weapon Focus Ray Fix End ############
+
+and be sure to have the python script in your overrides\scr folder.
+
+Please be sure that if you use such fixes to mark them in your code, because if the bug gets fixed you need to be able to find it easily so you can remove it without too much troubles.
+
 Fixed: 
-Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles
+
+Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles; Deific Warding; Frost Breath
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)

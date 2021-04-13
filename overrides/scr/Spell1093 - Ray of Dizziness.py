@@ -6,6 +6,10 @@ def OnBeginSpellCast(spell):
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
     game.particles("sp-evocation-conjure", spell.caster)
 
+############   Weapon Focus Ray Fix   ############
+    spell.caster.condition_add('Wf Ray Fix', 0)
+############ Weapon Focus Ray Fix End ############
+
 def OnSpellEffect(spell):
     print "Ray of Dizziness OnSpellEffect"
 
@@ -18,28 +22,6 @@ def OnBeginProjectile(spell, projectile, index_of_target):
 
 def OnEndProjectile( spell, projectile, index_of_target ):
     print "Ray of Dizziness OnEndProjectile"
-    ####################################################
-    #     Using Shiningteds Weapon Focus(Ray) Fix      #
-    ####################################################
-    if spell.caster.has_feat(feat_weapon_focus_ray):
-        casterHasWfRay = True
-    else:
-        casterHasWfRay = False
-
-    if casterHasWfRay:
-        if spell.caster.has_feat(feat_greater_weapon_focus_ray):
-            casterHasGreaterWfRay = True
-        else:
-            casterHasGreaterWfRay = False
-
-    if casterHasWfRay:
-        savedOriginalDexterityValue = spell.caster.stat_base_get(stat_dexterity)
-        if casterHasGreaterWfRay:
-            applyBonusToDexterity = savedOriginalDexterityValue + 4
-        else:
-            applyBonusToDexterity = savedOriginalDexterityValue + 2
-        spell.caster.stat_base_set(stat_dexterity, applyBonusToDexterity)
-    ####################################################
 
     spellTarget = spell.target_list[0]
     spell.duration = 1 * spell.caster_level # 1 round/casterlevel
@@ -52,13 +34,6 @@ def OnEndProjectile( spell, projectile, index_of_target ):
         spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30007)
         game.particles('Fizzle', spellTarget.obj)
         spell.target_list.remove_target(spellTarget.obj)
-
-    ####################################################
-    #     Using Shiningteds Weapon Focus(Ray) Fix      #
-    ####################################################
-    if casterHasWfRay:
-        spell.caster.stat_base_set(stat_dexterity, savedOriginalDexterityValue)
-    ####################################################
 
     spell.spell_end(spell.id)
 

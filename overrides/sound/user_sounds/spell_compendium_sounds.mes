@@ -1110,6 +1110,30 @@
 {28987}{} // spell hit
 {28988}{} // spell struck
 
+// [1150] *[Deific Vengeance]
+{29000}{spells\sp_bless.WAV} // spell begin
+{29001}{} // spell end
+{29002}{} // spell effect
+{29003}{} // spell new round
+{29004}{} // spell projectile begin
+{29005}{} // spell projectile end
+{29006}{} // spell projectile in-flight
+{29007}{} // spell hit
+{29008}{} // spell struck
+
+// [1151] *[Frost Breath]
+{29020}{spells\sp_cone_of_cold.WAV} // spell begin
+{29021}{} // spell end
+{29022}{} // spell effect
+{29023}{} // spell new round
+{29024}{} // spell projectile begin
+{29025}{} // spell projectile end
+{29026}{} // spell projectile in-flight
+{29027}{} // spell hit
+{29028}{} // spell struck
+
+
+
 
 
 
