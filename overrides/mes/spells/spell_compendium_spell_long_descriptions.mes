@@ -699,5 +699,19 @@ Duration:      Inst.,  Save: Willpower half,  SR: Yes}
 School:          Evocation[Cold]
 Casting:         1 action [V,S]
 Range:               30 ft.
-Area:             Cone-shaped burst
+Area:               Cone-shaped burst
 Duration:      Inst.,  Save: Reflex half,  SR: Yes}
+
+{6152} Ghost Touch Armor {Armor gains Ghost Touch special ability.
+School:          Transmutation
+Casting:         1 action [V, S]
+Range:               Touch 
+Target:             Armor touched
+Duration:      1 min/level,  Save: None,  SR: No}
+
+{6153} Aid Mass {Like spell Aid, but on multiple targets and temp HP are 1d8 + level (max 15).
+School:          Enchantment(Compulsion)[Mind-Aff.]
+Casting:         1 action [V,S]
+Range:               Close (25ft. + 5ft./2 lvls)
+Target:             One creature/level
+Duration:      1 min/level,  Save: None,  SR: No}

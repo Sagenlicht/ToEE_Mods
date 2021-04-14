@@ -1132,6 +1132,30 @@
 {29027}{} // spell hit
 {29028}{} // spell struck
 
+// [1152] *[Ghost Touch Armor]
+{29040}{} // spell begin
+{29041}{} // spell end
+{29042}{} // spell effect
+{29043}{} // spell new round
+{29044}{} // spell projectile begin
+{29045}{} // spell projectile end
+{29046}{} // spell projectile in-flight
+{29047}{} // spell hit
+{29048}{} // spell struck
+
+// [1153] *[Aid Mass]
+{29060}{spells\sp_Aid_END.wav} // spell begin
+{29061}{} // spell end
+{29062}{spells\sp_Aid_start.wav} // spell effect
+{29063}{} // spell new round
+{29064}{} // spell projectile begin
+{29065}{} // spell projectile end
+{29066}{} // spell projectile in-flight
+{29067}{} // spell hit
+{29068}{} // spell struck
+
+
+
 
 
 
