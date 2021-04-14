@@ -107,10 +107,12 @@ ID      Spell Name                  SC Page Status      Comments
 1149    Brambles                     38     finished
 1150    Deific Vengeance             62     finished
 1151    Frost Breath                100     finished
+1152    Ghost Touch Armor           102     not working Uses 161 as Buff bonus type atm!
+1153    Aid Mass                      8     finished 
 
 
 
-Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects;
+Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
 
 Latest Changes:
 Added a pyton script(wf_ray_fix.py) that fixes WF(Ray) and switched all my ray spells to use it. Spells that do no call that script are NOT affected by this fix.
@@ -131,7 +133,7 @@ Please be sure that if you use such fixes to mark them in your code, because if 
 
 Fixed: 
 
-Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles; Deific Warding; Frost Breath
+Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles; Deific Warding; Frost Breath; Ghost Touch Armor (non functional); Aid, Mass;
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)
@@ -141,5 +143,6 @@ Bard 5: Bolts of Bedevilment(1104)
 Pal 1: Bless Weapon, Swift, Grave Strike(1116), Rhino's Rush (1117), Lionheart, Divine Sacrifice
 Pal 4: Draconic Might (Unsure how to do immunity), Sacred Haven
 Clr 1: Light of Lunia
+Clr 2: Light of Mercuria
 
 039 Bless Weapon
