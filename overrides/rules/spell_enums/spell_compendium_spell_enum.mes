@@ -101,6 +101,8 @@
 {1151}{Frost Breath}
 {1152}{Ghost Touch Armor}
 {1153}{Aid Mass}
+{1154}{Align Weapon Mass}
+{1155}{Bless Weapon Swift}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -203,6 +205,8 @@
 {6151}{Frost Breath}
 {6152}{Ghost Touch Armor}
 {6153}{Aid Mass}
+{6154}{Align Weapon Mass}
+{6155}{Bless Weapon Swift}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -305,3 +309,5 @@
 {21151}{TAG_SPELLS_FROST_BREATH}
 {21152}{TAG_SPELLS_GHOST_TOUCH_ARMOR}
 {21153}{TAG_SPELLS_AID_MASS}
+{21154}{TAG_SPELLS_ALIGN_WEAPON_MASS}
+{21155}{TAG_SPELLS_BLESS_WEAPON_SWIFT}

@@ -715,3 +715,17 @@ Casting:         1 action [V,S]
 Range:               Close (25ft. + 5ft./2 lvls)
 Target:             One creature/level
 Duration:      1 min/level,  Save: None,  SR: No}
+
+{6154} Align Weapon Mass {Add the good, evil, lawful or chaotic property to weapons.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Close (25ft. + 5ft./2 lvls)
+Target:             One creature/level
+Duration:      1 min/level,  Save: None,  SR: No}
+
+{6155} Bless Weapon Swift {Weapon becomes good aligned and bypasses magic DR on evil creatures.
+School:          Transmutation
+Casting:         Swift Action [V]
+Range:               Personal 
+Target:             Personal
+Duration:      1 round,  Save: None,  SR: No}

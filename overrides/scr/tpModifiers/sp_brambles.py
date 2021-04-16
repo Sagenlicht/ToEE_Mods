@@ -5,24 +5,22 @@ from utilities import *
 print "Registering sp-Brambles"
 
 def bramblesSpellChainToWeapon(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-
     mainhandWeapon.d20_status_init()
-    spellPacket.add_target(mainhandWeapon, 0)
-    spellPacket.update_registry()
+    mainhandWeapon.condition_add_with_args('Brambles Weapon Condition', args.get_arg(1))
     return 0
 
 def bramblesSpellToHitBonus(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.get_target(1) == evt_obj.attack_packet.get_weapon_used():
+    mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
+    isEnchantedWeapon = mainhandWeapon.d20_query("Q_Has_Brambles_Weapon_Effect")
+    if isEnchantedWeapon:
         evt_obj.bonus_list.add(1, 12, "~Enhancement~[TAG_ENHANCEMENT_BONUS] : ~Brambles~[TAG_SPELLS_BRAMBLES]")
     return 0
 
 def bramblesSpellBonusToDamage(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.get_target(1) == evt_obj.attack_packet.get_weapon_used():
-        usedWeapon = evt_obj.attack_packet.get_weapon_used()
+    usedWeapon = evt_obj.attack_packet.get_weapon_used()
+    isEnchantedWeapon = usedWeapon.d20_query("Q_Has_Brambles_Weapon_Effect")
+    if isEnchantedWeapon:
         usedWeaponDamageType = usedWeapon.obj_get_int(obj_f_weapon_attacktype)
         if not usedWeaponDamageType == D20DT_BLUDGEONING_AND_PIERCING:
             if not usedWeaponDamageType == D20DT_BLUDGEONING:
@@ -34,18 +32,10 @@ def bramblesSpellBonusToDamage(attachee, args, evt_obj):
         evt_obj.damage_packet.bonus_list.add(args.get_arg(2), 12, "~Enhancement~[TAG_ENHANCEMENT_BONUS] : ~Brambles~[TAG_SPELLS_BRAMBLES]")
     return 0
 
-def bramblesSpellConditionRemove(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    removeWeaponFromSpellRegistry = spellPacket.get_target(0)
-    spellPacket.remove_target(removeWeaponFromSpellRegistry)
-    spellPacket.update_registry()
-    args.remove_spell()
-    return 0
-
 def bramblesSpellTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    if not spellPacket.get_target(1) == mainhandWeapon:
+    isEnchantedWeapon = mainhandWeapon.d20_query("Q_Has_Brambles_Weapon_Effect")
+    if not isEnchantedWeapon:
         return 0
     if args.get_arg(1) == 1:
         evt_obj.append("Brambles ({} round)".format(args.get_arg(1)))
@@ -54,9 +44,9 @@ def bramblesSpellTooltip(attachee, args, evt_obj):
     return 0
 
 def bramblesSpellEffectTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    if not spellPacket.get_target(1) == mainhandWeapon:
+    isEnchantedWeapon = mainhandWeapon.d20_query("Q_Has_Brambles_Weapon_Effect")
+    if not isEnchantedWeapon:
         return 0
     if args.get_arg(1) == 1:
         evt_obj.append(tpdp.hash("BRAMBLES"), -2, " ({} round)".format(args.get_arg(1)))
@@ -83,7 +73,6 @@ bramblesSpell = PythonModifier("sp-Brambles", 3) # spell_id, duration, bonusDama
 bramblesSpell.AddHook(ET_OnConditionAdd, EK_NONE, bramblesSpellChainToWeapon,())
 bramblesSpell.AddHook(ET_OnToHitBonus2, EK_NONE, bramblesSpellToHitBonus, ())
 bramblesSpell.AddHook(ET_OnDealingDamage, EK_NONE, bramblesSpellBonusToDamage,())
-bramblesSpell.AddHook(ET_OnConditionRemove, EK_NONE, bramblesSpellConditionRemove, ())
 bramblesSpell.AddHook(ET_OnGetTooltip, EK_NONE, bramblesSpellTooltip, ())
 bramblesSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, bramblesSpellEffectTooltip, ())
 bramblesSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, bramblesSpellSpellEnd, ())
@@ -93,3 +82,23 @@ bramblesSpell.AddSpellDispelCheckStandard()
 bramblesSpell.AddSpellTeleportPrepareStandard()
 bramblesSpell.AddSpellTeleportReconnectStandard()
 bramblesSpell.AddSpellCountdownStandardHook()
+
+###### Brambles Weapon Condition ######
+def bramblesWeaponConditionGlowEffect(attachee, args, evt_obj):
+    evt_obj.return_val = 1
+    return 0
+
+def bramblesWeaponConditionEffectAnswerToQuery(attachee, args, evt_obj):
+    evt_obj.return_val = 1
+    return 0
+
+def bramblesWeaponConditionTickdown(attachee, args, evt_obj):
+    args.set_arg(0, args.get_arg(0)-evt_obj.data1) # Ticking down duration
+    if args.get_arg(0) < 0:
+        args.condition_remove()
+    return 0
+
+bramblesWeaponCondition = PythonModifier("Brambles Weapon Condition", 1) # duration
+bramblesWeaponCondition.AddHook(ET_OnWeaponGlowType, EK_NONE, bramblesWeaponConditionGlowEffect, ())
+bramblesWeaponCondition.AddHook(ET_OnD20PythonQuery, "Q_Has_Brambles_Weapon_Effect", bramblesWeaponConditionEffectAnswerToQuery, ()) #not tested
+bramblesWeaponCondition.AddHook(ET_OnBeginRound , EK_NONE, bramblesWeaponConditionTickdown, ())

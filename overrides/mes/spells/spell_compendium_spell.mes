@@ -102,6 +102,8 @@
 {1151}{Frost Breath}
 {1152}{Ghost Touch Armor}
 {1153}{Aid, Mass}
+{1154}{Align Weapon, Mass}
+{1155}{Bless Weapon, Swift}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -205,3 +207,5 @@
 {6151} Frost Breath {[Evocation][Cold] Deal 1d4 cold per two caster levels (max 5d4). Creatures that fail the save are dazed for 1 round.}
 {6152} Ghost Touch Armor {[Transmutation] Armor gains Ghost Touch special ability.}
 {6153} Aid, Mass {[Enchantment](Compulsion)[Mind-Affecting] Like spell Aid, but on multiple targets and temp HP are 1d8 + level (max 15).}
+{6154} Align Weapon, Mass {Transmutation Add the good, evil, lawful or chaotic property to weapons.}
+{6155} Bless Weapon, Swift {Transmutation Weapon becomes good aligned and bypasses magic DR on evil creatures.}

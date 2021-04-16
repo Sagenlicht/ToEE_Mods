@@ -10,12 +10,11 @@ def checkmatesLightOnConditionAddActions(attachee, args, evt_obj):
     checkmatesLightId = attachee.object_event_append(OLC_CRITTERS, radiusCheckmatesLight)
     args.set_arg(3, checkmatesLightId)
     attachee.condition_add_with_args('Checkmates Light Effect', args.get_arg(0), args.get_arg(1), args.get_arg(2), args.get_arg(3))
-    
-    wornWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    wornWeapon.d20_status_init()
-    spellPacket.add_target(wornWeapon, 0)
-
     spellPacket.update_registry()
+
+    mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
+    mainhandWeapon.d20_status_init()
+    mainhandWeapon.condition_add_with_args('Checkmates Light Weapon Condition', args.get_arg(1))
     return 0
 
 def checkmatesLightSpellOnEntered(attachee, args, evt_obj):
@@ -33,23 +32,19 @@ def checkmatesLightSpellOnEntered(attachee, args, evt_obj):
     return 0
 
 def checkmatesLightSpellBonusToHit(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.get_target(1) == evt_obj.attack_packet.get_weapon_used():
-        evt_obj.bonus_list.add(args.get_arg(2), 12, "~Checkmates Light~[TAG_SPELLS_CHECKMATES_LIGHT] ~Enhancement~[TAG_ENHANCEMENT_BONUS] Bonus")
-
-def checkmatesLightSpellAddLawfulDamageType(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.get_target(1) == evt_obj.attack_packet.get_weapon_used():
-        evt_obj.damage_packet.attack_power |= D20DAP_LAW
-        evt_obj.damage_packet.bonus_list.add(args.get_arg(2), 12, "~Checkmates Light~[TAG_SPELLS_CHECKMATES_LIGHT] ~Enhancement~[TAG_ENHANCEMENT_BONUS] Bonus")
+    weaponUsed = evt_obj.attack_packet.get_weapon_used()
+    isEnchantedWeapon = weaponUsed.d20_query("Q_Has_Checkmates_Light_Weapon_Effect")
+    if isEnchantedWeapon:
+        evt_obj.bonus_list.add(args.get_arg(2), 12, "~Enhancement~[TAG_ENHANCEMENT_BONUS] : ~Checkmates Light~[TAG_SPELLS_CHECKMATES_LIGHT]")
     return 0
 
-def checkmatesLightSpellConditionRemove(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    removeWeaponFromSpellRegistry = spellPacket.get_target(0)
-    spellPacket.remove_target(removeWeaponFromSpellRegistry)
-    spellPacket.update_registry()
-    args.remove_spell()
+def checkmatesLightSpellAddLawfulDamageType(attachee, args, evt_obj):
+    weaponUsed = evt_obj.attack_packet.get_weapon_used()
+    isEnchantedWeapon = weaponUsed.d20_query("Q_Has_Checkmates_Light_Weapon_Effect")
+    if isEnchantedWeapon:
+        if not evt_obj.damage_packet.attack_power & D20DAP_LAW:
+            evt_obj.damage_packet.attack_power |= D20DAP_LAW
+        evt_obj.damage_packet.bonus_list.add(args.get_arg(2), 12, "~Enhancement~[TAG_ENHANCEMENT_BONUS] : ~Checkmates Light~[TAG_SPELLS_CHECKMATES_LIGHT]")
     return 0
 
 def checkmatesLightSpellHasSpellActive(attachee, args, evt_obj):
@@ -72,7 +67,6 @@ checkmatesLightSpell.AddHook(ET_OnConditionAdd, EK_NONE, checkmatesLightOnCondit
 checkmatesLightSpell.AddHook(ET_OnToHitBonus2, EK_NONE, checkmatesLightSpellBonusToHit,())
 checkmatesLightSpell.AddHook(ET_OnDealingDamage, EK_NONE, checkmatesLightSpellAddLawfulDamageType,())
 checkmatesLightSpell.AddHook(ET_OnObjectEvent, EK_OnEnterAoE, checkmatesLightSpellOnEntered, ())
-checkmatesLightSpell.AddHook(ET_OnConditionRemove, EK_NONE, checkmatesLightSpellConditionRemove, ())
 checkmatesLightSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, checkmatesLightSpellSpellEnd, ())
 checkmatesLightSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, checkmatesLightSpellHasSpellActive, ())
 checkmatesLightSpell.AddHook(ET_OnD20Signal, EK_S_Killed, checkmatesLightSpellKilled, ())
@@ -98,9 +92,11 @@ def checkmatesLightEffectBeginRound(attachee, args, evt_obj):
     return 0
 
 def checkmatesLightEffectTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if not spellPacket.get_target(1) == spellPacket.caster.item_worn_at(item_wear_weapon_primary):
+    weaponWornByCaster = spellPacket.caster.item_worn_at(item_wear_weapon_primary)
+    isEnchantedWeapon = weaponWornByCaster.d20_query("Q_Has_Checkmates_Light_Weapon_Effect")
+    if not isEnchantedWeapon:
         return 0
+    
     if args.get_arg(1) == 1:
         evt_obj.append("Checkmates Light ({} round)".format(args.get_arg(1)))
     else:
@@ -108,9 +104,11 @@ def checkmatesLightEffectTooltip(attachee, args, evt_obj):
     return 0
 
 def checkmatesLightEffectEffectTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if not spellPacket.get_target(1) == spellPacket.caster.item_worn_at(item_wear_weapon_primary):
+    weaponWornByCaster = spellPacket.caster.item_worn_at(item_wear_weapon_primary)
+    isEnchantedWeapon = weaponWornByCaster.d20_query("Q_Has_Checkmates_Light_Weapon_Effect")
+    if not isEnchantedWeapon:
         return 0
+
     if args.get_arg(1) == 1:
         evt_obj.append(tpdp.hash("CHECKMATES_LIGHT"), -2, " ({} round)".format(args.get_arg(1)))
     else:
@@ -144,3 +142,23 @@ checkmatesLightEffect.AddHook(ET_OnObjectEvent, EK_OnLeaveAoE, checkmatesLightEf
 checkmatesLightEffect.AddHook(ET_OnConditionRemove, EK_NONE, checkmatesLightEffectOnRemove, ())
 
 ## End Checkmates Light Effect ###
+
+###### Checkmates Light Weapon Condition ######
+def checkmatesLightWeaponConditionGlowEffect(attachee, args, evt_obj):
+    evt_obj.return_val = 1
+    return 1
+
+def checkmatesLightWeaponConditionEffectAnswerToQuery(attachee, args, evt_obj):
+    evt_obj.return_val = 1
+    return 0
+
+def checkmatesLightWeaponConditionTickdown(attachee, args, evt_obj):
+    args.set_arg(0, args.get_arg(0)-evt_obj.data1) # Ticking down duration
+    if args.get_arg(0) < 0:
+        args.condition_remove()
+    return 0
+
+checkmatesLightWeaponCondition = PythonModifier("Checkmates Light Weapon Condition", 1) # duration
+checkmatesLightWeaponCondition.AddHook(ET_OnWeaponGlowType, EK_NONE, checkmatesLightWeaponConditionGlowEffect, ())
+checkmatesLightWeaponCondition.AddHook(ET_OnD20PythonQuery, "Q_Has_Checkmates_Light_Weapon_Effect", checkmatesLightWeaponConditionEffectAnswerToQuery, ()) #not tested
+checkmatesLightWeaponCondition.AddHook(ET_OnBeginRound , EK_NONE, checkmatesLightWeaponConditionTickdown, ())

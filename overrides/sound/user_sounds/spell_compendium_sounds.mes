@@ -1154,16 +1154,24 @@
 {29067}{} // spell hit
 {29068}{} // spell struck
 
+// [1154] *[Align Weapon Mass]
+{29080}{} // spell begin
+{29081}{} // spell end
+{29082}{} // spell effect
+{29083}{} // spell new round
+{29084}{} // spell projectile begin
+{29085}{} // spell projectile end
+{29086}{} // spell projectile in-flight
+{29087}{} // spell hit
+{29088}{} // spell struck
 
-
-
-
-
-
-
-
-
-
-
-
-
+// [1155] *[Bless Weapon Swift]
+{29100}{spells\sp_bless_weapon.WAV} // spell begin
+{29101}{spells\sp_bless_weapon_end.WAV} // spell end
+{29102}{} // spell effect
+{29103}{} // spell new round
+{29104}{} // spell projectile begin
+{29105}{} // spell projectile end
+{29106}{} // spell projectile in-flight
+{29107}{} // spell hit
+{29108}{} // spell struck

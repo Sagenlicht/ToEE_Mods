@@ -89,14 +89,14 @@ ID      Spell Name                  SC Page Status      Comments
 1131    Blessing of Bahamut          31     finished
 1132    Diamondsteel                        not working
 1133    Righteous Fury              177     finished
-1134    Undead Bane Weapon          226     functional  is stacking with Weapon Bane
+1134    Undead Bane Weapon          226     functional  is stacking with Weapon Bane; needs chain rework
 1135    Weapon of the Deity         237     WIP
 1136    Axiomatic Storm              22     finished
 1137    Holy Storm                  115     finished
 1138    Unholy Storm                227     finished
 1139    Summon Undead III           215     finished
 1140    Visage of the Deity, lesser 231     finished
-1141    Lawful Sword                131     finished
+1141    Lawful Sword                131     finished    needs chain rework
 1142    Summon Undead IV            215     finished
 1143    Castigate                    44     finished
 1144    Summon Undead V             215     finished
@@ -108,8 +108,9 @@ ID      Spell Name                  SC Page Status      Comments
 1150    Deific Vengeance             62     finished
 1151    Frost Breath                100     finished
 1152    Ghost Touch Armor           102     not working Uses 161 as Buff bonus type atm!
-1153    Aid Mass                      8     finished 
-
+1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp
+1154    Align Weapon Mass             9     finished    Uses spell_radial_menu_options.mes
+1155    Bless Weapon Swift           31     finished
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
@@ -133,16 +134,34 @@ Please be sure that if you use such fixes to mark them in your code, because if 
 
 Fixed: 
 
-Added spells: Visage of the Deity lesser; Lawful Sword; Summon Undead IV; Castigate; Summon Undead V; Conviction; Foundation of Stone; Nightshield; Nimbus of Light; Brambles; Deific Warding; Frost Breath; Ghost Touch Armor (non functional); Aid, Mass;
+Added spells: 
+Visage of the Deity lesser
+Lawful Sword 
+Summon Undead IV
+Castigate
+Summon Undead V
+Conviction
+Foundation of Stone
+Nightshield
+Nimbus of Light
+Brambles
+Deific Warding
+Frost Breath
+Ghost Touch Armor (non functional)
+Aid, Mass
+Align Weapon Mass
+Bless Weapon Swift
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)
 Bard 2: Whirling Blade (1083)
 Assassin 3: Fangs of the Vampire King, Spider Poison(funnily not listed on dndtools, but its in the book.)
 Bard 5: Bolts of Bedevilment(1104)
-Pal 1: Bless Weapon, Swift, Grave Strike(1116), Rhino's Rush (1117), Lionheart, Divine Sacrifice
+Pal 1: Grave Strike(1116), Rhino's Rush (1117), Lionheart, Divine Sacrifice
 Pal 4: Draconic Might (Unsure how to do immunity), Sacred Haven
 Clr 1: Light of Lunia
 Clr 2: Light of Mercuria
 
-039 Bless Weapon
+The Spell Compendium contains mass versions of spells that are in the PHB but not in ToEE:
+Bless Weapon (has a constants.py entry = 039)
+Align Weapon (no constants.py entry)
