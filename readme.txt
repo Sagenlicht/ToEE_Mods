@@ -111,6 +111,7 @@ ID      Spell Name                  SC Page Status      Comments
 1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp
 1154    Align Weapon Mass             9     finished    Uses spell_radial_menu_options.mes
 1155    Bless Weapon Swift           31     finished
+1156    Anarchic Storm               11     
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)

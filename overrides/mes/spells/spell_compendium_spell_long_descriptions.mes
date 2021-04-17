@@ -729,3 +729,10 @@ Casting:         Swift Action [V]
 Range:               Personal 
 Target:             Personal
 Duration:      1 round,  Save: None,  SR: No}
+
+{6156} Anarchic Storm {{Lawful creatures take 2d6 damage each round (lawful outsider take double damage). Once per round a random lawful outsider takes 5d6 electricity damage. -4 penalty to Listen, Spot and Search checks and to ranged attacks in, into or out of the storm.
+School:          Conjuration(Creation)[Chaotic][Water]
+Casting:         1 action [V,S]
+Range:               Personal 
+Area:               20 ft.
+Duration:      1 round/level,  Save: None,  SR: No}

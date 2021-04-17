@@ -104,6 +104,7 @@
 {1153}{Aid, Mass}
 {1154}{Align Weapon, Mass}
 {1155}{Bless Weapon, Swift}
+{1156}{Anarchic Storm}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -209,3 +210,4 @@
 {6153} Aid, Mass {[Enchantment](Compulsion)[Mind-Affecting] Like spell Aid, but on multiple targets and temp HP are 1d8 + level (max 15).}
 {6154} Align Weapon, Mass {Transmutation Add the good, evil, lawful or chaotic property to weapons.}
 {6155} Bless Weapon, Swift {Transmutation Weapon becomes good aligned and bypasses magic DR on evil creatures.}
+{6156} Anarchic Storm {Conjuration(Creation)[Chaotic][Water]  Chaotic creatures take 2d6 damage per round (chaotic outsider 4d6). Once per round a random chaotic outsider takes 5d6 acid damage. Everyone gets -4 on Listen, Spot and Search checks and -4 ranged attack penalty while in the storm.}

@@ -12,22 +12,30 @@ def alignWeaponSpellOnConditionAdd(attachee, args, evt_obj):
 
 def alignWeaponSpellOnDamage(attachee, args, evt_obj):
     alignType = args.get_arg(2)
-    mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    isEnchantedWeapon = mainhandWeapon.d20_query("Q_Has_Align_Weapon_Effect")
+    usedWeapon = evt_obj.attack_packet.get_weapon_used()
+    isEnchantedWeapon = usedWeapon.d20_query("Q_Has_Align_Weapon_Effect")
     if not isEnchantedWeapon:
         return 0
 
-    if alignType == 1:
-        if not evt_obj.damage_packet.attack_power & D20DAP_HOLY:
+    if evt_obj.damage_packet.attack_power & D20DAP_HOLY:
+        weaponAlreadyAligned = True
+    elif evt_obj.damage_packet.attack_power & D20DAP_UNHOLY:
+        weaponAlreadyAligned = True
+    elif evt_obj.damage_packet.attack_power & D20DAP_LAW:
+        weaponAlreadyAligned = True
+    elif evt_obj.damage_packet.attack_power & D20DAP_CHAOS:
+        weaponAlreadyAligned = True
+    else:
+        weaponAlreadyAligned = False
+    
+    if not weaponAlreadyAligned:
+        if alignType == 1:
             evt_obj.damage_packet.attack_power |= D20DAP_HOLY
-    elif alignType == 2:
-        if not evt_obj.damage_packet.attack_power & D20DAP_UNHOLY:
+        elif alignType == 2:
             evt_obj.damage_packet.attack_power |= D20DAP_UNHOLY
-    elif alignType == 3:
-        if not evt_obj.damage_packet.attack_power & D20DAP_LAW:
+        elif alignType == 3:
             evt_obj.damage_packet.attack_power |= D20DAP_LAW
-    elif alignType == 4:
-        if not evt_obj.damage_packet.attack_power & D20DAP_CHAOS:
+        elif alignType == 4:
             evt_obj.damage_packet.attack_power |= D20DAP_CHAOS
     return 0
 
@@ -111,5 +119,5 @@ def alignWeaponConditionTickdown(attachee, args, evt_obj):
 
 alignWeaponCondition = PythonModifier("Align Weapon Condition", 2) # duration, alignType
 alignWeaponCondition.AddHook(ET_OnWeaponGlowType, EK_NONE, alignWeaponConditionGlowEffect, ())
-alignWeaponCondition.AddHook(ET_OnD20PythonQuery, "Q_Has_Align_Weapon_Effect", alignWeaponConditionEffectAnswerToQuery, ()) #not tested
+alignWeaponCondition.AddHook(ET_OnD20PythonQuery, "Q_Has_Align_Weapon_Effect", alignWeaponConditionEffectAnswerToQuery, ())
 alignWeaponCondition.AddHook(ET_OnBeginRound , EK_NONE, alignWeaponConditionTickdown, ())

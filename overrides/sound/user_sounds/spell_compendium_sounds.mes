@@ -1175,3 +1175,15 @@
 {29106}{} // spell projectile in-flight
 {29107}{} // spell hit
 {29108}{} // spell struck
+
+// [1156] *[Anarchic Storm]
+{29120}{} // spell begin
+{29121}{spells\sp_sleet_storm_end.WAV} // spell end
+{29122}{spells\sp_sleet_storm_loop.WAV} // spell effect
+{29123}{} // spell new round
+{29124}{} // spell projectile begin
+{29125}{} // spell projectile end
+{29126}{} // spell projectile in-flight
+{29127}{} // spell hit
+{29128}{} // spell struck
+

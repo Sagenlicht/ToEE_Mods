@@ -32,14 +32,13 @@ def axiomaticStormSpellOnEnteredAoe(attachee, args, evt_obj):
 def axiomaticStormSpellOnBeginRound(attachee, args, evt_obj):
     crittersInAoe = game.obj_list_cone(attachee, OLC_CRITTERS, 20, 0, 360)
     spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    neededAlignment = [ALIGNMENT_CHAOTIC_GOOD, ALIGNMENT_CHAOTIC_NEUTRAL, ALIGNMENT_CHAOTIC_EVIL]
     chaoticOutsiderInAoe = []
     spellDamageDice = dice_new('1d6')
     spellDamageDice.number = 5
     
     for target in crittersInAoe:
         targetIsDead = target.d20_query(Q_Dead)
-        if target.stat_level_get(stat_alignment) in neededAlignment:
+        if target.critter_get_alignment() & ALIGNMENT_CHAOTIC:
             hasChaoticAlignment = True
         else:
             hasChaoticAlignment = False
@@ -54,8 +53,10 @@ def axiomaticStormSpellOnBeginRound(attachee, args, evt_obj):
         return 0
     
     numberOfTargets = len(chaoticOutsiderInAoe)
-    randomDice = dice_new('1d{}'.format(numberOfTargets))
-    selectTarget = randomDice.roll() - 1
+    if numberOfTargets == 1:
+        selectTarget = 0
+    else:
+        selectTarget = (game.random_range(0, numberOfTargets) -1)
     spellTarget = chaoticOutsiderInAoe[selectTarget]
     game.particles('sp-Axiomatic Storm-hit', spellTarget)
     game.create_history_freeform("{} is affected by ~Axiomatic Storm~[TAG_SPELLS_AXIOMATIC_STORM] burst\n\n".format(spellTarget.description))
@@ -100,10 +101,9 @@ def axiomaticStormEffectOnBeginRound(attachee, args, evt_obj):
     else:
         spellPacket = tpdp.SpellPacket(args.get_arg(0))
         spellTarget = attachee
-        neededAlignment = [ALIGNMENT_CHAOTIC_GOOD, ALIGNMENT_CHAOTIC_NEUTRAL, ALIGNMENT_CHAOTIC_EVIL]
         spellDamageDice = dice_new('1d6')
         
-        if not spellTarget.stat_level_get(stat_alignment) in neededAlignment:
+        if not spellTarget.critter_get_alignment() & ALIGNMENT_CHAOTIC:
             return 0
         elif spellTarget.is_category_type(mc_type_outsider):
             spellDamageDice.number = 4
