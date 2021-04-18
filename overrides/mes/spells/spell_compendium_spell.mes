@@ -105,6 +105,8 @@
 {1154}{Align Weapon, Mass}
 {1155}{Bless Weapon, Swift}
 {1156}{Anarchic Storm}
+{1157}{Clutch of Orcus}
+{1158}{Conviction Mass}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -199,7 +201,7 @@
 {6142} Summon Undead IV {[Conjuration[(Summoning)[Evil] Summon Undead to aid in battle.}
 {6143} Castigate {[Evocation][Sonic] Creatures take 10d4 damage if alignment completly differs, 5d4 if they differ only on one axis and no damage if same alignment.}
 {6144} Summon Undead V {Summon Undead to aid in Battle}
-{6145} Conviction {[Evocation][Sonic] Target +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).}
+{6145} Conviction {Abjuration Target gets a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).}
 {6146} Foundation of Stone {Transmutation[Earth] +2 to AC and +4 to Strength checks to avoid bull rushed or being tripped.}
 {6147} Nightshield {Abjuration +1 (+2 at level 6 and +3 at level 9) bonus to saving throws and immunity to Magic Missile.}
 {6148} Nimbus of Light {Evocation[Light] Deal 1d8 + 1 point of damage per round elapsed since spell was cast (max is your level).}
@@ -211,3 +213,5 @@
 {6154} Align Weapon, Mass {Transmutation Add the good, evil, lawful or chaotic property to weapons.}
 {6155} Bless Weapon, Swift {Transmutation Weapon becomes good aligned and bypasses magic DR on evil creatures.}
 {6156} Anarchic Storm {Conjuration(Creation)[Chaotic][Water]  Chaotic creatures take 2d6 damage per round (chaotic outsider 4d6). Once per round a random chaotic outsider takes 5d6 acid damage. Everyone gets -4 on Listen, Spot and Search checks and -4 ranged attack penalty while in the storm.}
+{6157} Clutch of Orcus {Necromancy[Evil] Target takes 1d12 damage/round and is paralyzed. Fortitude save each round to end spell.}
+{6158} Conviction Mass {Abjuration Targets get a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).}

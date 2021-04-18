@@ -653,7 +653,7 @@ Range:               Close (25ft. + 5ft./2 lvls)
 Target:             Area
 Duration:      1 round/level,  Save: None,  SR: No}
 
-{6145} Conviction {Target +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).
+{6145} Conviction {Target gets a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).
 School:          Abjuration
 Casting:         1 action [V,S]
 Range:               Touch 
@@ -730,9 +730,23 @@ Range:               Personal
 Target:             Personal
 Duration:      1 round,  Save: None,  SR: No}
 
-{6156} Anarchic Storm {{Lawful creatures take 2d6 damage each round (lawful outsider take double damage). Once per round a random lawful outsider takes 5d6 electricity damage. -4 penalty to Listen, Spot and Search checks and to ranged attacks in, into or out of the storm.
+{6156} Anarchic Storm {Lawful creatures take 2d6 damage each round (lawful outsider take double damage). Once per round a random lawful outsider takes 5d6 electricity damage. -4 penalty to Listen, Spot and Search checks and to ranged attacks in, into or out of the storm.
 School:          Conjuration(Creation)[Chaotic][Water]
 Casting:         1 action [V,S]
 Range:               Personal 
 Area:               20 ft.
 Duration:      1 round/level,  Save: None,  SR: No}
+
+{6157} Clutch of Orcus {Target takes 1d12 damage/round and is paralyzed. Fortitude save each round to end spell immediately.
+School:          Necromancy[Evil]
+Casting:         1 action [V,S]
+Range:               Medium (100ft. + 10ft./level)
+Target:             Single
+Duration:      1 round/level,  Save: Fortitude negates,  SR: Yes}
+
+{6158} Conviction Mass {Allies get a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).
+School:          Abjuration
+Casting:         1 action [V,S]
+Range:               Medium (100ft. + 10ft./level)
+Target:             Area
+Duration:      10 min/level,  Save: None,  SR: No}

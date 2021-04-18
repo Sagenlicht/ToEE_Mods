@@ -1187,3 +1187,27 @@
 {29127}{} // spell hit
 {29128}{} // spell struck
 
+// [1157] *[Clutch of Orcus]
+{29140}{spells\sp_slay_living.WAV} // spell begin
+{29141}{} // spell end
+{29142}{} // spell effect
+{29143}{} // spell new round
+{29144}{} // spell projectile begin
+{29145}{} // spell projectile end
+{29146}{} // spell projectile in-flight
+{29147}{} // spell hit
+{29148}{} // spell struck
+
+// [1158] *[Conviction Mass]
+{29160}{spells\sp_bless.WAV} // spell begin
+{29161}{} // spell end
+{29162}{} // spell effect
+{29163}{} // spell new round
+{29164}{} // spell projectile begin
+{29165}{} // spell projectile end
+{29166}{} // spell projectile in-flight
+{29167}{} // spell hit
+{29168}{} // spell struck
+
+
+

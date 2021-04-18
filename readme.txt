@@ -110,14 +110,16 @@ ID      Spell Name                  SC Page Status      Comments
 1152    Ghost Touch Armor           102     not working Uses 161 as Buff bonus type atm!
 1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp
 1154    Align Weapon Mass             9     finished    Uses spell_radial_menu_options.mes
-1155    Bless Weapon Swift           31     finished
-1156    Anarchic Storm               11     
+1155    Bless Weapon Swift           31     WAT
+1156    Anarchic Storm               11     finished
+1157    Clutch of Orcus              49     finished
+1158    Conviction Mass              52     finished
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
 
 Latest Changes:
-Added a pyton script(wf_ray_fix.py) that fixes WF(Ray) and switched all my ray spells to use it. Spells that do no call that script are NOT affected by this fix.
+Added a python script(wf_ray_fix.py) that fixes WF(Ray) and switched all my ray spells to use it. Spells that do no call that script are NOT affected by this fix.
 
 The two major advantages of this fix are you can a) now see it in the to hit history and b) it does not temporarily modify any attributes but behaves like the feat should behave in the first place.
 This fix only works with temple+ !!
@@ -133,7 +135,8 @@ and be sure to have the python script in your overrides\scr folder.
 
 Please be sure that if you use such fixes to mark them in your code, because if the bug gets fixed you need to be able to find it easily so you can remove it without too much troubles.
 
-Fixed: 
+Fixed:
+Righteous Fury Temp HP now expire properly when reduced to 0
 
 Added spells: 
 Visage of the Deity lesser
@@ -152,6 +155,9 @@ Ghost Touch Armor (non functional)
 Aid, Mass
 Align Weapon Mass
 Bless Weapon Swift
+Anarchic Storm
+Clutch of Orcus
+Conviction, Mass
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)
