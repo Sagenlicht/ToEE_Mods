@@ -114,6 +114,10 @@ ID      Spell Name                  SC Page Status      Comments
 1156    Anarchic Storm               11     finished
 1157    Clutch of Orcus              49     finished
 1158    Conviction Mass              52     finished
+1159    Corona of Cold               52     finished
+1160    used for align weapon (which is not part of the spell_compendium)
+
+
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
@@ -137,6 +141,9 @@ Please be sure that if you use such fixes to mark them in your code, because if 
 
 Fixed:
 Righteous Fury Temp HP now expire properly when reduced to 0
+Changed Summon Undead V to mode_target: from Location to Area (to match the other undead summons and to avoid spawning them on your head)
+Diamondsteel now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
+Ghost Touch Armor now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
 
 Added spells: 
 Visage of the Deity lesser
@@ -158,6 +165,7 @@ Bless Weapon Swift
 Anarchic Storm
 Clutch of Orcus
 Conviction, Mass
+Corona of Cold
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)

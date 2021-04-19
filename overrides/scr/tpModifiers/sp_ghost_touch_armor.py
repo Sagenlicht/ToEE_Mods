@@ -5,44 +5,29 @@ from utilities import *
 print "Registering sp-Ghost Touch Armor"
 
 def ghostTouchArmorSpellOnConditionAdd(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     wornArmor = attachee.item_worn_at(item_wear_armor)
     wornArmor.d20_status_init()
-    acValueQuery = wornArmor.d20_query(Q_Armor_Get_AC_Bonus)
-
-    wornArmor.d20_status_init()
-    spellPacket.add_target(wornArmor, 0)
-    spellPacket.update_registry()
-
-    #Not sure how to fetch the AC bonus of an armor, this is not working :(
-    #acValue = wornArmor.obj_get_int(obj_f_armor_ac_adj)
-    #acValue = wornArmor.obj_get_idx_int(obj_f_attack_bonus_idx, 0)
-    #acValue1 = wornArmor.obj_get_idx_int(obj_f_attack_bonus_idx, 1)
-    #acValueQuery = wornArmor.d20_query(Q_Armor_Get_AC_Bonus)
-    print "Armor Values: Armor {}".format(acValueQuery)
-    #print "Armor Values: Armor {}, {}, Query {}".format(acValue, acValue1, acValueQuery)
-    args.set_arg(2, acValueQuery)
+    wornArmor.condition_add_with_args('Ghost Touch Armor Condition', args.get_arg(1))
+    
+    acValue = attachee.item_d20_query(Q_Armor_Get_AC_Bonus)
+    args.set_arg(2, acValue)
     return 0
 
 def ghostTouchArmorSpellOnGetAc(attachee, args, evt_obj):
+    wornArmor = attachee.item_worn_at(item_wear_armor)
+    isEnchantedArmor = wornArmor.d20_query("Q_Ghost_Touch_Armor_Effect")
+    if not isEnchantedArmor:
+        return 0
     armorBonusToAc = args.get_arg(2)
     if armorBonusToAc:
         if evt_obj.attack_packet.attacker.is_category_subtype(mc_subtype_incorporeal):
             evt_obj.bonus_list.add(armorBonusToAc, 161, "~Enhancement~[TAG_ENHANCEMENT_BONUS] : ~Ghost Touch Armor~[TAG_SPELLS_GHOST_TOUCH_ARMOR]")
     return 0
 
-def ghostTouchArmorSpellConditionRemove(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    armorToRemove = spellPacket.get_target(0)
-    spellPacket.remove_target(armorToRemove)
-    spellPacket.update_registry()
-    args.remove_spell()
-    return 0
-
 def ghostTouchArmorSpellTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     wornArmor = attachee.item_worn_at(item_wear_armor)
-    if not spellPacket.get_target(1) == wornArmor:
+    isEnchantedArmor = wornArmor.d20_query("Q_Ghost_Touch_Armor_Effect")
+    if not isEnchantedArmor:
         return 0
     if args.get_arg(1) == 1:
         evt_obj.append("Ghost Touch Armor ({} round)".format(args.get_arg(1)))
@@ -51,9 +36,9 @@ def ghostTouchArmorSpellTooltip(attachee, args, evt_obj):
     return 0
 
 def ghostTouchArmorSpellEffectTooltip(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     wornArmor = attachee.item_worn_at(item_wear_armor)
-    if not spellPacket.get_target(1) == wornArmor:
+    isEnchantedArmor = wornArmor.d20_query("Q_Ghost_Touch_Armor_Effect")
+    if not isEnchantedArmor:
         return 0
     if args.get_arg(1) == 1:
         evt_obj.append(tpdp.hash("GHOST_TOUCH_ARMOR"), -2, " ({} round)".format(args.get_arg(1)))
@@ -78,8 +63,7 @@ def ghostTouchArmorSpellSpellEnd(attachee, args, evt_obj):
 
 ghostTouchArmorSpell = PythonModifier("sp-Ghost Touch Armor", 3) # spell_id, duration, armorBonusToAc
 ghostTouchArmorSpell.AddHook(ET_OnConditionAdd, EK_NONE, ghostTouchArmorSpellOnConditionAdd, ())
-#ghostTouchArmorSpell.AddHook(ET_OnGetAC, EK_NONE, ghostTouchArmorSpellOnGetAc, ())
-ghostTouchArmorSpell.AddHook(ET_OnConditionRemove, EK_NONE, ghostTouchArmorSpellConditionRemove, ())
+ghostTouchArmorSpell.AddHook(ET_OnGetAC, EK_NONE, ghostTouchArmorSpellOnGetAc, ())
 ghostTouchArmorSpell.AddHook(ET_OnGetTooltip, EK_NONE, ghostTouchArmorSpellTooltip, ())
 ghostTouchArmorSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, ghostTouchArmorSpellEffectTooltip, ())
 ghostTouchArmorSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, ghostTouchArmorSpellSpellEnd, ())
@@ -89,3 +73,18 @@ ghostTouchArmorSpell.AddSpellDispelCheckStandard()
 ghostTouchArmorSpell.AddSpellTeleportPrepareStandard()
 ghostTouchArmorSpell.AddSpellTeleportReconnectStandard()
 ghostTouchArmorSpell.AddSpellCountdownStandardHook()
+
+###### Ghost Touch Armor Condition ######
+def diamondsteelConditionEffectAnswerToQuery(attachee, args, evt_obj):
+    evt_obj.return_val = 1
+    return 0
+
+def diamondsteelConditionTickdown(attachee, args, evt_obj):
+    args.set_arg(0, args.get_arg(0)-evt_obj.data1) # Ticking down duration
+    if args.get_arg(0) < 0:
+        args.condition_remove()
+    return 0
+
+diamondsteelCondition = PythonModifier("Ghost Touch Armor Condition", 1) # duration
+diamondsteelCondition.AddHook(ET_OnD20PythonQuery, "Q_Ghost_Touch_Armor_Effect", diamondsteelConditionEffectAnswerToQuery, ())
+diamondsteelCondition.AddHook(ET_OnBeginRound , EK_NONE, diamondsteelConditionTickdown, ())

@@ -1155,8 +1155,8 @@
 {29068}{} // spell struck
 
 // [1154] *[Align Weapon Mass]
-{29080}{} // spell begin
-{29081}{} // spell end
+{29080}{spells\sp_bless_weapon.WAV} // spell begin
+{29081}{spells\sp_bless_weapon_end.WAV} // spell end
 {29082}{} // spell effect
 {29083}{} // spell new round
 {29084}{} // spell projectile begin
@@ -1208,6 +1208,18 @@
 {29166}{} // spell projectile in-flight
 {29167}{} // spell hit
 {29168}{} // spell struck
+
+// [1159] *[Corona of Cold]
+{29180}{spells\sp_chill_metal.WAV} // spell begin
+{29181}{} // spell end
+{29182}{} // spell effect
+{29183}{} // spell new round
+{29184}{} // spell projectile begin
+{29185}{} // spell projectile end
+{29186}{} // spell projectile in-flight
+{29187}{} // spell hit
+{29188}{} // spell struck
+
 
 
 

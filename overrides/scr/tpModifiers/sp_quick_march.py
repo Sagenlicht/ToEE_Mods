@@ -11,7 +11,6 @@ def quickMarchSpellCorrectDurationForCaster(attachee, args, evt_obj):
     return 0
 
 def quickMarchSpellMovementBonus(attachee, args, evt_obj):
-    moveSpeedBase = attachee.stat_level_get(stat_movement_speed)
     evt_obj.bonus_list.add(30, 12 ,"~Quick March~[TAG_SPELLS_QUICK_MARCH] ~Enhancement~[TAG_ENHANCEMENT] Bonus") #Quick March adds 30ft. to movement speed
     return 0
 

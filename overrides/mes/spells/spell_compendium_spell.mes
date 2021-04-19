@@ -107,6 +107,7 @@
 {1156}{Anarchic Storm}
 {1157}{Clutch of Orcus}
 {1158}{Conviction Mass}
+{1159}{Corona of Cold}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -215,3 +216,4 @@
 {6156} Anarchic Storm {Conjuration(Creation)[Chaotic][Water]  Chaotic creatures take 2d6 damage per round (chaotic outsider 4d6). Once per round a random chaotic outsider takes 5d6 acid damage. Everyone gets -4 on Listen, Spot and Search checks and -4 ranged attack penalty while in the storm.}
 {6157} Clutch of Orcus {Necromancy[Evil] Target takes 1d12 damage/round and is paralyzed. Fortitude save each round to end spell.}
 {6158} Conviction Mass {Abjuration Targets get a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).}
+{6159} Corona of Cold {Evocation[Cold] Aura of Cold surrounds you that deals 1d12 cold damage every round and grants fire resistance 10. On failed saving throws targets also suffer a -2 penalty to Strength and Dexterity.}

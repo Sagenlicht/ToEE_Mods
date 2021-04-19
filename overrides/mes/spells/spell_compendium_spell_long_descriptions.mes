@@ -750,3 +750,10 @@ Casting:         1 action [V,S]
 Range:               Medium (100ft. + 10ft./level)
 Target:             Area
 Duration:      10 min/level,  Save: None,  SR: No}
+
+{6159} Corona of Cold {Aura of Cold surrounds you that deals 1d12 cold damage every round and grants fire resistance 10. On failed saving throws targets also suffer a -2 penalty to Strength and Dexterity.
+School:          Evocation[Cold]
+Casting:         1 action ['V', 'S']
+Range:               Personal 
+Target:             Personal
+Duration:      1,  Save: Fortitude negates,  SR: Yes}

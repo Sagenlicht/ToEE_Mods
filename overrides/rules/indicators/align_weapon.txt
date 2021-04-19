@@ -2,4 +2,4 @@ ID_string: ALIGN_WEAPON
 effect_type: 0
 texture_file: art\interface\player_conditions\buffs\spell heroism.tga
 help_topic: TAG_SPELLS_ALIGN_WEAPON
-tooltip_base_text: Align Weapon Mass
+tooltip_base_text: Align Weapon

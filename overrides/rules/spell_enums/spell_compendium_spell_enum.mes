@@ -106,6 +106,7 @@
 {1156}{Anarchic Storm}
 {1157}{Clutch of Orcus}
 {1158}{Conviction Mass}
+{1159}{Corona of Cold}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -213,6 +214,7 @@
 {6156}{Anarchic Storm}
 {6157}{Clutch of Orcus}
 {6158}{Conviction Mass}
+{6159}{Corona of Cold}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -320,3 +322,4 @@
 {21156}{TAG_SPELLS_ANARCHIC_STORM}
 {21157}{TAG_SPELLS_CLUTCH_OF_ORCUS}
 {21158}{TAG_SPELLS_CONVICTION_MASS}
+{21159}{TAG_SPELLS_CORONA_OF_COLD}
