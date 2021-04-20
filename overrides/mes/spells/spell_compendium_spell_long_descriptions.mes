@@ -741,19 +741,33 @@ Duration:      1 round/level,  Save: None,  SR: No}
 School:          Necromancy[Evil]
 Casting:         1 action [V,S]
 Range:               Medium (100ft. + 10ft./level)
-Target:             Single
+Target:             One humanoid
 Duration:      1 round/level,  Save: Fortitude negates,  SR: Yes}
 
 {6158} Conviction Mass {Allies get a +2 morale bonus to saves +1 additional for every 6 levels (max +5 at level 18).
 School:          Abjuration
 Casting:         1 action [V,S]
 Range:               Medium (100ft. + 10ft./level)
-Target:             Area
+Area:                20 ft. burst
 Duration:      10 min/level,  Save: None,  SR: No}
 
-{6159} Corona of Cold {Aura of Cold surrounds you that deals 1d12 cold damage every round and grants fire resistance 10. On failed saving throws targets also suffer a -2 penalty to Strength and Dexterity.
+{6159} Corona of Cold {Aura of Cold surrounds you that deals 1d12 cold damage every round and grants fire resistance 10. On failed saving throw targets also suffer a -2 penalty to Strength and Dexterity and its movement is halved.
 School:          Evocation[Cold]
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Personal 
-Target:             Personal
-Duration:      1,  Save: Fortitude negates,  SR: Yes}
+Area:             10 ft.
+Duration:      1 round/level,  Save: Fortitude negates,  SR: Yes}
+
+{6161} Demon Dirge {Living creature with both the chaotic and evil subtype takes 2d6 damage each round. Stunned in addtion on a failed fortitude if target also has the demon subtype.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Close (25ft. + 5ft./2 lvls)
+Target:             One living creature
+Duration:      1d6 rounds,  Save: None(see text),  SR: Yes}
+
+{6162} Devil Blight {Living creature with both the lawful and evil subtype takes 2d6 damage each round. Stunned in addtion on a failed fortitude if target also has the devil subtype.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Close (25ft. + 5ft./2 lvls)
+Target:             One living creature
+Duration:      1d6 rounds,  Save: None (see text),  SR: Yes}

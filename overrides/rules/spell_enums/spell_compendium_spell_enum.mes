@@ -107,6 +107,8 @@
 {1157}{Clutch of Orcus}
 {1158}{Conviction Mass}
 {1159}{Corona of Cold}
+{1161}{Demon Dirge}
+{1162}{Devil Blight}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -215,6 +217,8 @@
 {6157}{Clutch of Orcus}
 {6158}{Conviction Mass}
 {6159}{Corona of Cold}
+{6161}{Demon Dirge}
+{6162}{Devil Blight}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -323,3 +327,5 @@
 {21157}{TAG_SPELLS_CLUTCH_OF_ORCUS}
 {21158}{TAG_SPELLS_CONVICTION_MASS}
 {21159}{TAG_SPELLS_CORONA_OF_COLD}
+{21161}{TAG_SPELLS_DEMON_DIRGE}
+{21162}{TAG_SPELLS_DEVIL_BLIGHT}

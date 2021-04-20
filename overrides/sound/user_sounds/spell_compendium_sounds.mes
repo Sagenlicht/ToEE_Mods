@@ -1220,6 +1220,35 @@
 {29187}{} // spell hit
 {29188}{} // spell struck
 
+// [1160] *[]
+{29200}{} // spell begin
+{29201}{} // spell end
+{29202}{} // spell effect
+{29203}{} // spell new round
+{29204}{} // spell projectile begin
+{29205}{} // spell projectile end
+{29206}{} // spell projectile in-flight
+{29207}{} // spell hit
+{29208}{} // spell struck
 
+// [1161] *[Demon Dirge]
+{29220}{} // spell begin
+{29221}{} // spell end
+{29222}{spells\sp_arcane_lock.WAV} // spell effect
+{29223}{} // spell new round
+{29224}{} // spell projectile begin
+{29225}{} // spell projectile end
+{29226}{} // spell projectile in-flight
+{29227}{} // spell hit
+{29228}{} // spell struck
 
-
+// [1162] *[Devil Blight]
+{29240}{} // spell begin
+{29241}{} // spell end
+{29242}{spells\sp_arcane_lock.WAV} // spell effect
+{29243}{} // spell new round
+{29244}{} // spell projectile begin
+{29245}{} // spell projectile end
+{29246}{} // spell projectile in-flight
+{29247}{} // spell hit
+{29248}{} // spell struck
