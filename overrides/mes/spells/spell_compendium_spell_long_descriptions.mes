@@ -771,3 +771,10 @@ Casting:         1 action [V,S]
 Range:               Close (25ft. + 5ft./2 lvls)
 Target:             One living creature
 Duration:      1d6 rounds,  Save: None (see text),  SR: Yes}
+
+{6163} Energy Vortex {Deal 1d8 + 1 point/level (max +20) to creatures around you of element type chosen at cast. Deal twice damage if you are willing to take damage as well.
+School:          Evocation
+Casting:         1 action [V,S]
+Range:               Personal
+Area:                20ft.-radius burst centered on you
+Duration:      Inst.,  Save: Reflex half,  SR: Yes}

@@ -296,3 +296,14 @@
 {3012}{Evil}
 {3013}{Lawful}
 {3014}{Chaotic}
+
+; energy vortex
+{3020}{8}
+{3021}{Acid}
+{3022}{Cold}
+{3023}{Electricity}
+{3024}{Fire}
+{3025}{Acid amplified}
+{3026}{Cold amplified}
+{3027}{Electricity amplified}
+{3028}{Fire amplified}

@@ -109,6 +109,7 @@
 {1159}{Corona of Cold}
 {1161}{Demon Dirge}
 {1162}{Devil Blight}
+{1163}{Energy Vortex}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -219,6 +220,7 @@
 {6159}{Corona of Cold}
 {6161}{Demon Dirge}
 {6162}{Devil Blight}
+{6163}{Energy Vortex}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -329,3 +331,4 @@
 {21159}{TAG_SPELLS_CORONA_OF_COLD}
 {21161}{TAG_SPELLS_DEMON_DIRGE}
 {21162}{TAG_SPELLS_DEVIL_BLIGHT}
+{21163}{TAG_SPELLS_ENERGY_VORTEX}

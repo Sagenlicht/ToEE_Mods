@@ -1252,3 +1252,14 @@
 {29246}{} // spell projectile in-flight
 {29247}{} // spell hit
 {29248}{} // spell struck
+
+// [1163] *[Energy Vortex]
+{29260}{} // spell begin
+{29261}{} // spell end
+{29262}{spells\sp_endure_acid.WAV} // spell effect
+{29263}{} // spell new round
+{29264}{} // spell projectile begin
+{29265}{} // spell projectile end
+{29266}{} // spell projectile in-flight
+{29267}{} // spell hit
+{29268}{} // spell struck

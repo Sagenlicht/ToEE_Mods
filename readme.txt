@@ -117,7 +117,8 @@ ID      Spell Name                  SC Page Status      Comments
 1159    Corona of Cold               52     finished
 1160    used for align weapon (which is not part of the spell_compendium)
 1161    Demon Dirge                  63     finished
-1162    Devil Blight                 64     
+1162    Devil Blight                 64     finished
+1163    Energy Vortex                81     finished    uses spell_radial_menu_options
 
 
 
@@ -170,6 +171,7 @@ Conviction, Mass
 Corona of Cold
 Demon Dirge
 Devil Blight
+Energy Vortex
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)

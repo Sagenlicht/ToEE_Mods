@@ -110,6 +110,7 @@
 {1159}{Corona of Cold}
 {1161}{Demon Dirge}
 {1162}{Devil Blight}
+{1163}{Energy Vortex}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -221,3 +222,4 @@
 {6159} Corona of Cold {Evocation[Cold] Aura of Cold surrounds you that deals 1d12 cold damage every round and grants fire resistance 10. On failed saving throws targets also suffer a -2 penalty to Strength and Dexterity.}
 {6161} Demon Dirge {Transmutation Living creature with both chaotic and evil subtypes takes 2d6 damage each round. Stunned in addtion on a failed fortitude if target also has the demon subtype.}
 {6162} Devil Blight {Transmutation Living creature with both lawful and evil subtypes takes 2d6 damage each round. Stunned in addtion on a failed fortitude if target also has the devil subtype.}
+{6163} Energy Vortex {Evocation Deal 1d8 + 1 point/level (max +20) to creatures around you of element type chosen at cast. Deal twice damage if you are willing to take damage as well.}
