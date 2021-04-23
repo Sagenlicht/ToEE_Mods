@@ -1263,3 +1263,25 @@
 {29266}{} // spell projectile in-flight
 {29267}{} // spell hit
 {29268}{} // spell struck
+
+// [1164] *[Grace]
+{29280}{spells\sp_daylight.WAV} // spell begin
+{29281}{} // spell end
+{29282}{} // spell effect
+{29283}{} // spell new round
+{29284}{} // spell projectile begin
+{29285}{} // spell projectile end
+{29286}{} // spell projectile in-flight
+{29287}{} // spell hit
+{29288}{} // spell struck
+
+// [1165] *[Resist Energy Mass]
+{29300}{spells\sp_resistance.WAV} // spell begin
+{29301}{} // spell end
+{29302}{} // spell effect
+{29303}{} // spell new round
+{29304}{} // spell projectile begin
+{29305}{} // spell projectile end
+{29306}{} // spell projectile in-flight
+{29307}{} // spell hit
+{29308}{} // spell struck

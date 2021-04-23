@@ -119,7 +119,8 @@ ID      Spell Name                  SC Page Status      Comments
 1161    Demon Dirge                  63     finished
 1162    Devil Blight                 64     finished
 1163    Energy Vortex                81     finished    uses spell_radial_menu_options
-
+1164    Grace                        
+1165    Resist Energy Mass          174     finished    uses resist elements condition
 
 
 
@@ -172,6 +173,8 @@ Corona of Cold
 Demon Dirge
 Devil Blight
 Energy Vortex
+Grace
+Resist Energy Mass
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)
@@ -182,6 +185,7 @@ Pal 1: Grave Strike(1116), Rhino's Rush (1117), Lionheart, Divine Sacrifice
 Pal 4: Draconic Might (Unsure how to do immunity), Sacred Haven
 Clr 1: Light of Lunia
 Clr 2: Light of Mercuria
+Clr 3: Light of Venya
 
 The Spell Compendium contains mass versions of spells that are in the PHB but not in ToEE:
 Bless Weapon (has a constants.py entry = 039)

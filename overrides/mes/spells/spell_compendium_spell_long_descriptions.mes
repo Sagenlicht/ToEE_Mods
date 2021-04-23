@@ -778,3 +778,17 @@ Casting:         1 action [V,S]
 Range:               Personal
 Area:                20ft.-radius burst centered on you
 Duration:      Inst.,  Save: Reflex half,  SR: Yes}
+
+{6164} Grace {You get -20 to hide checks, +2 sacred bonus to Dexterity, +10 movement speed and your melee weapon and touch attacks are good aligned.
+School:          Transmutation[Good]
+Casting:         Free Action [V]
+Range:               Personal 
+Target:             Personal
+Duration:      1 round/level,  Save: None,  SR: No}
+
+{6165} Resist Energy Mass {As Resist Elements but on multiple targets
+School:          Abjuration
+Casting:         1 action [V,S]
+Range:               Close (25ft. + 5ft./2 lvls)
+Target:             One creature/level within 30 ft. each
+Duration:      10 minutes/level,  Save: None,  SR: No}
