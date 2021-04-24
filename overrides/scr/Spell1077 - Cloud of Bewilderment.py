@@ -10,7 +10,6 @@ def OnSpellEffect(spell):
     
     targetsToRemove = []
     spell.duration = 1 * spell.caster_level # 1 round/cl
-    #spellTarget = spell.target_list[0]
 
     for spellTarget in spell.target_list:
         targetsToRemove.append(spellTarget.obj)

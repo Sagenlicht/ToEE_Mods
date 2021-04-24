@@ -15,21 +15,23 @@ def harmonicChorusSpellBonusToCasterLevel(attachee, args, evt_obj):
 def harmonicChorusSpellAddConcentration(attachee, args, evt_obj):
     spellPacket = tpdp.SpellPacket(args.get_arg(0))
     spellPacket.caster.condition_add_with_args('sp-Concentrating', args.get_arg(0))
-    #spellPacket.caster.condition_add_with_args('Dismiss', args.get_arg(0))
+    spellPacket.caster.condition_add_with_args('Dismiss', args.get_arg(0))
     return 0
 
 def harmonicChorusSpellConcentrationBroken(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.spell_enum == 0:
-        return 0
-    args.remove_spell()
-    args.remove_spell_mod()
+    if evt_obj.data1 == args.get_arg(0):
+        args.remove_spell()
+        args.remove_spell_mod()
     return 0
 
 def harmonicChorusSpellDismissed(attachee, args, evt_obj):
     if evt_obj.data1 == args.get_arg(0):
         args.remove_spell()
         args.remove_spell_mod()
+    return 0
+
+def harmonicChorusSpellOnConditionRemove(attachee, args, evt_obj):
+    attachee.d20_send_signal(S_Spell_End, args.get_arg(0))
     return 0
 
 def harmonicChorusSpellTooltip(attachee, args, evt_obj):
@@ -67,6 +69,7 @@ harmonicChorusSpell.AddHook(ET_OnGetSpellDcMod , EK_NONE, harmonicChorusSpellBon
 harmonicChorusSpell.AddHook(ET_OnConditionAdd, EK_NONE, harmonicChorusSpellAddConcentration,())
 harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, harmonicChorusSpellConcentrationBroken, ())
 harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Dismiss_Spells, harmonicChorusSpellDismissed, ())
+harmonicChorusSpell.AddHook(ET_OnConditionRemove, EK_NONE, harmonicChorusSpellOnConditionRemove, ())
 harmonicChorusSpell.AddHook(ET_OnGetTooltip, EK_NONE, harmonicChorusSpellTooltip, ())
 harmonicChorusSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, harmonicChorusSpellEffectTooltip, ())
 harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, harmonicChorusSpellSpellEnd, ())
@@ -76,4 +79,4 @@ harmonicChorusSpell.AddSpellDispelCheckStandard()
 harmonicChorusSpell.AddSpellTeleportPrepareStandard()
 harmonicChorusSpell.AddSpellTeleportReconnectStandard()
 harmonicChorusSpell.AddSpellCountdownStandardHook()
-harmonicChorusSpell.AddSpellDismissStandardHook()
+#harmonicChorusSpell.AddSpellDismissStandardHook()

@@ -121,6 +121,7 @@ ID      Spell Name                  SC Page Status      Comments
 1163    Energy Vortex                81     finished    uses spell_radial_menu_options
 1164    Grace                        
 1165    Resist Energy Mass          174     finished    uses resist elements condition
+1166    Nauseating Breath           146     finished    uses nauseated-condition
 
 
 
@@ -143,11 +144,15 @@ and be sure to have the python script in your overrides\scr folder.
 
 Please be sure that if you use such fixes to mark them in your code, because if the bug gets fixed you need to be able to find it easily so you can remove it without too much troubles.
 
+Spells Changed:
+Cloud of Bewilderment has a new particle effect; spell cleaned up
+
 Fixed:
 Righteous Fury Temp HP now expire properly when reduced to 0
 Changed Summon Undead V to mode_target: from Location to Area (to match the other undead summons and to avoid spawning them on your head)
 Diamondsteel now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
 Ghost Touch Armor now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
+nauseated-condition tooltip fixed; cleanup
 
 Added spells: 
 Visage of the Deity lesser
@@ -175,6 +180,7 @@ Devil Blight
 Energy Vortex
 Grace
 Resist Energy Mass
+Nauseating Breath
 
 Missing Spells
 Bard 1: Inspirational Boost(1061), Joyful Noise(1060)

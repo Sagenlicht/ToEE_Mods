@@ -14,38 +14,16 @@ def cloudOfBewildermentSpellOnConditionAdd(attachee, args, evt_obj):
     spellPacket.update_registry()
     return 0
 
-def cloudOfBewildermentSpellOnBeginRound(attachee, args, evt_obj):
-    targetsInAoe = game.obj_list_cone(attachee, OLC_CRITTERS, 10, 0, 360) #would be better to get targets from spellPacket, but it is not possible to get target list?
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    
-    for cloudTarget in targetsInAoe:
-        print "Target: ", cloudTarget
-        queryForNausea = cloudTarget.d20_query("Nauseated Condition")
-        if queryForNausea:
-            return 0
-        else:
-            if cloudTarget.saving_throw_spell(args.get_arg(2), D20_Save_Fortitude, D20STD_F_NONE, spellPacket.caster, args.get_arg(0)): # save to avoid nauseated condition
-                cloudTarget.float_mesfile_line('mes\\spell.mes', 30001)
-            else:
-                cloudTarget.condition_add_with_args('Nauseated Condition', args.get_arg(1), 0,args.get_arg(3))
-    return 0
-
 def cloudOfBewildermentSpellOnEntered(attachee, args, evt_obj):
-    print "Cloud of Bewilderment enter"
     spellPacket = tpdp.SpellPacket(args.get_arg(0))
     spellTarget = evt_obj.target
     cloudEventId = args.get_arg(3)
 
     if cloudEventId != evt_obj.evt_id:
-        print"Mismach ID Cloud of Bewilderment"
         return 0
 
     if spellPacket.add_target(spellTarget, 0):
         spellTarget.condition_add_with_args('Cloud of Bewilderment Effect', args.get_arg(0), args.get_arg(1), args.get_arg(2), args.get_arg(3))
-    if spellTarget.saving_throw_spell(args.get_arg(2), D20_Save_Fortitude, D20STD_F_NONE, spellPacket.caster, args.get_arg(0)): # save to avoid nauseated condition
-        spellTarget.float_mesfile_line('mes\\spell.mes', 30001)
-    else:
-        spellTarget.condition_add_with_args('Nauseated Condition', args.get_arg(1), 0, args.get_arg(3))
     return 0
 
 def cloudOfBewildermentSpellHasSpellActive(attachee, args, evt_obj):
@@ -61,15 +39,10 @@ def cloudOfBewildermentSpellKilled(attachee, args, evt_obj):
 
 def cloudOfBewildermentSpellSpellEnd(attachee, args, evt_obj):
     print "Cloud of BewildermentSpellEnd"
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    #spellPacket.end_target_particles(attachee) <--- does not work
-    args.remove_spell_mod() #remove_spell crashes the game
-    attachee.destroy()
     return 0
 
 cloudOfBewildermentSpell = PythonModifier("sp-Cloud of Bewilderment", 4) # spell_id, duration, spellDc, eventId
 cloudOfBewildermentSpell.AddHook(ET_OnConditionAdd, EK_NONE, cloudOfBewildermentSpellOnConditionAdd,())
-cloudOfBewildermentSpell.AddHook(ET_OnBeginRound, EK_NONE, cloudOfBewildermentSpellOnBeginRound,())
 cloudOfBewildermentSpell.AddHook(ET_OnObjectEvent, EK_OnEnterAoE, cloudOfBewildermentSpellOnEntered, ())
 cloudOfBewildermentSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, cloudOfBewildermentSpellSpellEnd, ())
 cloudOfBewildermentSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, cloudOfBewildermentSpellHasSpellActive, ())
@@ -78,13 +51,27 @@ cloudOfBewildermentSpell.AddSpellDispelCheckStandard()
 cloudOfBewildermentSpell.AddSpellTeleportPrepareStandard()
 cloudOfBewildermentSpell.AddSpellTeleportReconnectStandard()
 cloudOfBewildermentSpell.AddSpellCountdownStandardHook()
+cloudOfBewildermentSpell.AddAoESpellEndStandardHook()
 
 ### Start Cloud Effect ###
 
 def cloudOfBewildermentConditionBeginRound(attachee, args, evt_obj):
+    spellPacket = tpdp.SpellPacket(args.get_arg(0))
     args.set_arg(1, args.get_arg(1)-evt_obj.data1) # Ticking down duration
     if args.get_arg(1) < 0:
         args.condition_remove()
+    else:
+        queryForNausea = attachee.d20_query("Nauseated Condition")
+        if not queryForNausea:
+            if attachee.saving_throw_spell(args.get_arg(2), D20_Save_Fortitude, D20STD_F_NONE, spellPacket.caster, args.get_arg(0)): # save to avoid nauseated condition
+                attachee.float_text_line("Not nauseated")
+                return 0
+            else:
+                durationDice = dice_new('1d4')
+                durationDice.bonus = 1
+                nauseatedDuration = durationDice.roll() # Nauseated effect lingers on after leaving the cloud or spell end for 1d4+1 rounds
+            attachee.condition_add_with_args('Nauseated Condition', nauseatedDuration, 0)
+        attachee.condition_add_with_args('Nauseated Condition', 1, 0) # renew effect while in cloud
     return 0
 
 def cloudOfBewildermentConditionConcealment(attachee, args, evt_obj):
@@ -93,17 +80,17 @@ def cloudOfBewildermentConditionConcealment(attachee, args, evt_obj):
 
 def cloudOfBewildermentConditionTooltip(attachee, args, evt_obj):
     if args.get_arg(1) == 1:
-        evt_obj.append("Cloud of Bewilderment (" + str(args.get_arg(1)) + " round)")
+        evt_obj.append("Cloud of Bewilderment ({} round)".format(args.get_arg(1)))
     else:
-        evt_obj.append("Cloud of Bewilderment (" + str(args.get_arg(1)) + " rounds)")
+        evt_obj.append("Cloud of Bewilderment ({} rounds)".format(args.get_arg(1)))
     evt_obj.append("Concealed")
     return 0
 
 def cloudOfBewildermentConditionEffectTooltip(attachee, args, evt_obj):
     if args.get_arg(1) == 1:
-        evt_obj.append(tpdp.hash("CLOUD_OF_BEWILDERMENT"), -2, " (" + str(args.get_arg(1)) + " round)")
+        evt_obj.append(tpdp.hash("CLOUD_OF_BEWILDERMENT"), -2, " ({} round)".format(args.get_arg(1)))
     else:
-        evt_obj.append(tpdp.hash("CLOUD_OF_BEWILDERMENT"), -2, " (" + str(args.get_arg(1)) + " rounds)")
+        evt_obj.append(tpdp.hash("CLOUD_OF_BEWILDERMENT"), -2, " ({} rounds)".format(args.get_arg(1)))
     return 0
 
 def cloudOfBewildermentConditionSpellKilled(attachee, args, evt_obj):

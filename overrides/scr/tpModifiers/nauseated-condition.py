@@ -20,13 +20,12 @@ def nauseatedConditionAddActions(attachee, args, evt_obj):
         return 0
     attachee.float_text_line("Nauseated", tf_red)
     game.create_history_freeform(attachee.description + " is ~nauseated~[TAG_NAUSEATED]\n\n")
-    game.particles('sp-Poison', attachee) #attachee.obj.partsys_id
+    game.particles('sp-Poison', attachee)
     if attachee.d20_query(Q_Critter_Is_Concentrating) == 1: #Nauseated breaks concentration
-        nauseatedConditionBreakConcentration(attachee)
+        attachee.d20_send_signal(S_Remove_Concentration)
     return 0
 
 def nauseatedConditionBeginRound(attachee, args, evt_obj):
-    print "Ticking Down", attachee
     args.set_arg(0, args.get_arg(0)-evt_obj.data1) # Ticking down duration
     if args.get_arg(0) < 0:
         args.condition_remove()
@@ -45,14 +44,6 @@ def nauseatedConditionCannotCast(attachee, args, evt_obj): # Nauseated prohibits
     evt_obj.return_val = 1
     return 0
 
-def nauseatedConditionBreakConcentration(attachee):
-    #tested this with Calm Emotions and Detect Magic. 
-    #Calm Emtions is stopped being concentrated on and expires, but it breaks; no removal of particles and radial menu :(
-    #Detect Magic has presumably no concentration flag but it should. Nothing happened to the spell when nauseated condition kicked in.
-    #Not sure if the hook is worth keeping due to this.
-    attachee.d20_send_signal(S_Concentration_Broken) #Try if Remove_Concentration is better signal
-    return 0
-
 def nauseatedConditionAnswerToQuery(attachee, args, evt_obj):
     evt_obj.return_val = 1
     return 0
@@ -63,16 +54,14 @@ def nauseatedConditionCheckRemoveBySpell(attachee, args, evt_obj): #not tested w
     if spellToCheck.spell_enum in spellsThatRemoveNauseated:
         args.condition_remove()
     return 0
-    
-def nauseatedConditionOnLeaveAoE(attachee, args, evt_obj):
-    aoeEventId = args.get_arg(2)
-    if aoeEventId != evt_obj.evt_id:
-        return 0
-    
-    nauseatedDurationDice = dice_new('1d4+1')
-    diceResult = nauseatedDurationDice.roll()
-    args.set_arg(0, diceResult)
-    args.set_arg(2, 0)
+
+def nauseatedConditionRemoveCondition(attachee, args, evt_obj):
+    if args.get_arg(1):
+        attachee.float_text_line("Unaffected due to Racial Immunity")
+    else:
+        if attachee.stat_level_get(stat_hp_current) > -10: # Is there really no better way to check if a critter is dead?
+            attachee.float_text_line("No longer nauseated")
+            game.create_history_freeform("{} is no longer ~nauseated~[TAG_NAUSEATED]\n\n".format(attachee.description))
     return 0
 
 def nauseatedConditionGetTooltip(attachee, args, evt_obj):
@@ -88,30 +77,20 @@ def nauseatedConditionGetTooltip(attachee, args, evt_obj):
 
 def nauseatedConditionGetEffectTooltip(attachee, args, evt_obj):
     if args.get_arg(0) == 1:
-        evt_obj.append(tpdp.hash("NAUSEATED"), -2, " ({} round)".format(args.get_arg(1)))
+        evt_obj.append(tpdp.hash("NAUSEATED"), -2, " ({} round)".format(args.get_arg(0)))
     else:
-        evt_obj.append(tpdp.hash("NAUSEATED"), -2, " ({} rounds)".format(args.get_arg(1)))
+        evt_obj.append(tpdp.hash("NAUSEATED"), -2, " ({} rounds)".format(args.get_arg(0)))
     return 0
 
-def nauseatedConditionRemoveCondition(attachee, args, evt_obj):
-    if args.get_arg(1):
-        attachee.float_text_line("Unaffected due to Racial Immunity")
-    else:
-        if attachee.stat_level_get(stat_hp_current) > -10:
-            attachee.float_text_line("No longer nauseated")
-            game.create_history_freeform("{} is no longer ~nauseated~[TAG_NAUSEATED]\n\n".format(attachee.description))
-    return 0
-
-nauseatedCondition = PythonModifier("Nauseated Condition", 3, False) #duration, immunityFlag, aoeEventId
+nauseatedCondition = PythonModifier("Nauseated Condition", 2, False) #duration, immunityFlag
 nauseatedCondition.AddHook(ET_OnConditionAddPre, EK_NONE, nauseatedConditionAddPreActions, ())
 nauseatedCondition.AddHook(ET_OnConditionAdd, EK_NONE, nauseatedConditionAddActions, ())
 nauseatedCondition.AddHook(ET_OnTurnBasedStatusInit, EK_NONE, nauseatedConditionTurnBasedStatusInit, ())
 nauseatedCondition.AddHook(ET_OnBeginRound, EK_NONE, nauseatedConditionBeginRound, ())
 nauseatedCondition.AddHook(ET_OnD20Query, EK_Q_CannotCast, nauseatedConditionCannotCast, ())
 nauseatedCondition.AddHook(ET_OnD20Query, EK_Q_AOOPossible, nauseatedConditionAoOPossible, ())
-nauseatedCondition.AddHook(ET_OnD20PythonQuery, "Nauseated Condition", nauseatedConditionAnswerToQuery, ()) #not tested
+nauseatedCondition.AddHook(ET_OnD20PythonQuery, "Nauseated Condition", nauseatedConditionAnswerToQuery, ())
 nauseatedCondition.AddHook(ET_OnD20Signal, EK_S_Spell_Cast, nauseatedConditionCheckRemoveBySpell, ())
-nauseatedCondition.AddHook(ET_OnObjectEvent, EK_OnLeaveAoE, nauseatedConditionOnLeaveAoE, ())
 nauseatedCondition.AddHook(ET_OnConditionRemove, EK_NONE, nauseatedConditionRemoveCondition, ())
 nauseatedCondition.AddHook(ET_OnGetTooltip, EK_NONE, nauseatedConditionGetTooltip, ())
 nauseatedCondition.AddHook(ET_OnGetEffectTooltip, EK_NONE, nauseatedConditionGetEffectTooltip, ())

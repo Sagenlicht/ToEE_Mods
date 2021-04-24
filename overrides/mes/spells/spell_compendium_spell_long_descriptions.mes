@@ -792,3 +792,10 @@ Casting:         1 action [V,S]
 Range:               Close (25ft. + 5ft./2 lvls)
 Target:             One creature/level within 30 ft. each
 Duration:      10 minutes/level,  Save: None,  SR: No}
+
+{6166} Nauseating Breath {Any creature in cone is nauseated on a failed Fortitude Save for 1d6 rounds.
+School:          Conjuration(Creation)
+Casting:         1 action ['V', 'S']
+Range:               30 
+Target:             Cone
+Duration:      0,  Save: Fortitude negates,  SR: No}

@@ -1285,3 +1285,14 @@
 {29306}{} // spell projectile in-flight
 {29307}{} // spell hit
 {29308}{} // spell struck
+
+// [1166] *[Nauseating Breath]
+{29320}{spells\sp_cloud_kill_hit.WAV} // spell begin
+{29321}{} // spell end
+{29322}{} // spell effect
+{29323}{} // spell new round
+{29324}{} // spell projectile begin
+{29325}{} // spell projectile end
+{29326}{} // spell projectile in-flight
+{29327}{} // spell hit
+{29328}{} // spell struck

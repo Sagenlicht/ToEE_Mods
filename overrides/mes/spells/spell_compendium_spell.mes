@@ -113,6 +113,7 @@
 {1163}{Energy Vortex}
 {1164}{Grace}
 {1165}{Resist Energy, Mass}
+{1166}{Nauseating Breath}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -227,3 +228,4 @@
 {6163} Energy Vortex {Evocation Deal 1d8 + 1 point/level (max +20) to creatures around you of element type chosen at cast. Deal twice damage if you are willing to take damage as well.}
 {6164} Grace {Transmutation[Good] You get -20 to hide, +2 sacred bonus to Dexterity, +10 movement speed and melee weapon and touch attacks are good aligned.}
 {6165} Resist Energy, Mass {Abjuration As Resist Energy but on multiple targets}
+{6166} Nauseating Breath {Conjuration(Creation) Any creature in cone is nauseated on a failed Fortitude Save for 1d6 rounds.}
