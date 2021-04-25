@@ -18,7 +18,7 @@ ID      Spell Name                  SC Page Status      Comments
 1058    Herald's Call               113     finished    rfu
 1059    Improvisation               121     WIP         fully working, just needs radial change to dynamic; no sound.
 1060    Joyful Noise                                    not yet started
-1061    Inspirational Boost                             needs a c++ modification.
+1061    Inspirational Boost         124     works with next temple version; finished
 1062    Invisibility, Swift         125     WAT         should be swift, uses invisibilty condition; fully working
 1063    Ironguts                    126     finished    uses nauseated as a secondary condition; rfu
 1064    Ironthunder Horn            126     finished    rfu
@@ -87,7 +87,7 @@ ID      Spell Name                  SC Page Status      Comments
 1129    Quick March                 164     WAT
 1130    Shield of Warding           188     finished
 1131    Blessing of Bahamut          31     finished
-1132    Diamondsteel                        not working
+1132    Diamondsteel                        works with next temple version; finished
 1133    Righteous Fury              177     finished
 1134    Undead Bane Weapon          226     functional  is stacking with Weapon Bane; needs chain rework
 1135    Weapon of the Deity         237     WIP
@@ -119,9 +119,10 @@ ID      Spell Name                  SC Page Status      Comments
 1161    Demon Dirge                  63     finished
 1162    Devil Blight                 64     finished
 1163    Energy Vortex                81     finished    uses spell_radial_menu_options
-1164    Grace                        
+1164    Grace                               finished
 1165    Resist Energy Mass          174     finished    uses resist elements condition
 1166    Nauseating Breath           146     finished    uses nauseated-condition
+1167    Slashing Darkness           191     
 
 
 
@@ -182,8 +183,12 @@ Grace
 Resist Energy Mass
 Nauseating Breath
 
+Spells that work with next temple+ version:
+Diamondsteel
+Insporational Boost
+
 Missing Spells
-Bard 1: Inspirational Boost(1061), Joyful Noise(1060)
+Bard 1: Joyful Noise(1060)
 Bard 2: Whirling Blade (1083)
 Assassin 3: Fangs of the Vampire King, Spider Poison(funnily not listed on dndtools, but its in the book.)
 Bard 5: Bolts of Bedevilment(1104)

@@ -14,25 +14,27 @@ def diamondsteelSpellOnCondidtionAdd(attachee, args, evt_obj):
     wornArmor.d20_status_init()
     wornArmor.condition_add_with_args('Diamondsteel Condition', args.get_arg(1))
 
+    #value granted is half AC bonus
     acValue = wornArmor.item_d20_query(Q_Armor_Get_AC_Bonus)
+    acValue /= 2
     args.set_arg(2, acValue)
     return 0
 
 def diamondsteelSpellGrantDr(attachee, args, evt_obj):
     if isEnchantedArmor(attachee):
-        evt_obj.damage_packet.add_physical_damage_res(args.get_arg(2), D20DAP_ADAMANTIUM, 126) #Diamondsteel grants DR adamantine value depends on AC granted by the armor; ID126 in damage.mes is DR
+        evt_obj.damage_packet.add_physical_damage_res(args.get_arg(2), D20DAP_ADAMANTIUM, 126) #Diamondsteel grants DR adamantine; value depends on AC granted by the armor; ID126 in damage.mes is DR
     return 0
 
 def diamondsteelSpellTooltip(attachee, args, evt_obj):
     if isEnchantedArmor(attachee):
         if args.get_arg(1) == 1:
-            evt_obj.append("Diamondsteel ({} round)".format(args.get_arg(1)))
+            evt_obj.append("Diamondsteel DR {}/Adamantine ({} round)".format(args.get_arg(2), args.get_arg(1)))
         else:
-            evt_obj.append("Diamondsteel ({} rounds)".format(args.get_arg(1)))
+            evt_obj.append("Diamondsteel DR {}/Adamantine ({} round)".format(args.get_arg(2), args.get_arg(1)))
     return 0
 
 def diamondsteelSpellEffectTooltip(attachee, args, evt_obj):
-    if not isEnchantedArmor(attachee):
+    if isEnchantedArmor(attachee):
         if args.get_arg(1) == 1:
             evt_obj.append(tpdp.hash("DIAMONDSTEEL"), -2, " ({} round)".format(args.get_arg(1)))
         else:

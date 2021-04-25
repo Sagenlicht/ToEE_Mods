@@ -142,6 +142,17 @@
 {27187}{} // spell hit
 {27188}{} // spell struck
 
+// [1061] *[Inspirational Boost]
+{27220}{} // spell begin
+{27221}{} // spell end
+{27222}{} // spell effect
+{27223}{} // spell new round
+{27224}{} // spell projectile begin
+{27225}{} // spell projectile end
+{27226}{} // spell projectile in-flight
+{27227}{} // spell hit
+{27228}{} // spell struck
+
 // [1062] *[Invisibility Swift]
 {27240}{} // spell begin
 {27241}{} // spell end

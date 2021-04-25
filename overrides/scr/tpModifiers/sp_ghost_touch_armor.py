@@ -9,7 +9,7 @@ def ghostTouchArmorSpellOnConditionAdd(attachee, args, evt_obj):
     wornArmor.d20_status_init()
     wornArmor.condition_add_with_args('Ghost Touch Armor Condition', args.get_arg(1))
     
-    acValue = attachee.item_d20_query(Q_Armor_Get_AC_Bonus)
+    acValue = wornArmor.item_d20_query(Q_Armor_Get_AC_Bonus)
     args.set_arg(2, acValue)
     return 0
 

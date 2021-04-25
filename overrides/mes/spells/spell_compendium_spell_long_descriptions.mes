@@ -67,6 +67,13 @@ Casting:         1  std action [V,S]
 Range:               Personal
 Target:             Self         Duration: 1 round/level}
 
+{6061} Inspirational Boost {Increased morale bonus of Inspire Courage by 1.
+School:          [Enchantment](Compulsion) [Mind-Affecting][Sonic]
+Casting:         1 Swift [V,S]
+Range:               Personal
+Target:             You
+Duration:      special,  Save: None,  SR: No}
+
 {6062} Invisibility, Swift {Invisible for 1 round as a swift action.
 
 School:          Illusion(Glamer)
@@ -795,7 +802,7 @@ Duration:      10 minutes/level,  Save: None,  SR: No}
 
 {6166} Nauseating Breath {Any creature in cone is nauseated on a failed Fortitude Save for 1d6 rounds.
 School:          Conjuration(Creation)
-Casting:         1 action ['V', 'S']
-Range:               30 
-Target:             Cone
-Duration:      0,  Save: Fortitude negates,  SR: No}
+Casting:         1 action [V,S]
+Range:               30 ft.
+Area:               Cone-shaped burst
+Duration:      Inst.,  Save: Fortitude negates,  SR: No}
