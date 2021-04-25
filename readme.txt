@@ -31,7 +31,7 @@ ID      Spell Name                  SC Page Status      Comments
 1071    Distract Assailant           69     finished
 1072    Insightfull Feint           124     functional  needs sound and different buff symbol; Unsure how to limit to feints, limited to combat atm
 1073    Lightfoot                   132     WAT         should be swift
-1074    Sniper's Shot               194     WIP         needs to be redone, semi functional for now
+1074    Sniper's Shot               194     fully functional with new temple+ version
 1075    Sonic Weapon                195     finished
 1076    Bonefiddle                   37     finished
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
@@ -186,6 +186,9 @@ Nauseating Breath
 Spells that work with next temple+ version:
 Diamondsteel
 Insporational Boost
+
+Reworked spells for new temple+ version:
+Snipers Shot (now uses newly created python query)
 
 Missing Spells
 Bard 1: Joyful Noise(1060)
