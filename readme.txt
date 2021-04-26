@@ -154,6 +154,8 @@ Changed Summon Undead V to mode_target: from Location to Area (to match the othe
 Diamondsteel now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
 Ghost Touch Armor now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will result in a functional spell once next Temple+ version is live
 nauseated-condition tooltip fixed; cleanup
+Nixie's Grace now correctly grants cold iron DR
+DR Cold is now displayed as Cold Iron
 
 Added spells: 
 Visage of the Deity lesser

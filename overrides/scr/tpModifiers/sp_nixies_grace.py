@@ -21,7 +21,7 @@ def nixiesGraceSpellCharismaBonus(attachee, args, evt_obj):
     return 0
 
 def nixiesGraceSpellColdIronDr(attachee, args, evt_obj): #Nixies Grace grants DR 5/cold iron
-    evt_obj.damage_packet.add_physical_damage_res(5, D20DAP_SILVER, 126) #Cold iron is not in the game, I use silver in the meantime; ID126 in damage.mes is DR
+    evt_obj.damage_packet.add_physical_damage_res(5, D20DAP_COLD, 126) #ID126 in damage.mes is DR
     return 0
 
 def nixiesGraceSpellTooltip(attachee, args, evt_obj):
