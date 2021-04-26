@@ -114,6 +114,7 @@
 {1164}{Grace}
 {1165}{Resist Energy, Mass}
 {1166}{Nauseating Breath}
+{1167}{Slashing Darkness}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -229,3 +230,4 @@
 {6164} Grace {Transmutation[Good] You get -20 to hide, +2 sacred bonus to Dexterity, +10 movement speed and melee weapon and touch attacks are good aligned.}
 {6165} Resist Energy, Mass {Abjuration As Resist Energy but on multiple targets}
 {6166} Nauseating Breath {Conjuration(Creation) Any creature in cone is nauseated on a failed Fortitude Save for 1d6 rounds.}
+{6167} Slashing Darkness {Evocation Deal 1d8/two levels (max 5d8) to a creature or heal an undead for same amount.}

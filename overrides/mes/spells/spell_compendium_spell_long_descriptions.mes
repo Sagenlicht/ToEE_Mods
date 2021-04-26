@@ -623,7 +623,7 @@ School:          Conjuration(Summoning)[Evil]
 Casting:         Full round [V,S]
 Range:               Close (25ft. + 5ft./2 lvls)
 Effect:              One summoned creature
-Duration:      1 round/level,  Save: None negates,  SR: No}
+Duration:      1 round/level,  Save: None,  SR: No}
 
 {6140} Visage of the Deity lesser {You get +4 to Charisma and resistance 10 to acid, cold and electricity if good or cold and fire if evil.
 School:          Transmutation
@@ -806,3 +806,10 @@ Casting:         1 action [V,S]
 Range:               30 ft.
 Area:               Cone-shaped burst
 Duration:      Inst.,  Save: Fortitude negates,  SR: No}
+
+{6167} Slashing Darkness {Deal 1d8/two levels (max 5d8) to a creature or heal an undead for same amount.
+School:          Evocation
+Casting:         1 action [V,S]
+Range:               Medium (100ft. + 10ft./level)
+Target:             One creature
+Duration:      Instantaneous,  Save: None,  SR: Yes}

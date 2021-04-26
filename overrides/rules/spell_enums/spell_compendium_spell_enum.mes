@@ -113,6 +113,7 @@
 {1164}{Grace}
 {1165}{Resist Energy Mass}
 {1166}{Nauseating Breath}
+{1167}{Slashing Darkness}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -227,6 +228,7 @@
 {6164}{Grace}
 {6165}{Resist Energy Mass}
 {6166}{Nauseating Breath}
+{6167}{Slashing Darkness}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -341,3 +343,4 @@
 {21164}{TAG_SPELLS_GRACE}
 {21165}{TAG_SPELLS_RESIST_ENERGY_MASS}
 {21166}{TAG_SPELLS_NAUSEATING_BREATH}
+{21167}{TAG_SPELLS_SLASHING_DARKNESS}

@@ -122,7 +122,7 @@ ID      Spell Name                  SC Page Status      Comments
 1164    Grace                               finished
 1165    Resist Energy Mass          174     finished    uses resist elements condition
 1166    Nauseating Breath           146     finished    uses nauseated-condition
-1167    Slashing Darkness           191     
+1167    Slashing Darkness           191     finished
 
 
 

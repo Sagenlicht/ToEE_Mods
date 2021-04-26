@@ -1307,3 +1307,15 @@
 {29326}{} // spell projectile in-flight
 {29327}{} // spell hit
 {29328}{} // spell struck
+
+// [1167] *[Slashing Darkness]
+{29340}{} // spell begin
+{29341}{} // spell end
+{29342}{} // spell effect
+{29343}{} // spell new round
+{29344}{spells\sp_enervation_proj.WAV} // spell projectile begin
+{29345}{} // spell projectile end
+{29346}{} // spell projectile in-flight
+{29347}{spells\sp_enervation_hit.wav} // spell hit
+{29348}{} // spell struck
+
