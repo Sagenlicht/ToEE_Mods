@@ -2,7 +2,7 @@ School: Transmutation
 Level: Brd 3
 Component: V
 Component: S
-Casting Time: Free Action
+Casting Time: Swift Action
 Range: Personal
 Saving Throw: No
 Spell Resistance: Yes

@@ -189,6 +189,8 @@ Insporational Boost
 
 Reworked spells for new temple+ version:
 Snipers Shot (now uses newly created python query)
+Dolorous Blow (now uses new Auto confirm crit query)
+Switched all spells using Free Action to now use Swift Action
 
 Missing Spells
 Bard 1: Joyful Noise(1060)
