@@ -115,7 +115,7 @@ ID      Spell Name                  SC Page Status      Comments
 1157    Clutch of Orcus              49     finished
 1158    Conviction Mass              52     finished
 1159    Corona of Cold               52     finished
-1160    used for align weapon (which is not part of the spell_compendium)
+1160    align weapon                ---     not part of the spell_compendium
 1161    Demon Dirge                  63     finished
 1162    Devil Blight                 64     finished
 1163    Energy Vortex                81     finished    uses spell_radial_menu_options
@@ -159,6 +159,7 @@ Ghost Touch Armor now uses item_d20_query(Q_Armor_Get_AC_Bonus) which will resul
 nauseated-condition tooltip fixed; cleanup
 Nixie's Grace now correctly grants cold iron DR
 DR Cold is now displayed as Cold Iron
+Fixed Summon Undead V
 
 Added spells: 
 Visage of the Deity lesser

@@ -2,8 +2,8 @@ School: Conjuration
 Subschool: Summoning
 Descriptor: Evil
 Level: Clr 5
-Level: Sor5
-Level:  Wiz5
+Level: Sor 5
+Level:  Wiz 5
 Component: V
 Component: S
 Casting Time: Full round
