@@ -18,6 +18,9 @@ def inspirationalBoostSpellOnBeginRound(attachee, args, evt_obj):
 def inspirationalBoostSpellCheckExpiry(attachee, args, evt_obj):
     print "Expiry Hook"
     roundsToExpire = attachee.d20_query("Bardic Ability Duration Bonus")
+    roundsToExpire += 5 #Bard songs linger 5 rounds after song ended
+    if attachee.has_feat("Lingering Song"):
+        print "Has Song extender Feat"
     print "roundsToExpire: {}".format(roundsToExpire)
     args.set_arg(1, roundsToExpire)
     args.set_arg(2, 1)

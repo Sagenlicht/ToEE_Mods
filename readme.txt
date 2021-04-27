@@ -123,6 +123,9 @@ ID      Spell Name                  SC Page Status      Comments
 1165    Resist Energy Mass          174     finished    uses resist elements condition
 1166    Nauseating Breath           146     finished    uses nauseated-condition
 1167    Slashing Darkness           191     finished
+1168    Spikes                      202     
+1169    Tremor                      223     
+1170    Weapon of Energy            236     
 
 
 
@@ -184,6 +187,7 @@ Energy Vortex
 Grace
 Resist Energy Mass
 Nauseating Breath
+Slashing Darkness
 
 Spells that work with next temple+ version:
 Diamondsteel

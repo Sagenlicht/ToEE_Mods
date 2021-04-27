@@ -31,6 +31,7 @@ def OnEndProjectile(spell, projectile, index_of_target):
     attackResult = spell.caster.perform_touch_attack(spellTarget.obj)
 
     if attackResult & D20CAF_HIT:
+        game.particles('sp-Ray of Enfeeblement-END', spellTarget.obj)
         if attackResult & D20CAF_CRITICAL:
             spellDamageDice.number *= 2
         if spellTarget.obj.is_category_type(mc_type_undead):
