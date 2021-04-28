@@ -9,14 +9,8 @@ def criticalStrikeSpellModifyThreatRange(attachee, args, evt_obj):
         return 0
 
     if evt_obj.attack_packet.get_weapon_used().obj_get_int(obj_f_type) == obj_t_weapon: #Keen requires weapon
-        getWeaponKeenRange = evt_obj.attack_packet.get_weapon_used().obj_get_int(obj_f_weapon_crit_range)
-    else:
-        return 0
-
-    appliedKeenRange =  evt_obj.bonus_list.get_sum()
-
-    if appliedKeenRange == getWeaponKeenRange:
-        evt_obj.bonus_list.add(getWeaponKeenRange, 0 , "~Critical Strike~[TAG_SPELLS_CRITICAL_STRIKE] Bonus")
+        weaponKeenRange = evt_obj.attack_packet.get_weapon_used().obj_get_int(obj_f_weapon_crit_range)
+        evt_obj.bonus_list.add(weaponKeenRange, 12, "~Critical Strike~[TAG_SPELLS_CRITICAL_STRIKE] Bonus")
     return 0
 
 def criticalStrikeSpellBonusToConfirmCrit(attachee, args, evt_obj):

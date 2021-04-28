@@ -14,12 +14,9 @@ def dolorousBlowSpellModifyThreatRange(attachee, args, evt_obj):
     appliedKeenRange =  evt_obj.bonus_list.get_sum()
     weaponUsed = evt_obj.attack_packet.get_weapon_used()
     isEnchantedWeapon = weaponUsed.d20_query("Q_Has_Dolorous_Blow_Weapon_Effect")
-    if not isEnchantedWeapon:
-        return 0
-
-    getWeaponKeenRange = weaponUsed.obj_get_int(obj_f_weapon_crit_range)
-    if appliedKeenRange == getWeaponKeenRange:
-        evt_obj.bonus_list.add(getWeaponKeenRange, 0 , "~Dolorous Blow~[TAG_SPELLS_DOLORUS_BLOW] Bonus")
+    if isEnchantedWeapon:
+      weaponKeenRange = weaponUsed.obj_get_int(obj_f_weapon_crit_range)
+      evt_obj.bonus_list.add(weaponKeenRange, 12, "~Dolorous Blow~[TAG_SPELLS_DOLORUS_BLOW] Bonus")
     return 0
 
 def dolorousBlowSpellAnswerToKeenQuery(attachee, args, evt_obj):
