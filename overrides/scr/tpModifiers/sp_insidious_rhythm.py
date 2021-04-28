@@ -17,21 +17,18 @@ def insidiousRhythmSpellGetSpellLevel(attachee, args, evt_obj):
 def insidiousRhythmSpellConcentrationCheck(attachee, args, evt_obj):
     attachee.float_text_line("Concentration Check", tf_red)
     skillCheckDc = args.get_arg(2) + args.get_arg(3) # spellDC + spellLevel
-    concentrationSkillValue = attachee.skill_level_get(skill_concentration)
-    if concentrationSkillValue == OBJ_HANDLE_NULL:
-        concentrationSkillValue = 0
+    bonusListConcentration = tpdp.BonusList()
+    concentrationSkillValue = tpdp.dispatch_skill(attachee, skill_concentration , bonusListConcentration, OBJ_HANDLE_NULL, 1)
     skillDice = dice_new('1d20')
     skillDiceRoll = skillDice.roll()
     skillRollResult = skillDiceRoll + concentrationSkillValue
-    game.create_history_freeform(attachee.description + " attempts a ~Insidious Rhythm~[TAG_SPELLS_INSIDIOUS_RHYTHM] concenatration check (DC{}): \n\n".format(skillCheckDc))
+    insidiousRhythmHistory = tpdp.create_history_dc_roll(attachee, skillCheckDc, skillDice, skillDiceRoll, "Concentration", bonusListConcentration)
+    game.create_history_from_id(insidiousRhythmHistory)
     if skillRollResult < skillCheckDc:
         attachee.float_text_line("failed", tf_red)
-        game.create_history_freeform("Rolled a ({}) - Failure! \n\n".format(skillRollResult))
-        game.particles('Fizzle', attachee)
         evt_obj.return_val = 100
     else:
         attachee.float_text_line("success")
-        game.create_history_freeform("Rolled a ({}) - Success! \n\n".format(skillRollResult))
     return 0
 
 def insidiousRhythmSpellTooltip(attachee, args, evt_obj):
