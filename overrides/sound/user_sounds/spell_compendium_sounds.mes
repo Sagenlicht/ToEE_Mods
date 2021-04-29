@@ -1319,3 +1319,13 @@
 {29347}{spells\sp_enervation_hit.wav} // spell hit
 {29348}{} // spell struck
 
+// [1168] *[Spikes]
+{29360}{spells\sp_tree_shape.WAV} // spell begin
+{29361}{spells\sp_tree_shape_end.WAV} // spell end
+{29362}{} // spell effect
+{29363}{} // spell new round
+{29364}{} // spell projectile begin
+{29365}{} // spell projectile end
+{29366}{} // spell projectile in-flight
+{29367}{} // spell hit
+{29368}{} // spell struck

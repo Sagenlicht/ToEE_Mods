@@ -813,3 +813,10 @@ Casting:         1 action [V,S]
 Range:               Medium (100ft. + 10ft./level)
 Target:             One creature
 Duration:      Instantaneous,  Save: None,  SR: Yes}
+
+{6168} Spikes {Wooden melee weapon gets +2 bonus to hit, +1 per casterlevel (max +10) on damage rolls and has double threat range.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Touch 
+Target:             Weapon touched
+Duration:      1 round/level,  Save: None,  SR: No}
