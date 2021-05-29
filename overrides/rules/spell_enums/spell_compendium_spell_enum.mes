@@ -115,6 +115,9 @@
 {1166}{Nauseating Breath}
 {1167}{Slashing Darkness}
 {1168}{Spikes}
+{1169}{Tremor}
+{1170}{Weapon of Energy}
+{1171}{Storm of Elemental Fury}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -231,6 +234,9 @@
 {6166}{Nauseating Breath}
 {6167}{Slashing Darkness}
 {6168}{Spikes}
+{6169}{Tremor}
+{6170}{Weapon of Energy}
+{6171}{Storm of Elemental Fury}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -347,3 +353,6 @@
 {21166}{TAG_SPELLS_NAUSEATING_BREATH}
 {21167}{TAG_SPELLS_SLASHING_DARKNESS}
 {21168}{TAG_SPELLS_SPIKES}
+{21169}{TAG_SPELLS_TREMOR}
+{21170}{TAG_SPELLS_WEAPON_OF_ENERGY}
+{21171}{TAG_SPELLS_STORM_OF_ELEMENTAL_FURY}

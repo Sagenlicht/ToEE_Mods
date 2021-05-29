@@ -2,9 +2,10 @@ from templeplus.pymod import PythonModifier
 from toee import *
 import tpdp
 from utilities import *
+import spell_utils
 print "Registering sp-Corona of Cold"
 
-def coronaOfColdSpellOnConditionAddActions(attachee, args, evt_obj):
+def coronaOfColdSpellOnConditionAdd(attachee, args, evt_obj):
     spellPacket = tpdp.SpellPacket(args.get_arg(0))
     radiusCoronaOfCold = (10.0 + (attachee.radius / 12.0))
     coronaOfColdId = attachee.object_event_append(OLC_CRITTERS, radiusCoronaOfCold)
@@ -31,57 +32,21 @@ def coronaOfColdSpellFireResistance(attachee, args, evt_obj):
     evt_obj.damage_packet.add_damage_resistance(10, D20DT_FIRE, 1011) #Corona of Cold grants 10 Fire Resistance
     return 0
 
-def coronaOfColdSpellDismissed(attachee, args, evt_obj):
-    if evt_obj.data1 == args.get_arg(0):
-        attachee.float_text_line("Corona of Cold Dismissed")
-        args.remove_spell()
-        args.remove_spell_mod()
-    return 0
-
-def coronaOfColdSpellTooltip(attachee, args, evt_obj):
-    if args.get_arg(1) == 1:
-        evt_obj.append("Corona of Cold Aura ({} round)".format(args.get_arg(1)))
-    else:
-        evt_obj.append("Corona of Cold Aura ({} rounds)".format(args.get_arg(1)))
-    return 0
-
-def coronaOfColdSpellEffectTooltip(attachee, args, evt_obj):
-    if args.get_arg(1) == 1:
-        evt_obj.append(tpdp.hash("CORONA_OF_COLD_AURA"), -2, " ({} round)".format(args.get_arg(1)))
-    else:
-        evt_obj.append(tpdp.hash("CORONA_OF_COLD_AURA"), -2, " ({} rounds)".format(args.get_arg(1)))
-    return 0
-
-def coronaOfColdSpellHasSpellActive(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if evt_obj.data1 == spellPacket.spell_enum:
-        evt_obj.return_val = 1
-    return 0
-
-def coronaOfColdSpellKilled(attachee, args, evt_obj):
-    args.remove_spell()
-    args.remove_spell_mod()
-    return 0
-
-def coronaOfColdSpellSpellEnd(attachee, args, evt_obj):
-    print "Corona of Cold SpellEnd"
-    return 0
-
 coronaOfColdSpell = PythonModifier("sp-Corona of Cold", 4) # spell_id, duration, spell_dc, eventID
-coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, coronaOfColdSpellOnConditionAddActions, ())
 coronaOfColdSpell.AddHook(ET_OnTakingDamage, EK_NONE, coronaOfColdSpellFireResistance, ())
 coronaOfColdSpell.AddHook(ET_OnObjectEvent, EK_OnEnterAoE, coronaOfColdSpellOnEntered, ())
-coronaOfColdSpell.AddHook(ET_OnGetTooltip, EK_NONE, coronaOfColdSpellTooltip, ())
-coronaOfColdSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, coronaOfColdSpellEffectTooltip, ())
-coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Dismiss_Spells, coronaOfColdSpellDismissed, ())
-coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, coronaOfColdSpellSpellEnd, ())
-coronaOfColdSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, coronaOfColdSpellHasSpellActive, ())
-coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Killed, coronaOfColdSpellKilled, ())
+coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, coronaOfColdSpellOnConditionAdd,())
+coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addDimiss, ())
+coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Dismiss_Spells, spell_utils.checkRemoveSpell, ())
+coronaOfColdSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
+coronaOfColdSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
+coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, spell_utils.spellEnd, ())
+coronaOfColdSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
+coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 coronaOfColdSpell.AddSpellDispelCheckStandard()
 coronaOfColdSpell.AddSpellTeleportPrepareStandard()
 coronaOfColdSpell.AddSpellTeleportReconnectStandard()
 coronaOfColdSpell.AddSpellCountdownStandardHook()
-coronaOfColdSpell.AddSpellDismissStandardHook()
 
 ### Start Corona of Cold Effect ###
 

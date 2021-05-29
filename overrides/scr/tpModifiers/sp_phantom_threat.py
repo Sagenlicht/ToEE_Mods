@@ -12,7 +12,6 @@ def phantomThreatSpellSetFlankedCondition(attachee, args, evt_obj):
     flags |= D20CAF_FLANKED
     evt_obj.attack_packet.set_flags(flags)
     attachee.float_text_line("Phantom Threat", tf_red)
-    #Unsure why flanked to hit bonus is not automatically added, not applicable for ranged attacks
     #if not evt_obj.attack_packet.get_flags() & D20CAF_RANGED: # does not work :(
     if not evt_obj.attack_packet.attacker.item_worn_at(item_wear_weapon_primary).obj_get_int(obj_f_weapon_flags) & OWF_RANGED_WEAPON: #checks if attacker mainhand weapon has range flag; this does not check for throwables,but throwables can also be use for melee
         evt_obj.bonus_list.add(2, 0, 201) #ID201 is flanked in bonus.mes

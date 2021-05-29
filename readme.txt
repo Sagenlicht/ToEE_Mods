@@ -126,7 +126,7 @@ ID      Spell Name                  SC Page Status      Comments
 1168    Spikes                      202     finished
 1169    Tremor                      223     
 1170    Weapon of Energy            236     
-
+1171    Storm of Elemental Fury     
 
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
@@ -193,7 +193,7 @@ Spikes
 
 Spells that work with next temple+ version:
 Diamondsteel
-Insporational Boost
+Inspirational Boost
 
 Missing Spells
 Bard 1: Joyful Noise(1060)

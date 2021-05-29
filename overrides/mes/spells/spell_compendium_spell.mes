@@ -116,6 +116,9 @@
 {1166}{Nauseating Breath}
 {1167}{Slashing Darkness}
 {1168}{Spikes}
+{1169}{Tremor}
+{1170}{Weapon of Energy}
+{1171}{Storm of Elemental Fury}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -233,3 +236,6 @@
 {6166} Nauseating Breath {Conjuration(Creation) Any creature in cone is nauseated on a failed Fortitude Save for 1d6 rounds.}
 {6167} Slashing Darkness {Evocation Deal 1d8/two levels (max 5d8) to a creature or heal an undead for same amount.}
 {6168} Spikes {Transmutation Wooden melee weapon gets +2 bonus to hit, +1 per casterlevel (max +10) on damage rolls and has double threat range.}
+{6169} Tremor {Evocation[Earth] Creatures in area must make a reflex save or be knocked prone each round, spells require a Concentration Check DC 15 + Spell Level.}
+{6170} Weapon of Energy {Transmutation Add an elemental burst effect to a weapon. Element is chosen when cast.}
+{6171} Storm of Elemental Fury {Conjuration(Summoning) TBD}

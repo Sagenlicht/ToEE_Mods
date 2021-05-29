@@ -1,0 +1,5 @@
+ID_string: STORM_OF_ELEMENTAL_FURY
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\spell fog cloud.tga
+help_topic: TAG_SPELLS_STORM_OF_ELEMENTAL_FURY
+tooltip_base_text: Storm of Elemental Fury

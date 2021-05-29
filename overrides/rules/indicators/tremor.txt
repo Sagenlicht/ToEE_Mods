@@ -1,0 +1,5 @@
+ID_string: TREMOR
+effect_type: 1
+texture_file: art\interface\player_conditions\ailments\fog cloud.tga
+help_topic: TAG_SPELLS_TREMOR
+tooltip_base_text: Tremor

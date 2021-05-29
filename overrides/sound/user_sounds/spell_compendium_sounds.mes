@@ -1329,3 +1329,51 @@
 {29366}{} // spell projectile in-flight
 {29367}{} // spell hit
 {29368}{} // spell struck
+
+// [1169] *[Tremor]
+{29380}{} // spell begin
+{29381}{} // spell end
+{29382}{} // spell effect
+{29383}{} // spell new round
+{29384}{} // spell projectile begin
+{29385}{} // spell projectile end
+{29386}{} // spell projectile in-flight
+{29387}{} // spell hit
+{29388}{} // spell struck
+
+// [1170] *[Weapon of Energy]
+{29400}{} // spell begin
+{29401}{} // spell end
+{29402}{} // spell effect
+{29403}{} // spell new round
+{29404}{} // spell projectile begin
+{29405}{} // spell projectile end
+{29406}{} // spell projectile in-flight
+{29407}{} // spell hit
+{29408}{} // spell struck
+
+// [1171] *[Storm of Elemental Fury]
+{29420}{} // spell begin
+{29421}{} // spell end
+{29422}{} // spell effect
+{29423}{} // spell new round
+{29424}{} // spell projectile begin
+{29425}{} // spell projectile end
+{29426}{} // spell projectile in-flight
+{29427}{} // spell hit
+{29428}{} // spell struck
+
+// [1172] *[Marshal Minor Aura]
+{29440}{} // spell begin
+{29441}{} // spell end
+{29442}{} // spell effect
+{29443}{} // spell new round
+{29444}{} // spell projectile begin
+{29445}{} // spell projectile end
+{29446}{} // spell projectile in-flight
+{29447}{} // spell hit
+{29448}{} // spell struck
+
+
+
+

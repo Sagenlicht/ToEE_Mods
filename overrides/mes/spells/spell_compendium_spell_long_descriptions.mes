@@ -820,3 +820,24 @@ Casting:         1 action [V,S]
 Range:               Touch 
 Target:             Weapon touched
 Duration:      1 round/level,  Save: None,  SR: No}
+
+{6169} Tremor {Creatures in area must make a reflex save or be knocked prone each round, spells require a Concentration Check DC 15 + Spell Level.
+School:          Evocation[Earth]
+Casting:         1 action [V,S]
+Range:               Medium (100ft. + 10ft./level)
+Target:             Area
+Duration:      1,  Save: Reflex negates,  SR: No}
+
+{6170} Weapon of Energy {Add an elemental burst effect to a weapon. Element is chosen when cast.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Touch
+Target:             Touch
+Duration:      1,  Save: None negates,  SR: No}
+
+{6171} Storm of Elemental Fury {TBD
+School:          Conjuration(Summoning)
+Casting:         1 action [V,S]
+Range:               Long
+Target:             Area
+Duration:      4,  Save: Fortitude negates,  SR: Yes}

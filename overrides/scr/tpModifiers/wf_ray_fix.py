@@ -24,6 +24,6 @@ def wfRayFixTickdown(attachee, args, evt_obj):
         args.condition_remove()
     return 0
 
-wfRayFix = PythonModifier("WF Ray Fix", 1) #duration
+wfRayFix = PythonModifier("Wf Ray Fix", 1) #duration
 wfRayFix.AddHook(ET_OnToHitBonus2, EK_NONE, wfRayFixAddToHitBonus, ())
 wfRayFix.AddHook(ET_OnBeginRound, EK_NONE, wfRayFixTickdown, ())

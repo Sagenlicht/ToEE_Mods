@@ -2,6 +2,7 @@ from templeplus.pymod import PythonModifier
 from toee import *
 import tpdp
 from utilities import *
+import spell_utils
 print "Registering sp-Dirge of Discord"
 
 def dirgeOfDiscordSpellPenalty(attachee, args, evt_obj):
@@ -24,62 +25,14 @@ def dirgeOfDiscordSpellGetSpellLevel(attachee, args, evt_obj):
     return 0
 
 def dirgeOfDiscordSpellConcentrationCheck(attachee, args, evt_obj):
-    attachee.float_text_line("Concentration Check", tf_red)
     skillCheckDc = args.get_arg(2) + args.get_arg(3) # spellDC + spellLevel
-    bonusListConcentration = tpdp.BonusList()
-    concentrationSkillValue = tpdp.dispatch_skill(attachee, skill_concentration , bonusListConcentration, OBJ_HANDLE_NULL, 1)
-    skillDice = dice_new('1d20')
-    skillDiceRoll = skillDice.roll()
-    skillRollResult = skillDiceRoll + concentrationSkillValue
-    insidiousRhythmHistory = tpdp.create_history_dc_roll(attachee, skillCheckDc, skillDice, skillDiceRoll, "Concentration", bonusListConcentration)
-    game.create_history_from_id(insidiousRhythmHistory)
-    if skillRollResult < skillCheckDc:
-        attachee.float_text_line("failed", tf_red)
-        evt_obj.return_val = 100
-    else:
+    passedCheck = spell_utils.skillCheck(attachee, skill_concentration, skillCheckDc)
+    if passedCheck:
         attachee.float_text_line("success")
-    return 0
-
-def dirgeOfDiscordSpellAddConcentration(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    spellPacket.caster.condition_add_with_args('sp-Concentrating', args.get_arg(0))
-    return 0
-
-def dirgeOfDiscordSpellConcentrationBroken(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if spellPacket.spell_enum == 0:
-        return 0
-    args.remove_spell()
-    args.remove_spell_mod()
-    return 0
-
-def dirgeOfDiscordSpellTooltip(attachee, args, evt_obj):
-    if args.get_arg(1) == 1:
-        evt_obj.append("Dirge of Discord ({} round)".format(args.get_arg(1)))
     else:
-        evt_obj.append("Dirge of Discord ({} rounds)".format(args.get_arg(1)))
-    return 0
-
-def dirgeOfDiscordSpellEffectTooltip(attachee, args, evt_obj):
-    if args.get_arg(1) == 1:
-        evt_obj.append(tpdp.hash("DIRGE_OF_DISCORD"), -2, " ({} round)".format(args.get_arg(1)))
-    else:
-        evt_obj.append(tpdp.hash("DIRGE_OF_DISCORD"), -2, " ({} rounds)".format(args.get_arg(1)))
-    return 0
-
-def dirgeOfDiscordSpellHasSpellActive(attachee, args, evt_obj):
-    spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    if evt_obj.data1 == spellPacket.spell_enum:
-        evt_obj.return_val = 1
-    return 0
-
-def dirgeOfDiscordSpellKilled(attachee, args, evt_obj):
-    args.remove_spell()
-    args.remove_spell_mod()
-    return 0
-
-def dirgeOfDiscordSpellSpellEnd(attachee, args, evt_obj):
-    print "Dirge of Discord SpellEnd"
+        attachee.float_text_line("failed", tf_red)
+        #game.particles('Fizzle', attachee)
+        evt_obj.return_val = 100
     return 0
 
 dirgeOfDiscordSpell = PythonModifier("sp-Dirge of Discord", 4) # spell_id, duration, spellDc, spellLevel
@@ -88,13 +41,13 @@ dirgeOfDiscordSpell.AddHook(ET_OnAbilityScoreLevel, EK_STAT_DEXTERITY, dirgeOfDi
 dirgeOfDiscordSpell.AddHook(ET_OnGetMoveSpeedBase, EK_NONE, dirgeOfDiscordSpellMovementPenalty,())
 dirgeOfDiscordSpell.AddHook(ET_OnGetCasterLevelMod, EK_NONE, dirgeOfDiscordSpellGetSpellLevel, ())
 dirgeOfDiscordSpell.AddHook(ET_OnD20Query, EK_Q_SpellInterrupted, dirgeOfDiscordSpellConcentrationCheck,())
-dirgeOfDiscordSpell.AddHook(ET_OnConditionAdd, EK_NONE, dirgeOfDiscordSpellAddConcentration,())
-dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, dirgeOfDiscordSpellConcentrationBroken, ())
-dirgeOfDiscordSpell.AddHook(ET_OnGetTooltip, EK_NONE, dirgeOfDiscordSpellTooltip, ())
-dirgeOfDiscordSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, dirgeOfDiscordSpellEffectTooltip, ())
-dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, dirgeOfDiscordSpellSpellEnd, ())
-dirgeOfDiscordSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, dirgeOfDiscordSpellHasSpellActive, ())
-dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Killed, dirgeOfDiscordSpellKilled, ())
+dirgeOfDiscordSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addConcentration, ())
+dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, spell_utils.checkRemoveSpell, ())
+dirgeOfDiscordSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
+dirgeOfDiscordSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
+dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, spell_utils.spellEnd, ())
+dirgeOfDiscordSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
+dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 dirgeOfDiscordSpell.AddSpellDispelCheckStandard()
 dirgeOfDiscordSpell.AddSpellTeleportPrepareStandard()
 dirgeOfDiscordSpell.AddSpellTeleportReconnectStandard()

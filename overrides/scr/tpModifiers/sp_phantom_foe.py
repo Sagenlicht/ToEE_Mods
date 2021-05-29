@@ -5,9 +5,8 @@ from utilities import *
 print "Registering sp-Phantom Foe"
 
 def phantomFoeSpellBeginRound(attachee, args, evt_obj):
-    threateningTargets = game.obj_list_cone(attachee, OLC_PC, 5, 0, 360) #is there a better way to check threats, as a polearm/spiked chain or enlarged persons threat at 10 ft or combined at 15 ft.
-    if not threateningTargets:
-        attachee.float_text_line("Not longer threatened")
+    if not any(partyMember.can_melee(attachee) for partyMember in game.party):
+        attachee.float_text_line("No longer threatened")
         args.set_arg(1, -1)
     return 0
 
@@ -23,7 +22,6 @@ def phantomFoeSpellSetFlankedCondition(attachee, args, evt_obj):
     flags = evt_obj.attack_packet.get_flags()
     flags |= D20CAF_FLANKED
     evt_obj.attack_packet.set_flags(flags)
-    #evt_obj.attack_packet.set_flags(D20CAF_FLANKED)
     attachee.float_text_line("Phantom Foe", tf_red)
     #Unsure why flanked to hit bonus is not automatically added, not applicable for ranged attacks
     #if not evt_obj.attack_packet.get_flags() & D20CAF_RANGED: # does not work :(

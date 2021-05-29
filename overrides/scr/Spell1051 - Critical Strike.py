@@ -12,11 +12,6 @@ def OnSpellEffect(spell):
     mainhandWeapon = spell.caster.item_worn_at(item_wear_weapon_primary)
 
     if mainhandWeapon.obj_get_int(obj_f_weapon_flags) & OWF_RANGED_WEAPON:
-        wrongWeaponType = True
-    else:
-        wrongWeaponType = False
-
-    if wrongWeaponType:
         spell.caster.float_text_line("Melee Weapon required", tf_red)
         game.particles('Fizzle', spell.caster)
         spell.target_list.remove_target(spellTarget.obj)
