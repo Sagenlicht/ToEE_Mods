@@ -3,7 +3,7 @@ Level: Clr 2
 Level: Pal 2
 Component: V
 Component: S
-Casting Time: Free Action
+Casting Time: Swift Action
 Range: Personal
 Saving Throw: No
 Spell Resistance: No

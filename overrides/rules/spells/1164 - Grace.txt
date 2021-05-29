@@ -3,7 +3,7 @@ Descriptor: Good
 Level: Brd 2
 Level:  Clr 3
 Component: V
-Casting Time: Free Action
+Casting Time: Swift Action
 Range: Personal
 Saving Throw: None
 Spell Resistance: No
