@@ -5,34 +5,33 @@ from utilities import *
 print "Registering sp-Distort Speech"
 
 def distortSpeechSpellCheckIfVerbal(attachee, args, evt_obj):
-    #Atm it is not possibly to read components
-    #spellToCheck = evt_obj.get_spell_packet()
-    #sTC_spell_enum = spellToCheck.spell_enum
-    #if (sTC_spell_enum == 0):
-    #    return 0
-    #sTC_spell_entry = tpdp.SpellEntry(sTC_spell_enum)
-    #checkComponents = sTC_spell_entry.components      -- not possible atm!
-    #if checkComponents == :
-    args.set_arg(2,1) #Set ComponentsUseV
-    #else:
-        #args.set_arg(2,0)
+    spellToCheck = evt_obj.get_spell_packet()
+    usedComponents = spellToCheck.get_spell_component_flags()
+    print "usedComponents: {}".format(usedComponents)
+    if usedComponents & SCF_VERBAL:
+        args.set_arg(2,1)
+    else:
+        args.set_arg(2, 0)
     return 0
 
 def distortSpeechSpellDistortCheck(attachee, args, evt_obj):
-    if not args.get_arg(2) == 1: #Only spells with verbal components get distortet;
+    if not args.get_arg(2): #Only spells with verbal components get distortet;
         attachee.float_text_line("Not a verbal spell")
         return 0
 
+    distortBonusList = tpdp.BonusList()
     failDice = dice_new('1d100')
     distortDiceResult = failDice.roll()
     if distortDiceResult < 51: #Distort Speech is a 50% Chance to fail spells and activate items
         evt_obj.return_val = 100
         attachee.float_text_line("Distort Speech Failure", tf_red)
-        game.create_history_freeform("~Distort Speech~[TAG_SPELLS_DISTORT_SPEECH] check: {} rolls a {}. Failure!\n\n".format(attachee.description, distortDiceResult))
+#        game.create_history_freeform("~Distort Speech~[TAG_SPELLS_DISTORT_SPEECH] check: {} rolls a {}. Failure!\n\n".format(attachee.description, distortDiceResult))
         game.particles('Fizzle', attachee)
     else:
         attachee.float_text_line("Distort Speech Success")
-        game.create_history_freeform("~Distort Speech~[TAG_SPELLS_DISTORT_SPEECH] check: {} rolls a {}. Success!\n\n".format(attachee.description, distortDiceResult))
+#        game.create_history_freeform("~Distort Speech~[TAG_SPELLS_DISTORT_SPEECH] check: {} rolls a {}. Success!\n\n".format(attachee.description, distortDiceResult))
+    distortHistory = tpdp.create_history_dc_roll(attachee, 51, failDice, distortDiceResult, "Distort Spell Failure Check", distortBonusList)
+    game.create_history_from_id(distortHistory)
     return 0
 
 def distortSpeechSpellTooltip(attachee, args, evt_obj):
@@ -64,7 +63,7 @@ def distortSpeechSpellSpellEnd(attachee, args, evt_obj):
     print "Distort SpeechSpellEnd"
     return 0
 
-distortSpeechSpell = PythonModifier("sp-Distort Speech", 3) # spell_id, duration, ComponentsUseV
+distortSpeechSpell = PythonModifier("sp-Distort Speech", 3) # spell_id, duration, verbalComponent
 distortSpeechSpell.AddHook(ET_OnGetCasterLevelMod, EK_NONE, distortSpeechSpellCheckIfVerbal,())
 distortSpeechSpell.AddHook(ET_OnD20Query, EK_Q_SpellInterrupted, distortSpeechSpellDistortCheck,())
 distortSpeechSpell.AddHook(ET_OnGetTooltip, EK_NONE, distortSpeechSpellTooltip, ())

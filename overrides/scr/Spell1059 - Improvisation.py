@@ -13,8 +13,8 @@ def OnSpellEffect(spell):
     bonusPool = spell.caster_level * 2 #Luck Pool is twice casterlevel
     bonusToAdd = spell.caster_level/2 #single bonus cannot exeed half casterlevel
 
-    spellTarget.obj.condition_add_with_args( 'sp-Improvisation', spell.id, spell.duration, bonusToAdd, bonusPool, 0, 0, 0)
-    spellTarget.partsys_id = game.particles( 'sp-Heroism', spellTarget.obj )
+    spellTarget.obj.condition_add_with_args('sp-Improvisation', spell.id, spell.duration, bonusToAdd, bonusPool, 0, 0, 0)
+    spellTarget.partsys_id = game.particles('sp-Heroism', spellTarget.obj)
 
     spell.spell_end(spell.id)
 

@@ -13,26 +13,22 @@ print "Registering sp-Improvisation"
 # 5 activateSkill
 # 6 activateAttack
 
-### Slider radial is commented out for now, as it is not implemented yet ###
-
 def improvisationSpellConditionAdd(attachee, args, evt_obj):
     attachee.float_text_line("Luck Pool: {}".format(args.get_arg(3)))
     return 0
 
 def improvisationSpellRadial(attachee, args, evt_obj):
-    #spellPacket = tpdp.SpellPacket(args.get_arg(0))
-    #improvisationBonusCap = min(args.get_arg(3), spellPacket.caster_level/2) #Bonus cannot be higher than points left in BonusPool
-    #bonusToAdd = args.get_arg(2)
+    spellPacket = tpdp.SpellPacket(args.get_arg(0))
+    improvisationBonusCap = min(args.get_arg(3), spellPacket.caster_level/2) #Bonus cannot be higher than points left in BonusPool
 
     #Add the top level menu
     radialParent = tpdp.RadialMenuEntryParent("Improvisation ({})".format(args.get_arg(3)))
     improvisationRadialId = radialParent.add_child_to_standard(attachee, tpdp.RadialMenuStandardNode.Class)
 
-    #Add a slider to set the bonus ###Not yet supported###
-    #sliderSetBonusAmount = tpdp.RadialMenuEntrySlider("Set Bonus Amount", 0, improvisationBonusCap, bonusToAdd, "Set Luck Bonus to add to next roll", "TAG_INTERFACE_HELP")
-    #sliderSetBonusAmount = tpdp.RadialMenuEntrySlider(5103, 0, improvisationBonusCap, bonusToAdd, -1, 0)
-    #sliderSetBonusAmount.add_as_child(attachee, improvisationRadialId)
-    #args.set_arg(7, bonusToAdd)
+    #Add a slider to set the bonus
+    sliderSetBonusAmount = tpdp.RadialMenuEntrySlider("Set Bonus Amount", "Set Bonus Amount for Improvisation", 0, improvisationBonusCap, "TAG_INTERFACE_HELP")
+    sliderSetBonusAmount.link_to_args(args, 2)
+    sliderSetBonusAmount.add_as_child(attachee, improvisationRadialId)
 
     #Add checkboxes to activate or deactivate the bonus for different options
     checkboxAbilityBonus = tpdp.RadialMenuEntryToggle("+{} to next Ability Check".format(args.get_arg(2)), "TAG_SPELLS_IMPROVISATION")
@@ -54,10 +50,13 @@ def improvisationSpellAbilityCheckBonus(attachee, args, evt_obj):
         args.set_arg(3, args.get_arg(3)-args.get_arg(2))
         if args.get_arg(3) > 0:
             attachee.float_text_line("Luck Pool Left: {}".format(args.get_arg(3)))
+            if args.get_arg(3) < args.get_arg(2):
+                args.set_arg(2, args.get_arg(3))
         else: 
             attachee.float_text_line("Luck Pool depleted")
-            args.remove_spell()
-            args.remove_spell_mod()
+            attachee.d20_send_signal(S_Spell_End, args.get_arg(0))
+            #args.remove_spell()
+            #args.remove_spell_mod()
     return 0
 
 def improvisationSpellSkillCheckBonus(attachee, args, evt_obj):
@@ -66,10 +65,13 @@ def improvisationSpellSkillCheckBonus(attachee, args, evt_obj):
         args.set_arg(3, args.get_arg(3)-args.get_arg(2))
         if args.get_arg(3) > 0:
             attachee.float_text_line("Luck Pool Left: {}".format(args.get_arg(3)))
+            if args.get_arg(3) < args.get_arg(2):
+                args.set_arg(2, args.get_arg(3))
         else: 
             attachee.float_text_line("Luck Pool depleted")
-            args.remove_spell()
-            args.remove_spell_mod()
+            attachee.d20_send_signal(S_Spell_End, args.get_arg(0))
+            #args.remove_spell()
+            #args.remove_spell_mod()
     return 0
 
 def improvisationSpellAttackBonus(attachee, args, evt_obj):
@@ -84,18 +86,21 @@ def improvisationSpellfloatAfterAttack(attachee, args, evt_obj): #added because 
     if args.get_arg(6): #check if enabled
         if args.get_arg(3) > 0:
             attachee.float_text_line("Luck Pool Left: {}".format(args.get_arg(3)))
+            if args.get_arg(3) < args.get_arg(2):
+                args.set_arg(2, args.get_arg(3))
         else: 
             attachee.float_text_line("Luck Pool depleted")
-            args.remove_spell()
-            args.remove_spell_mod()
+            attachee.d20_send_signal(S_Spell_End, args.get_arg(0))
+            #args.remove_spell()
+            #args.remove_spell_mod()
     return 0
 
 
 def improvisationSpellTooltip(attachee, args, evt_obj):
     if args.get_arg(1) == 1:
-        evt_obj.append("Improvisation ({} round)".format(args.get_arg(1)))
+        evt_obj.append("Improvisation (Pool: {}) ({} round)".format(args.get_arg(3), args.get_arg(1)))
     else:
-        evt_obj.append("Improvisation ({} rounds)".format(args.get_arg(1)))
+        evt_obj.append("Improvisation (Pool: {}) ({} rounds)".format(args.get_arg(3), args.get_arg(1)))
     return 0
 
 def improvisationSpellEffectTooltip(attachee, args, evt_obj):
@@ -117,10 +122,10 @@ def improvisationSpellKilled(attachee, args, evt_obj):
     return 0
 
 def improvisationSpellSpellEnd(attachee, args, evt_obj):
-    print "ImprovisationSpellEnd"
+    print "Improvisation SpellEnd"
     return 0
 
-improvisationSpell = PythonModifier("sp-Improvisation", 8) # spell_id, duration, bonusToAdd, bonusPool, activateAbility, activateSkill, activateAttack
+improvisationSpell = PythonModifier("sp-Improvisation", 7) # spell_id, duration, bonusToAdd, bonusPool, activateAbility, activateSkill, activateAttack
 improvisationSpell.AddHook(ET_OnConditionAdd, EK_NONE, improvisationSpellConditionAdd, ())
 improvisationSpell.AddHook(ET_OnBuildRadialMenuEntry, EK_NONE, improvisationSpellRadial, ())
 improvisationSpell.AddHook(ET_OnGetAbilityCheckModifier, EK_NONE, improvisationSpellAbilityCheckBonus,())

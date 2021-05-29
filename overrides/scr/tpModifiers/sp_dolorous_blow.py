@@ -14,29 +14,20 @@ def dolorousBlowSpellModifyThreatRange(attachee, args, evt_obj):
     appliedKeenRange =  evt_obj.bonus_list.get_sum()
     weaponUsed = evt_obj.attack_packet.get_weapon_used()
     isEnchantedWeapon = weaponUsed.d20_query("Q_Has_Dolorous_Blow_Weapon_Effect")
-    if not isEnchantedWeapon:
-        return 0
-
-    print "Range old ", appliedKeenRange
-    getWeaponKeenRange = weaponUsed.obj_get_int(obj_f_weapon_crit_range)
-    if appliedKeenRange == getWeaponKeenRange:
-        evt_obj.bonus_list.add(getWeaponKeenRange, 0 , "~Dolorous Blow~[TAG_SPELLS_DOLORUS_BLOW] Bonus")
-        print "Range new ", evt_obj.bonus_list.get_sum()
-    else:
-        print "Already keen"
+    if isEnchantedWeapon:
+      weaponKeenRange = weaponUsed.obj_get_int(obj_f_weapon_crit_range)
+      evt_obj.bonus_list.add(weaponKeenRange, 12, "~Dolorous Blow~[TAG_SPELLS_DOLORUS_BLOW] Bonus")
     return 0
 
 def dolorousBlowSpellAnswerToKeenQuery(attachee, args, evt_obj):
     evt_obj.return_val = 1
     return 0
 
-def dolorousBlowSpellBonusToConfirmCrit(attachee, args, evt_obj):
+def dolorousBlowSpellAutoConfirmCrit(attachee, args, evt_obj):
     weaponUsed = evt_obj.attack_packet.get_weapon_used()
     isEnchantedWeapon = weaponUsed.d20_query("Q_Has_Dolorous_Blow_Weapon_Effect")
     if isEnchantedWeapon:
-        flags = evt_obj.attack_packet.get_flags()
-        flags |= D20CAF_CRITICAL
-        evt_obj.attack_packet.set_flags(flags)
+        evt_obj.return_val = 1
     return 0
 
 def dolorousBlowSpellTooltip(attachee, args, evt_obj):
@@ -79,10 +70,9 @@ def dolorousBlowSpellSpellEnd(attachee, args, evt_obj):
 
 dolorousBlowSpell = PythonModifier("sp-Dolorous Blow", 2) # spell_id, duration
 dolorousBlowSpell.AddHook(ET_OnConditionAdd, EK_NONE, dolorousBlowSpellChainToWeapon,())
-dolorousBlowSpell.AddHook(ET_OnConfirmCriticalBonus, EK_NONE, dolorousBlowSpellBonusToConfirmCrit,())
+dolorousBlowSpell.AddHook(ET_OnD20PythonQuery, "Always Confirm Criticals", dolorousBlowSpellAutoConfirmCrit,())
 dolorousBlowSpell.AddHook(ET_OnGetCriticalHitRange, EK_NONE, dolorousBlowSpellModifyThreatRange,())
 dolorousBlowSpell.AddHook(ET_OnD20Query, EK_Q_Item_Has_Keen_Bonus, dolorousBlowSpellAnswerToKeenQuery, ())
-#dolorousBlowSpell.AddHook(ET_OnD20Query, EK_Q_Weapon_Get_Keen_Bonus, dolorousBlowSpellAnswerToKeenQuery, ())
 dolorousBlowSpell.AddHook(ET_OnGetTooltip, EK_NONE, dolorousBlowSpellTooltip, ())
 dolorousBlowSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, dolorousBlowSpellEffectTooltip, ())
 dolorousBlowSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, dolorousBlowSpellSpellEnd, ())

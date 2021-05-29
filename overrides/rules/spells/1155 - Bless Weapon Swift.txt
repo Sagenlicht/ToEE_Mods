@@ -1,7 +1,7 @@
 School: Transmutation
 Level: Pal 1
 Component: V
-Casting Time: Free Action
+Casting Time: Swift Action
 Range: Personal
 Saving Throw: None
 Spell Resistance: No
