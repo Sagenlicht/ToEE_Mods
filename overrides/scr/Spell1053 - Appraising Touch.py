@@ -12,7 +12,7 @@ def OnSpellEffect(spell):
     spellTarget = spell.target_list[0]
 
     spellTarget.obj.condition_add_with_args('sp-Appraising Touch', spell.id, spell.duration)
-    spellTarget.partsys_id = game.particles('sp-Heroism', spellTarget.obj)
+    spellTarget.partsys_id = game.particles('sp-Appraising Touch', spellTarget.obj)
 
     spell.spell_end(spell.id)
 

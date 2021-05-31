@@ -22,7 +22,6 @@ harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, spell_uti
 #harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Dismiss_Spells, spell_utils.checkRemoveSpell, ())
 harmonicChorusSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 harmonicChorusSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
-harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, spell_utils.spellEnd, ())
 harmonicChorusSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
 harmonicChorusSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 harmonicChorusSpell.AddSpellDispelCheckStandard()

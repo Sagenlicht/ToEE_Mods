@@ -18,7 +18,7 @@ def OnSpellEffect(spell):
         spell.target_list.remove_target(spellTarget.obj)
     else:
         spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-        spellTarget.obj.condition_add_with_args('sp-Distort Speech', spell.id, spell.duration, 0) #int(spellEnum)
+        spellTarget.obj.condition_add_with_args('sp-Distort Speech', spell.id, spell.duration, 0)
         spellTarget.partsys_id = game.particles('sp-Scare', spellTarget.obj)
 
     spell.spell_end(spell.id)

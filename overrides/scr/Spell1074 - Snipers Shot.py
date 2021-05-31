@@ -4,7 +4,6 @@ def OnBeginSpellCast(spell):
     print "Snipers Shot OnBeginSpellCast"
     print "spell.target_list=", spell.target_list
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
-    #game.particles("sp-divination-conjure",spell.caster )
 
 def OnSpellEffect(spell):
     print "Snipers Shot OnSpellEffect"

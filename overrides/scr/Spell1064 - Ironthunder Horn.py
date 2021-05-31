@@ -12,7 +12,6 @@ def OnSpellEffect(spell):
     spell.duration = 0
     game.particles('sp-Ironthunder Horn', spell.caster)
 
-    #get all targets in a 30 ft cone
     for spellTarget in spell.target_list:
         #Saving Throw to negate
         if spellTarget.obj.saving_throw_spell(spell.dc, D20_Save_Reflex, D20STD_F_NONE, spell.caster, spell.id): #success

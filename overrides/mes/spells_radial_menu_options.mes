@@ -283,19 +283,17 @@
 {2803} {14518}
 {2804} {14519}
 
-; align weapon
+; alignment axis (used by align weapon + align weapon mass)
 {3000}{4}
 {3001}{Good}
 {3002}{Evil}
 {3003}{Lawful}
-{3002}{Chaotic}
+{3004}{Chaotic}
 
-; align weapon mass
-{3010}{4}
-{3011}{Good}
-{3012}{Evil}
-{3013}{Lawful}
-{3014}{Chaotic}
+; item target
+{3010}{2}
+{3011}{Mainhand}
+{3012}{Offhand}
 
 ; energy vortex
 {3020}{8}

@@ -4,16 +4,14 @@ def OnBeginSpellCast(spell):
     print "Sticky Fingers OnBeginSpellCast"
     print "spell.target_list=", spell.target_list
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
-    #game.particles( "sp-transmutation-conjure", spell.caster )
 
 def OnSpellEffect(spell):
     print "Sticky Fingers OnSpellEffect"
 
     spell.duration = 1 #1 round, I am unsure if this easy to handle in the game!!
     spellTarget = spell.target_list[0]
-    #spellEnum = (str(spell)[str(spell).index('(')+len('('):str(spell).index(')')])
 
-    spellTarget.obj.condition_add_with_args('sp-Sticky Fingers', spell.id, spell.duration) #int(spellEnum)
+    spellTarget.obj.condition_add_with_args('sp-Sticky Fingers', spell.id, spell.duration)
     spellTarget.partsys_id = game.particles('sp-Meld into Stone', spellTarget.obj)
 
     spell.spell_end(spell.id)

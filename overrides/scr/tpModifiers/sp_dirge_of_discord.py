@@ -45,7 +45,6 @@ dirgeOfDiscordSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addConcentra
 dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, spell_utils.checkRemoveSpell, ())
 dirgeOfDiscordSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 dirgeOfDiscordSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
-dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, spell_utils.spellEnd, ())
 dirgeOfDiscordSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
 dirgeOfDiscordSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 dirgeOfDiscordSpell.AddSpellDispelCheckStandard()

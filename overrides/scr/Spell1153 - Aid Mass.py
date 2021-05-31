@@ -16,7 +16,6 @@ def OnSpellEffect(spell):
     for spellTarget in spell.target_list:
         spellTarget.obj.condition_add_with_args('sp-Aid Mass', spell.id, spell.duration)
         spellTarget.partsys_id = game.particles('sp-Aid', spellTarget.obj)
-        spellTarget.obj.condition_add_with_args('Temporary_Hit_Points', 0, spell.duration, tempHpAmount)
 
     spell.spell_end(spell.id)
 

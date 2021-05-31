@@ -29,7 +29,6 @@ clutchOfOrcusSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addConcentrat
 clutchOfOrcusSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, spell_utils.checkRemoveSpell, ())
 clutchOfOrcusSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 clutchOfOrcusSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
-clutchOfOrcusSpell.AddHook(ET_OnD20Signal, EK_S_Spell_End, spell_utils.spellEnd, ())
 clutchOfOrcusSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
 clutchOfOrcusSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 clutchOfOrcusSpell.AddSpellDispelCheckStandard()

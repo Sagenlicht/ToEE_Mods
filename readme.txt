@@ -8,30 +8,32 @@ finished = finished with maybe exceptions of cosmetics; WAT = Wrong Action (shou
 
 ID      Spell Name                  SC Page Status      Comments
 1050    Sound Lance                 196     functional  but spell ignores Silence spell I belive
-1051    Critical Strike              56     WAT         
-1052    Camouflage                   43     finished    rfu
-1053    Appraising Touch             15     finished    rfu
-1054    Phantom Threat              157     finished    check for ranged missing wonky; check for cannot be flanked missing (unsure if needed)
-1055    Distort Speech               69     WIP         fixed freeform error, needs new test; needs only Verbal spells activation
-1056    Distract                     69     finished    rfu
-1057    Focusing Chant               96     WAT         should be swift
-1058    Herald's Call               113     finished    rfu
-1059    Improvisation               121     WIP         fully working, just needs radial change to dynamic; no sound.
+1051    Critical Strike              56     functional  spell_utils done
+1052    Camouflage                   43     finished    spell_utils done
+1053    Appraising Touch             15     finished    spell_utils done; new particles
+1054    Phantom Threat              157     functional  check for ranged missing wonky; check for cannot be flanked missing (unsure if needed)
+1055    Distort Speech               69     finished    spell_utils done, needs new particles
+1056    Distract                     69     finished    spell_utils done
+1057    Focusing Chant               96     finished    spell_utils done, new particles
+1058    Herald's Call               113     finished
+1059    Improvisation               121     finished    spell_utils done, needs new particles and sound
 1060    Joyful Noise                                    not yet started
-1061    Inspirational Boost         124     works with next temple version; finished
-1062    Invisibility, Swift         125     WAT         should be swift, uses invisibilty condition; fully working
-1063    Ironguts                    126     finished    uses nauseated as a secondary condition; rfu
-1064    Ironthunder Horn            126     finished    rfu
-1065    Insidious Rhythm                    finished    rfu
-1066    Master's Touch              139     WAT         should be swift, untested: masterwork shield, magic shield; needs archery test
-1067    Serene Visage               182     finished    rfu
-1068    Shock and Awe               189     finished    
-1069    Sticky Fingers              206     finished    need rework of particles; sound and buff symbol
+1061    Inspirational Boost         124     functional
+1062    Invisibility, Swift         125     finished
+1063    Ironguts                    126     finished    spell_utils done; uses nauseated as a secondary condition; deactivated nausea until finialized nauseated-condition
+1064    Ironthunder Horn            126     finished
+1065    Insidious Rhythm                    finished    spell_utils done, needs new particles
+1066    Master's Touch              139     WIP         needs rework
+1067    Serene Visage               182     finished    spell_utils done, needs new particles
+---
+1068    Shock and Awe               189     finished
+1069    Sticky Fingers              206     finished    spell_utils done, need rework of particles; sound and buff symbol
 1070    Undersong                   227     finished
 1071    Distract Assailant           69     finished
 1072    Insightfull Feint           124     functional  needs sound and different buff symbol; Unsure how to limit to feints, limited to combat atm
-1073    Lightfoot                   132     WAT         should be swift
-1074    Sniper's Shot               194     fully functional with new temple+ version
+1073    Lightfoot                   132     finished
+1074    Sniper's Shot               194     finished    spell_utils done; needs new particles?
+-----------------------------------------------------------------------------------------
 1075    Sonic Weapon                195     finished
 1076    Bonefiddle                   37     finished
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
@@ -129,6 +131,8 @@ ID      Spell Name                  SC Page Status      Comments
 1171    Storm of Elemental Fury     
 
 
+Temple + Beta nightly 2585+ needed atm!
+
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
 
 Latest Changes:
@@ -160,45 +164,6 @@ nauseated-condition tooltip fixed; cleanup
 Nixie's Grace now correctly grants cold iron DR
 DR Cold is now displayed as Cold Iron
 Fixed Summon Undead V
-
-Added spells: 
-Visage of the Deity lesser
-Lawful Sword 
-Summon Undead IV
-Castigate
-Summon Undead V
-Conviction
-Foundation of Stone
-Nightshield
-Nimbus of Light
-Brambles
-Deific Warding
-Frost Breath
-Ghost Touch Armor (non functional)
-Aid, Mass
-Align Weapon Mass
-Bless Weapon Swift
-Anarchic Storm
-Clutch of Orcus
-Conviction, Mass
-Corona of Cold
-Demon Dirge
-Devil Blight
-Energy Vortex
-Grace
-Resist Energy Mass
-Nauseating Breath
-Slashing Darkness
-Spikes
-
-Spells that work with next temple+ version:
-Diamondsteel
-Inspirational Boost
-
-Reworked spells for new temple+ version:
-Snipers Shot (now uses newly created python query)
-Dolorous Blow (now uses new Auto confirm crit query)
-Switched all spells using Free Action to now use Swift Action
 
 Missing Spells
 Bard 1: Joyful Noise(1060)

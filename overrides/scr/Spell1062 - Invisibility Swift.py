@@ -8,7 +8,7 @@ def OnBeginSpellCast(spell):
 def OnSpellEffect(spell):
     print "Invisibility, Swift OnSpellEffect"
 
-    spell.duration = 0 #1 round; Condition gets removed at start of next turn so 1 round with condition = 0
+    spell.duration = 0 #1 round; Condition gets removed at start of next turn so 1 self buff condition = 0
     spellTarget = spell.target_list[0]
 
     spellTarget.obj.condition_add_with_args('sp-Invisibility', spell.id, spell.duration, 0) #uses existing Invisibility spell
