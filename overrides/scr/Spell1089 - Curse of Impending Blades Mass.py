@@ -4,7 +4,6 @@ def OnBeginSpellCast(spell):
     print "Curse of Impending Blades Mass OnBeginSpellCast"
     print "spell.target_list=", spell.target_list
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
-    #game.particles("sp-enchantment-conjure",spell.caster )
 
 def OnSpellEffect(spell):
     print "Curse of Impending Blades Mass OnSpellEffect"
@@ -16,11 +15,14 @@ def OnSpellEffect(spell):
         targetIsFriendly = spellTarget.obj.is_friendly(spell.caster)
         if targetIsFriendly: # Curse only affects enemies
             targetsToRemove.append(spellTarget.obj)
-        else:
-            spellTarget.obj.float_text_line("Curse of Impending Blades", tf_red)
-            game.create_history_freeform(spellTarget.obj.description + " is affected by ~Curse of Impending Blades~[TAG_SPELLS_CURSE_OF_IMPENDING_BLADES]\n\n")
-            spellTarget.obj.condition_add_with_args('sp-Curse of Impending Blades', spell.id, spell.duration)
-            spellTarget.partsys_id = game.particles('sp-Phantasmal Killer', spellTarget.obj)
+        else: #Curse has no saving throw
+            if spellTarget.obj.condition_add_with_args('sp-Curse of Impending Blades', spell.id, spell.duration):
+                spellTarget.obj.float_text_line("Curse of Impending Blades", tf_red)
+                game.create_history_freeform("{} is affected by ~Curse of Impending Blades~[TAG_SPELLS_CURSE_OF_IMPENDING_BLADES]\n\n".format(spellTarget.obj.description))
+                spellTarget.partsys_id = game.particles('sp-Bestow Curse', spellTarget.obj)
+            else:
+                game.particles('Fizzle', spellTarget.obj)
+                targetsToRemove.append(spellTarget.obj)
 
     spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)

@@ -13,12 +13,15 @@ def	OnSpellEffect(spell):
 
     spellDamageDice = dice_new('1d6')
     spellDamageDice.number = min(spell.caster_level, 15) #capped at CL 15
+    saveType = D20_Save_Reduction_Half
+    saveDescriptor = D20STD_F_NONE
+    damageType = D20DT_SONIC
 
     game.particles( 'sp-Sound Burst', spell.target_loc )
 
     for spellTarget in spell.target_list:
         #Save for half damage:
-        if spellTarget.obj.reflex_save_and_damage(spell.caster, spell.dc, D20_Save_Reduction_Half, D20STD_F_NONE, spellDamageDice, D20DT_SONIC, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id): #success
+        if spellTarget.obj.reflex_save_and_damage(spell.caster, spell.dc, saveType, saveDescriptor, spellDamageDice, damageType, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id): #success
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30001)
         else:
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)

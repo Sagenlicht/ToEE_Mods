@@ -13,12 +13,17 @@ def OnSpellEffect(spell):
 
     for spellTarget in spell.target_list:
         if spellTarget.obj.is_friendly(spell.caster): #Quick March only affects allies
-            spellTarget.partsys_id = game.particles('sp-Expeditious Retreat', spellTarget.obj)
-            spellTarget.obj.condition_add_with_args('sp-Quick March', spell.id, spell.duration, spell.dc)
+            if spellTarget.obj.condition_add_with_args('sp-Quick March', spell.id, spell.duration):
+                spellTarget.partsys_id = game.particles('sp-Expeditious Retreat', spellTarget.obj)
+            else:
+                spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+                game.particles('Fizzle', spellTarget.obj)
+                targetsToRemove.append(spellTarget.obj)
         else:
             targetsToRemove.append(spellTarget.obj)
 
-    spell.target_list.remove_list(targetsToRemove)
+    if targetsToRemove:
+        spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)
 
 def OnBeginRound(spell):

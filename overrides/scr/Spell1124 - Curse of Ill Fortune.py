@@ -24,7 +24,7 @@ def OnSpellEffect(spell):
         else:
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
             spellTarget.obj.condition_add_with_args('sp-Curse of Ill Fortune', spell.id, spell.duration)
-            spellTarget.partsys_id = game.particles('sp-Curse', spellTarget.obj)
+            spellTarget.partsys_id = game.particles('sp-Bestow Curse', spellTarget.obj)
 
     spell.spell_end(spell.id)
 

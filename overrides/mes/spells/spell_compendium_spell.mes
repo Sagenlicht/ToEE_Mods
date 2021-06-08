@@ -60,7 +60,7 @@
 {1108}{Dirge}
 {1109}{Nixie's Grace}
 {1110}{Ray of Light}
-{1111}{Resistance Superior}
+{1111}{Resistance, Superior}
 {1112}{Strategic Charge}
 {1113}{Blessed Aim}
 {1114}{Clear Mind}
@@ -180,7 +180,7 @@
 {6108} Dirge {[Evocation][Sonic] Each round, enemies in the area takes 2 points of Strength and Dexterity damage. Fortitude save needs to be done every round.}
 {6109} Nixie's Grace {[Transmutation][Water] Gain a DR 5/cold iron, +6 enhancement bonus to Dexterity, a +2 enhancement bonus to Wisdom and a +8 enhancement bonus to Charisma.}
 {6110} Ray of Light {[Evocation][Light] Target is blinded for 1d4 rounds on a successful ranged touch attack.}
-{6111} Resistance Superior {[Abjuration] You grant the subject a +6 resistance bonus on saves.}
+{6111} Resistance, Superior {[Abjuration] You grant the subject a +6 resistance bonus on saves.}
 {6112} Strategic Charge {[Abjuration] You gain the benefit of the Mobility feat, even if you not meet the prerequisites. You do not have to be charging to gain this benefit.}
 {6113} Blessed Aim {[Divination] This spell grants your allies within the spread a +2 morale bonus on ranged attack rolls.}
 {6114} Clear Mind {[Abjuration] You gain a +4 sacred bonus on saving throws made against mind-affecting spells and effects.}

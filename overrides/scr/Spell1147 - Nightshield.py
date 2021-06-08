@@ -17,10 +17,13 @@ def OnSpellEffect(spell):
     else:
         spellBonus = 3
 
-    spellTarget.obj.condition_add_with_args('sp-Nightshield', spell.id, spell.duration, spellBonus)
-    spellTarget.partsys_id = game.particles('sp-Shield', spellTarget.obj)
-
-    spell.spell_end(spell.id)
+    if spellTarget.obj.condition_add_with_args('sp-Nightshield', spell.id, spell.duration, spellBonus):
+        spellTarget.partsys_id = game.particles('sp-Shield', spellTarget.obj)
+    else:
+        spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+        game.particles('Fizzle', spellTarget.obj)
+        spell.target_list.remove_target(spellTarget.obj)
+        spell.spell_end(spell.id)
 
 def OnBeginRound(spell):
     print "Nightshield OnBeginRound"

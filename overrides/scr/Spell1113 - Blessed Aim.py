@@ -12,12 +12,15 @@ def OnSpellEffect(spell):
     spell.duration = 10 * spell.caster_level # 1 min/cl
 
     for spellTarget in spell.target_list:
-        targetIsFriendly = spellTarget.obj.is_friendly(spell.caster)
-        if not targetIsFriendly: # Blessed Aim only affects allies
-            targetsToRemove.append(spellTarget.obj)
+        if spellTarget.obj.is_friendly(spell.caster):
+            if spellTarget.obj.condition_add_with_args('sp-Blessed Aim', spell.id, spell.duration):
+                spellTarget.partsys_id = game.particles('sp-Faerie Fire', spellTarget.obj)
+            else:
+                spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+                game.particles('Fizzle', spellTarget.obj)
+                targetsToRemove.append(spellTarget.obj)
         else:
-            spellTarget.obj.condition_add_with_args('sp-Blessed Aim', spell.id, spell.duration)
-            spellTarget.partsys_id = game.particles('sp-Faerie Fire', spellTarget.obj)
+            targetsToRemove.append(spellTarget.obj)
 
     spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)

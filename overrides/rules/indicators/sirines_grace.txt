@@ -1,4 +1,4 @@
-ID_string: SIRINES_GRACE
+ID_string: SIRINE'S_GRACE
 effect_type: 0
 texture_file: art\interface\player_conditions\buffs\spell heroism.tga
 help_topic: TAG_SPELLS_SIRINES_GRACE

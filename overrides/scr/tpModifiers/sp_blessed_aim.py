@@ -9,7 +9,7 @@ def blessedAimSpellBonus(attachee, args, evt_obj):
     if evt_obj.attack_packet.get_flags() & D20CAF_RANGED:
         bonusValue = 2
         bonusType = 13 #ID 13 = Morale
-        evt_obj.bonus_list.add(bonusValue, bonusType, "~Blessed Aim~[TAG_SPELLS_BLESSED_AIM] ~Morale~[TAG_MODIFIER_MORALE] Bonus")
+        evt_obj.bonus_list.add(bonusValue, bonusType, "~Blessed Aim~[~Morale~[TAG_MODIFIER_MORALE] : TAG_SPELLS_BLESSED_AIM]")
     return 0
 
 blessedAimSpell = PythonModifier("sp-Blessed Aim", 2) # spell_id, duration

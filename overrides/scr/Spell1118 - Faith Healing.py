@@ -8,7 +8,7 @@ def OnBeginSpellCast(spell):
 def OnSpellEffect(spell):
     print "Faith Healing OnSpellEffect"
     
-    spell.duration = 0 #current round
+    spell.duration = 0
     spellTarget = spell.target_list[0].obj
     spellCasterDeity = spell.caster.get_deity()
     spellTargetDeity = spellTarget.get_deity()
@@ -16,19 +16,14 @@ def OnSpellEffect(spell):
     spellDamageDice.bonus = min(spell.caster_level, 5) #capped at CL 5
 
     if spellCasterDeity == spellTargetDeity:
-        if spellTarget.is_category_type(mc_type_undead): #undeads take damage from heal spells
-            #save for half damage:
-            if spellTarget.saving_throw_spell( spell.dc, D20_Save_Will, D20STD_F_NONE, spell.caster, spell.id ): #success
-                spellTarget.float_mesfile_line('mes\\spell.mes', 30001)
-                #why negative and not positive? copied from cure spells
-                spellTarget.spell_damage_with_reduction( spell.caster, D20DT_NEGATIVE_ENERGY, spellDamageDice, D20DAP_UNSPECIFIED, DAMAGE_REDUCTION_HALF, D20A_CAST_SPELL, spell.id )
-            else:
-                spellTarget.float_mesfile_line('mes\\spell.mes', 30002)
-                spellTarget.spell_damage(spell.caster, D20DT_NEGATIVE_ENERGY, spellDamageDice, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id) #why negative and not positive? copied from cure spells
+        #Check if target is a living creature:
+        if spellTarget.is_category_type(mc_type_construct) or spellTarget.is_category_type(mc_type_undead):
+            spellTarget.float_text_line("Not a living creature", tf_red)
+            game.particles('Fizzle', spellTarget)
         else:
             spellTarget.spell_heal(spell.caster, spellDamageDice, D20A_CAST_SPELL, spell.id)
             spellTarget.healsubdual(spell.caster, spellDamageDice, D20A_CAST_SPELL, spell.id)
-        game.particles('sp-Cure Light Wounds', spellTarget)
+            game.particles('sp-Cure Light Wounds', spellTarget)
         
     else:
         spellTarget.float_text_line("Not same faith", tf_red)

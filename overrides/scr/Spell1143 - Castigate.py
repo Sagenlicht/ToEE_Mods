@@ -10,10 +10,16 @@ def OnSpellEffect(spell):
 
     targetsToRemove = []
     spellCasterAlignmentAxis = []
-    spell.duration = 0
-    spellDamageDice = dice_new('1d4')
     spellCasterAlignment = spell.caster.critter_get_alignment()
+    spell.duration = 0
+    saveType = D20_Save_Fortitude
+    saveDescriptor = D20STD_F_NONE
+    spellDamageDice = dice_new('1d4')
+    damageType = D20DT_SONIC
 
+    game.particles('sp-Sound Burst', spell.caster)
+
+    #Is there a better way to check if alignment is partial fitting?
     if spellCasterAlignment & ALIGNMENT_LAWFUL:
         spellCasterAlignmentAxis.append(ALIGNMENT_LAWFUL)
     elif spellCasterAlignment & ALIGNMENT_CHAOTIC:
@@ -26,8 +32,6 @@ def OnSpellEffect(spell):
         spellCasterAlignment.append(ALIGNMENT_EVIL)
     else:
         spellCasterAlignmentAxis.append(ALIGNMENT_NEUTRAL)
-    
-    game.particles('sp-Sound Burst', spell.caster)
     
     for spellTarget in spell.target_list:
         print "Checking {} Alignment".format(spellTarget.obj)
@@ -46,12 +50,12 @@ def OnSpellEffect(spell):
             spellDamageDice.number = min((spell.caster_level/2), 5)
         
         if not sameAlignment:
-            if spellTarget.obj.saving_throw_spell(spell.dc, D20_Save_Fortitude, D20STD_F_NONE, spell.caster, spell.id): #success
+            if spellTarget.obj.saving_throw_spell(spell.dc, saveType, saveDescriptor, spell.caster, spell.id): #success
                 spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30001)
-                spellTarget.obj.spell_damage_with_reduction(spell.caster, D20DT_SONIC, spellDamageDice, D20DAP_UNSPECIFIED, DAMAGE_REDUCTION_HALF, D20A_CAST_SPELL, spell.id)
+                spellTarget.obj.spell_damage_with_reduction(spell.caster, damageType, spellDamageDice, D20DAP_UNSPECIFIED, DAMAGE_REDUCTION_HALF, D20A_CAST_SPELL, spell.id)
             else:
                 spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-                spellTarget.obj.spell_damage(spell.caster, D20DT_SONIC, spellDamageDice, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id)
+                spellTarget.obj.spell_damage(spell.caster, damageType, spellDamageDice, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, spell.id)
         
         targetsToRemove.append(spellTarget.obj)
 

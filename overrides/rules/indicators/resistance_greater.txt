@@ -1,4 +1,4 @@
-ID_string: RESISTANCE_GREATER
+ID_string: RESISTANCE,_GREATER
 effect_type: 0
 texture_file: art\interface\player_conditions\buffs\Spell Resistance.tga
 help_topic: TAG_SPELLS_RESISTANCE_GREATER

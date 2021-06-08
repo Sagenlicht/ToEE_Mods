@@ -9,7 +9,7 @@ def wfRayFixAddToHitBonus(attachee, args, evt_obj):
     if not evt_obj.attack_packet.get_flags() & D20CAF_TOUCH_ATTACK:
         return 0
     if not evt_obj.attack_packet.get_flags() & D20CAF_RANGED:
-        return 
+        return 0
     #add_from_feat does not allow freetext
     if attachee.has_feat(feat_greater_weapon_focus_ray):
         evt_obj.bonus_list.add(2, 0, "Feat: ~Greater Weapon Foucs (Ray)~[TAG_WEAPON_FOCUS]")

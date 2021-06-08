@@ -5,10 +5,6 @@ def OnBeginSpellCast(spell):
     print "spell.target_list=", spell.target_list
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
 
-############   Weapon Focus Ray Fix   ############
-    spell.caster.condition_add('Wf Ray Fix', 0)
-############ Weapon Focus Ray Fix End ############
-
 def OnSpellEffect(spell):
     print "Ray of Light OnSpellEffect"
 
@@ -25,6 +21,10 @@ def OnEndProjectile( spell, projectile, index_of_target ):
     spellTarget = spell.target_list[0]
     spell.duration = 0
     game.particles_end(projectile.obj_get_int(obj_f_projectile_part_sys_id))
+
+############   Weapon Focus Ray Fix   ############
+    spell.caster.condition_add('Wf Ray Fix', 0)
+############ Weapon Focus Ray Fix End ############
 
     if spell.caster.perform_touch_attack(spellTarget.obj) & D20CAF_HIT:
         spellTarget.partsys_id = game.particles('sp-Arcane Eye-END', spellTarget.obj)

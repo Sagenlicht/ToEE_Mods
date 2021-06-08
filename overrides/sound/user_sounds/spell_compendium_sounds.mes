@@ -242,9 +242,9 @@
 {27388}{} // spell struck
 
 // [1070] *[Undersong]
-{27400}{} // spell begin
+{27400}{spells\sp_CalmAnimals.WAV} // spell begin
 {27401}{} // spell end
-{27402}{spells\sp_CalmAnimals.WAV} // spell effect
+{27402}{} // spell effect
 {27403}{} // spell new round
 {27404}{} // spell projectile begin
 {27405}{} // spell projectile end
@@ -330,9 +330,9 @@
 {27548}{} // spell struck
 
 // [1078] *[Curse of Impending Blades]
-{27560}{} // spell begin
+{27560}{spells\sp_Bestow_Curse.wav} // spell begin
 {27561}{} // spell end
-{27562}{spells\sp_curse.WAV} // spell effect
+{27562}{} // spell effect
 {27563}{} // spell new round
 {27564}{} // spell projectile begin
 {27565}{} // spell projectile end

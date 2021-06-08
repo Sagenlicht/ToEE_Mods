@@ -11,10 +11,13 @@ def OnSpellEffect(spell):
     spell.duration = 1 * spell.caster_level # 1 round/level
     spellTarget = spell.target_list[0]
 
-    spellTarget.partsys_id = game.particles('sp-Heroism', spell.caster)
-    spellTarget.obj.condition_add_with_args('sp-Sirines Grace', spell.id, spell.duration)
-
-    spell.spell_end(spell.id)
+    if spellTarget.obj.condition_add_with_args('sp-Sirines Grace', spell.id, spell.duration):
+        spellTarget.partsys_id = game.particles('sp-Heroism', spell.caster)
+    else:
+        spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+        game.particles('Fizzle', spellTarget.obj)
+        spell.target_list.remove_target(spellTarget.obj)
+        spell.spell_end(spell.id)
 
 def OnBeginRound(spell):
     print "Sirines Grace OnBeginRound"

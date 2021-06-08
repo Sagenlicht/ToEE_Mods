@@ -11,10 +11,10 @@ def curseOfIllFortuneSpellPenalty(attachee, args, evt_obj):
     evt_obj.bonus_list.add(bonusValue, bonusType, "~Curse of Ill Fortune~[TAG_SPELLS_CURSE_OF_ILL_FORTUNE] penalty")
     return 0
 
-def curseOfIllFortuneSpellCheckRemoveBySpell(attachee, args, evt_obj): #not tested what happens if spell gets interrupted
-    spellToCheck = tpdp.SpellPacket(evt_obj.data1)
-    spellsThatRemoveCurse = [spell_break_enchantment, spell_remove_curse, spell_miracle, spell_wish]
-    if spellToCheck.spell_enum in spellsThatRemoveCurse:
+def curseOfIllFortuneSpellCheckRemoveBySpell(attachee, args, evt_obj):
+    #Limited Wish, Miracle and Wish also remove Curses
+    if (evt_obj.is_modifier("sp-Break Enchantment")
+    or evt_obj.is_modifier("sp-Remove Curse")):
         args.remove_spell()
         args.remove_spell_mod()
     return 0
@@ -25,8 +25,8 @@ curseOfIllFortuneSpell.AddHook(ET_OnSaveThrowLevel, EK_NONE, curseOfIllFortuneSp
 curseOfIllFortuneSpell.AddHook(ET_OnGetAbilityCheckModifier, EK_NONE, curseOfIllFortuneSpellPenalty,())
 curseOfIllFortuneSpell.AddHook(ET_OnGetSkillLevel, EK_NONE, curseOfIllFortuneSpellPenalty,())
 curseOfIllFortuneSpell.AddHook(ET_OnD20Signal, EK_S_Spell_Cast, curseOfIllFortuneSpellCheckRemoveBySpell, ())
-curseOfIllFortuneSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
-curseOfIllFortuneSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
+curseOfIllFortuneSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, (spell_curse_of_ill_fortune,))
+curseOfIllFortuneSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, (spell_curse_of_ill_fortune,))
 curseOfIllFortuneSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
 curseOfIllFortuneSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
 curseOfIllFortuneSpell.AddSpellDispelCheckStandard()

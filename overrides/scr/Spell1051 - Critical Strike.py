@@ -16,8 +16,11 @@ def OnSpellEffect(spell):
         game.particles('Fizzle', spell.caster)
         spell.target_list.remove_target(spellTarget.obj)
     else:
-        spellTarget.obj.condition_add_with_args('sp-Critical Strike', spell.id, spell.duration)
-        spellTarget.partsys_id = game.particles('sp-True Strike', spellTarget.obj)
+        if spellTarget.obj.condition_add_with_args('sp-Critical Strike', spell.id, spell.duration):
+            spellTarget.partsys_id = game.particles('sp-True Strike', spellTarget.obj)
+        else:
+            game.particles('Fizzle', spellTarget.obj)
+            spell.target_list.remove_target(spellTarget.obj)
 
     spell.spell_end(spell.id)
 
