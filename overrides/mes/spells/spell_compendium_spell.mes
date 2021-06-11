@@ -119,6 +119,7 @@
 {1169}{Tremor}
 {1170}{Weapon of Energy}
 {1171}{Storm of Elemental Fury}
+{1172}{Acid Fog}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -239,3 +240,4 @@
 {6169} Tremor {Evocation[Earth] Creatures in area must make a reflex save or be knocked prone each round, spells require a Concentration Check DC 15 + Spell Level.}
 {6170} Weapon of Energy {Transmutation Add an elemental burst effect to a weapon. Element is chosen when cast.}
 {6171} Storm of Elemental Fury {Conjuration(Summoning) TBD}
+{6172} Acid Fog {Conjuration(Creation)[Acid] tbd}

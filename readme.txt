@@ -15,13 +15,13 @@ ID      Spell Name                  SC Page Status      Comments
 1055    Distort Speech               69     finished    spell_utils done, needs new particles
 1056    Distract                     69     finished    spell_utils done
 1057    Focusing Chant               96     merge0      spell_utils done, new particles
-1058    Herald's Call               113     finished
+1058    Herald's Call               113     merge0      uses vanilla slow condition
 1059    Improvisation               121     finished    spell_utils done, needs new particles and sound
 1060    Joyful Noise                                    not yet started
 1061    Inspirational Boost         124     functional
-1062    Invisibility, Swift         125     finished
+1062    Invisibility, Swift         125     merge0      uses Invisibility condition
 1063    Ironguts                    126     finished    spell_utils done; uses nauseated as a secondary condition; deactivated nausea until finialized nauseated-condition
-1064    Ironthunder Horn            126     finished
+1064    Ironthunder Horn            126     merge0      add vanilla knockdown condition only
 1065    Insidious Rhythm                    finished    spell_utils done, needs new particles
 1066    Master's Touch              139     WIP         needs rework
 1067    Serene Visage               182     merge0      spell_utils done, needs new particles
@@ -66,7 +66,7 @@ ID      Spell Name                  SC Page Status      Comments
 1107    Heart Ripper                111     finished
 1108    Dirge                        65     finished
 1109    Nixie's Grace               148     merge0      spell_utils done
-1110    Ray of Light                167     finished    uses existing blindness condition; uses wf_ray_fix
+1110    Ray of Light                167     merge0      uses existing blindness condition; uses wf_ray_fix
 1111    Resistance, Superior        174     merge0      spell_utils done
 1112    Strategic Charge            210     WAT
 1113    Blessed Aim                  31     merge0

@@ -1363,8 +1363,8 @@
 {29427}{} // spell hit
 {29428}{} // spell struck
 
-// [1172] *[Marshal Minor Aura]
-{29440}{} // spell begin
+// [1172] *[Acid Fog]
+{29440}{spells\sp_solid_fog.WAV} // spell begin
 {29441}{} // spell end
 {29442}{} // spell effect
 {29443}{} // spell new round
@@ -1373,7 +1373,3 @@
 {29446}{} // spell projectile in-flight
 {29447}{} // spell hit
 {29448}{} // spell struck
-
-
-
-

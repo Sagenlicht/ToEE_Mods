@@ -6,7 +6,7 @@ Component: V
 Component: S
 Casting Time: 1 Action
 Range: Personal
-Saving Throw: No
+Saving Throw: None
 Spell Resistance: No
 Projectile: No
 flags_Target: Range

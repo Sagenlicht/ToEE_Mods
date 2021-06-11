@@ -5,7 +5,7 @@ from utilities import *
 print "Registering sp-Veil of Shadow"
 
 def veilOfShadowSpellConcealment(attachee, args, evt_obj):
-    evt_obj.bonus_list.add(20,0,"~Veil of Shadow~[TAG_SPELLS_VEIL_OF_SHADOW] Concealment Bonus") #Veil of Shadow grants 20% Concealment
+    evt_obj.bonus_list.add(20, 19, "~Veil of Shadow~[TAG_SPELLS_VEIL_OF_SHADOW] Concealment Bonus") #Veil of Shadow grants 20% Concealment
     return 0
 
 def veilOfShadowSpellCheckIfDaylight(attachee, args, evt_obj): #Veil of Shadow is dispelled by daylight

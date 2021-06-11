@@ -4,7 +4,7 @@ Component: V
 Component: S
 Casting Time: Swift Action
 Range: Personal
-Saving Throw: No
+Saving Throw: None
 Spell Resistance: Yes
 Projectile: No
 flags_Target: Range
