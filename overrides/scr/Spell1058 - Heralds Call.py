@@ -25,10 +25,15 @@ def OnSpellEffect(spell):
                 targetsToRemove.append(spellTarget.obj)
             else:
                 spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-                spellTarget.obj.condition_add_with_args('sp-slow', spell.id, spell.duration, 0)
-                spellTarget.partsys_id = game.particles('sp-slow', spellTarget.obj)
+                if spellTarget.obj.condition_add_with_args('sp-slow', spell.id, spell.duration, 0):
+                    spellTarget.partsys_id = game.particles('sp-slow', spellTarget.obj)
+                else:
+                    spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+                    game.particles('Fizzle', spellTarget.obj)
+                    targetsToRemove.append(spellTarget.obj)
 
-    spell.target_list.remove_list(targetsToRemove)
+    if targetsToRemove:
+        spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)
 
     
