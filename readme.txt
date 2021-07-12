@@ -24,9 +24,9 @@ ID      Spell Name                  SC Page Status      Comments
 1064    Ironthunder Horn            126     merge0      add vanilla knockdown condition only
 1065    Insidious Rhythm                    finished    spell_utils done, needs new particles
 1066    Master's Touch              139     WIP         needs rework
-1067    Serene Visage               182     merge0      spell_utils done, needs new particles
+1067    Serene Visage               182     merge0      spell_utils done
 1068    Shock and Awe               189     finished
-1069    Sticky Fingers              206     merge0      spell_utils done, need rework of particles; sound and buff symbol
+1069    Sticky Fingers              206     merge0      spell_utils done
 1070    Undersong                   227     merge0      spell_utils done; new particles
 1071    Distract Assailant           69     finished
 1072    Insightfull Feint           124     functional  needs sound and different buff symbol; Unsure how to limit to feints, limited to combat atm
@@ -36,7 +36,7 @@ ID      Spell Name                  SC Page Status      Comments
 1076    Bonefiddle                   37     finished
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
 1078    Curse of Impending Blades    56     merge0      spell_utils done, new particles
-1079    Wave of Grief               236     merge0      spell_utils done; needs new particles
+1079    Wave of Grief               236     merge0      spell_utils done
 1080    Harmonic Chorus             110     finished    needs new buff symbol + sound; dismiss missing
 1081    Iron Silence                125     finished
 1082    War Cry                     236     WAT         should be swift; uses panicked condition
@@ -98,7 +98,7 @@ ID      Spell Name                  SC Page Status      Comments
 1140    Visage of the Deity, lesser 231     merge0      spell_utils done
 1141    Lawful Sword                131     finished    needs chain rework
 1142    Summon Undead IV            215     finished
-1143    Castigate                    44     merge0      needs code review
+1143    Castigate                    44     WIP         can hear missing
 1144    Summon Undead V             215     finished
 1145    Conviction                   52     merge0      spell_utils done
 1146    Foundation of Stone          98     WIP         Needs check if own round

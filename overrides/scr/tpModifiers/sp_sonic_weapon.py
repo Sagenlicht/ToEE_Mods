@@ -7,10 +7,10 @@ print "Registering sp-Sonic Weapon"
 
 def sonicWeaponSpellAddWeaponCondition(attachee, args, evt_obj):
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    mainhandWeapon.item_condition_add_with_args('Weapon Sonic', args.get_arg(1))
+    mainhandWeapon.item_condition_add_with_args('Weapon Sonic', args.get_arg(1), 0)
     ####   Workaround to activate weapon enchantment   ####
-    attachee.item_worn_unwield(item_wear_weapon_primary)
-    attachee.item_wield(mainhandWeapon, item_wear_weapon_primary)
+    #attachee.item_worn_unwield(item_wear_weapon_primary)
+    #attachee.item_wield(mainhandWeapon, item_wear_weapon_primary)
     #### Workaround to activate weapon enchantment end ####
 
 def sonicWeaponSpellTooltip(attachee, args, evt_obj):
@@ -29,7 +29,7 @@ def sonicWeaponSpellEffectTooltip(attachee, args, evt_obj):
         evt_obj.append(key, -2, " ({})".format(duration))
     return 0
 
-sonicWeaponSpell = PythonModifier("sp-Sonic Weapon", 2) # spell_id, duration
+sonicWeaponSpell = PythonModifier("sp-Sonic Weapon", 3) # spell_id, duration, empty
 sonicWeaponSpell.AddHook(ET_OnConditionAdd, EK_NONE, sonicWeaponSpellAddWeaponCondition,())
 sonicWeaponSpell.AddHook(ET_OnGetTooltip, EK_NONE, sonicWeaponSpellTooltip, ())
 sonicWeaponSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, sonicWeaponSpellEffectTooltip, ())
@@ -43,16 +43,18 @@ sonicWeaponSpell.AddSpellCountdownStandardHook()
 #### Weapon Sonic Condition ####
 
 def weaponSonicOnDealingDamage(attachee, args, evt_obj):
-    print "Weapon Damage Hook"
+    if not evt_obj.attack_packet.get_weapon_used().item_has_condition('Weapon Sonic'):
+        return 0
     damageDice = dice_new('1d6') #Sonic Weapon Bonus Damage
     damageType = D20DT_SONIC
     damageMesId = 3001 #ID 3001 added in damage.mes
     evt_obj.damage_packet.add_dice(damageDice, damageType, damageMesId)
     return 0
 
-# Glow Type does not work
 def weaponSonicGlowType(attachee, args, evt_obj):
-    evt_obj.data1 = 1
+    if evt_obj.get_obj_from_args().item_has_condition('Weapon Sonic'):
+        if not evt_obj.return_val:
+            evt_obj.return_val = 7
     return 0
 
 def weaponSonicTickDown(attachee, args, evt_obj):
@@ -61,7 +63,7 @@ def weaponSonicTickDown(attachee, args, evt_obj):
         args.condition_remove()
     return 0
 
-weaponSonic = PythonModifier("Weapon Sonic", 1) # duration
+weaponSonic = PythonModifier("Weapon Sonic", 2) # duration, empty
 weaponSonic.AddHook(ET_OnDealingDamage, EK_NONE, weaponSonicOnDealingDamage, ())
-#weaponSonic.AddHook(ET_OnWeaponGlowType, EK_NONE, weaponSonicGlowType, ())
+weaponSonic.AddHook(ET_OnWeaponGlowType, EK_NONE, weaponSonicGlowType, ())
 weaponSonic.AddHook(ET_OnBeginRound, EK_NONE, weaponSonicTickDown, ())

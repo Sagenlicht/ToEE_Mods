@@ -1,23 +1,21 @@
 School: Enchantment
-Descriptor: Evil
 Descriptor: Mind-Affecting
-Level: Brd 2
-Level: Clr 2
+Level: Madness 2
+Level: Wiz 2
 Component: V
 Component: S
 Casting Time: 1 action
-Range: Specified 30
+Range: Touch
 Saving Throw: Willpower
 Spell Resistance: Yes
 Projectile: No
 flags_Target: Range
-flags_Target: Degrees
-flags_Target: Fixed-radius
 inc_flags_Target: Other
-exc_flags_Target: Self
 exc_flags_Target: Dead
 exc_flags_Target: Non-critter
-mode_Target: Cone
-radius_Target: 60
-degrees_Target: 90
+exc_flags_Target: Self
+mode_Target: Single
+min_Target: 1
+max_Target: 1
+radius_Target: 0
 ai_type: ai_action_offensive

@@ -24,7 +24,7 @@ def OnSpellEffect(spell):
 
     if isWoodenMeleeWeapen:
         spellTarget.obj.condition_add_with_args('sp-Brambles', spell.id, spell.duration, bonusDamage)
-        spellTarget.partsys_id = game.particles('sp-Heroism', spellTarget.obj)
+        #spellTarget.partsys_id = game.particles('sp-Heroism', spellTarget.obj)
     else:
         spellTarget.obj.float_text_line("Not a wooden melee weapon", tf_red)
         game.particles('Fizzle', spellTarget.obj)

@@ -6,10 +6,6 @@ def OnBeginSpellCast(spell):
     print "spell.caster=", spell.caster, " caster.level= ", spell.caster_level
     game.particles("sp-evocation-conjure", spell.caster)
 
-############   Weapon Focus Ray Fix   ############
-    spell.caster.condition_add('Wf Ray Fix', 0)
-############ Weapon Focus Ray Fix End ############
-
 def OnSpellEffect(spell):
     print "Ray of Dizziness OnSpellEffect"
 

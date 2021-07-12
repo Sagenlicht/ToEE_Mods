@@ -1,5 +1,0 @@
-ID_string: ANGELSKIN
-effect_type: 0
-texture_file: art\interface\player_conditions\buffs\spell heroism.tga
-help_topic: TAG_SPELLS_ANGELSKIN
-tooltip_base_text: Angelskin
