@@ -15,7 +15,8 @@ def sonicWeaponSpellAddWeaponCondition(attachee, args, evt_obj):
 
 def sonicWeaponSpellTooltip(attachee, args, evt_obj):
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    if mainhandWeapon.item_has_condition('Weapon Sonic'):
+    offhandWeapon = attachee.item_worn_at(item_wear_weapon_secondary)
+    if mainhandWeapon.item_has_condition('Weapon Sonic') or offhandWeapon.item_has_condition('Weapon Sonic'):
         name = spell_utils.spellName(args.get_arg(0))
         duration = spell_utils.spellTime(args.get_arg(1))
         evt_obj.append("{} ({})".format(name, duration))
@@ -23,10 +24,11 @@ def sonicWeaponSpellTooltip(attachee, args, evt_obj):
 
 def sonicWeaponSpellEffectTooltip(attachee, args, evt_obj):
     mainhandWeapon = attachee.item_worn_at(item_wear_weapon_primary)
-    if mainhandWeapon.item_has_condition('Weapon Sonic'):
+    offhandWeapon = attachee.item_worn_at(item_wear_weapon_secondary)
+    if mainhandWeapon.item_has_condition('Weapon Sonic') or offhandWeapon.item_has_condition('Weapon Sonic'):
         key = spell_utils.spellKey(args.get_arg(0))
         duration = spell_utils.spellTime(args.get_arg(1))
-        evt_obj.append(key, -2, " ({})".format(duration))
+        evt_obj.append(key, -2, "({})".format(duration))
     return 0
 
 sonicWeaponSpell = PythonModifier("sp-Sonic Weapon", 3) # spell_id, duration, empty
@@ -54,7 +56,7 @@ def weaponSonicOnDealingDamage(attachee, args, evt_obj):
 def weaponSonicGlowType(attachee, args, evt_obj):
     if evt_obj.get_obj_from_args().item_has_condition('Weapon Sonic'):
         if not evt_obj.return_val:
-            evt_obj.return_val = 7
+            evt_obj.return_val = 7 #there is no sonic Weapon Glow in the game I think using holy for now
     return 0
 
 def weaponSonicTickDown(attachee, args, evt_obj):

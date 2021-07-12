@@ -57,6 +57,7 @@ def weaponAlignOnDamage(attachee, args, evt_obj):
     if not evt_obj.attack_packet.get_weapon_used().item_has_condition('Weapon Align'):
         return 0
 
+    #Check if weapn is already aligned
     if evt_obj.damage_packet.attack_power & D20DAP_HOLY:
         return 0
     elif evt_obj.damage_packet.attack_power & D20DAP_UNHOLY:
