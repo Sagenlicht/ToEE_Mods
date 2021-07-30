@@ -30,30 +30,58 @@ def spellTime(duration):
 
 ### Standard Hooks invoked with AddHook ###
 
-#[pytonModifier].AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ()) or
-#[pytonModifier].AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, (spell_enum,))
-#The second one is needed, if tooltip of a different spell should be shown
-#e.g. single target version when mass version is cast
+# Handles tooltip requests for a condition. Can be installed as:
+#
+# [pytonModifier].AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ()) or
+# [pytonModifier].AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, (spell_enum,))
+#
+# The second one is needed, if tooltip of a different spell should be shown
+# e.g. single target version when mass version is cast
+#
+# Optionally, 1 can be passed as a 2nd parameter. If 1 is passed
+# then an appropriate duration will be reported
+# for spells that only start counting down
+# after the caster's concentration is broken:
+#
+# [pytonModifier].AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, (0, 1))
 def spellTooltip(attachee, args, evt_obj):
-    if args.get_param(0):
+    spellId = args.get_arg(0)
+    duration = spellTime(args.get_arg(1))
+    if args.get_param(1) == 1 and casterIsConcentrating(spellId):
+        name = spellName(spellId)
+        duration = "Concentration + {}".format(duration)
+    elif args.get_param(0):
         name = game.get_spell_mesline(args.get_param(0))
     else:
-        name = spellName(args.get_arg(0))
-    duration = spellTime(args.get_arg(1))
+        name = spellName(spellId)
     evt_obj.append("{} ({})".format(name, duration))
     return 0
 
-#[pytonModifier].AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ()) or
-#[pytonModifier].AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, (spell_enum,))
-#The second one is needed, if Effect Tooltip of a different spell should be shown
-#e.g. single target version when mass version is cast
+# Handles effect tooltip (the tooltip of the icon on the portrait)
+# requests for a condition. Can be installed as:
+#
+# [pytonModifier].AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ()) or
+# [pytonModifier].AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, (spell_enum,))
+# The second one is needed, if Effect Tooltip of a different spell should be shown
+# e.g. single target version when mass version is cast
+#
+# Optionally, 1 can be passed as a 2nd parameter. If 1 is passed,
+# then an appropriate duration will be reported
+# for spells that only start counting down
+# after the caster's concentration is broken:
+#
+# [pytonModifier].AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, (0, 1))
 def spellEffectTooltip(attachee, args, evt_obj):
-    if args.get_param(0):
+    spellId = args.get_arg(0)
+    duration = spellTime(args.get_arg(1))
+    if args.get_param(1) == 1 and casterIsConcentrating(spellId):
+        duration = "Concentration + {}".format(duration)
+        key = spellKey(spellId)
+    elif args.get_param(0):
         name = game.get_spell_mesline(args.get_param(0)).upper().replace(" ", "_")
         key = tpdp.hash(name)
     else:
-        key = spellKey(args.get_arg(0))
-    duration = spellTime(args.get_arg(1))
+        key = spellKey(spellId)
     evt_obj.append(key, -2, " ({})".format(duration))
     return 0
 
@@ -84,8 +112,8 @@ def addConcentration(attachee, args, evt_obj):
     spellPacket.caster.condition_add_with_args('sp-Concentrating', args.get_arg(0))
     return 0
 
-#[pytonModifier].AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addDimiss, ())
-def addDimiss(attachee, args, evt_obj):
+#[pytonModifier].AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addDismiss, ())
+def addDismiss(attachee, args, evt_obj):
     spellPacket = tpdp.SpellPacket(args.get_arg(0))
     spellPacket.caster.condition_add_with_args('Dismiss', args.get_arg(0))
     return 0
@@ -94,6 +122,44 @@ def addDimiss(attachee, args, evt_obj):
 # needed in combination with condition_add_with_args('Temporary_Hit_Points', spell.id, spell.duration, tempHpAmount)
 def removeTempHp(attachee, args, evt_obj):
     attachee.d20_send_signal(S_Spell_End, args.get_arg(0))
+    return 0
+
+def casterIsConcentrating(spellId):
+    packet = tpdp.SpellPacket(spellId)
+
+    caster = packet.caster
+    if caster.d20_query(Q_Critter_Is_Concentrating):
+        conId = caster.d20_query_get_data(Q_Critter_Is_Concentrating)
+        return spellId == conId
+    else: return False
+
+# Some spells have a duration like:
+#
+#   Concentration + 2 rounds
+#   Concentration + 1 round/level
+#
+# This function implements that behavior when installed as a
+# hook for ET_OnBeginRound. It decrements the condition's duration
+# only after concentration is broken by the caster.
+def countAfterConcentration(attachee, args, evt_obj):
+    if casterIsConcentrating(args.get_arg(0)): return 0
+
+    newDur = args.get_arg(1) - evt_obj.data1
+    if newDur >= 0:
+        args.set_arg(1, newDur)
+        return 0
+
+    args.remove_spell_with_key(EK_S_Concentration_Broken)
+
+    return 0
+
+#Used to replace same condition to prevent duplicates
+def replaceCondition(attachee, args, evt_obj):
+    conditionName = args.get_cond_name()
+    #if evt_obj.is_modifier("{}".format(conditionName)):
+    if evt_obj.is_modifier(conditionName):
+        args.remove_spell()
+        args.remove_spell_mod()
     return 0
 
 ### Other useful functions ###
@@ -110,6 +176,34 @@ def skillCheck(attachee, skillEnum, skillCheckDc):
     game.create_history_from_id(skillHistoryId)
     checkResult = True if skillRollResult >= skillCheckDc else False
     return checkResult
+
+# Check mc_type
+def checkCategoryType(critter, *args):
+    for mcType in args:
+        if critter.is_category_type(mcType):
+            return True
+    return False
+
+### Item Condition functions
+
+# An item condition is a condition that should be applied to a
+# character when they hold/wear an item (hold/wear depending on the
+# item). Callbacks should be written as if the condition is applied to
+# the character, even though the condition is initially applied to the
+# item.
+#
+# These conditions should have at least 5 arguments, and argument #2
+# is automatically set by the engine to the inventory location of the
+# item providing the condition. By convention argument #4 is the spell
+# id if the item condition is added by a spell.
+
+# Verifies an item object against the engine-set inventory location
+# for the effect.
+def verifyItem(item, args):
+    item_loc = item.obj_get_int(obj_f_item_inv_location)
+    target_loc = args.get_arg(2)
+
+    return item_loc == target_loc
 
 ### Utilities for defining touch attacks with held charge ###
 
@@ -185,6 +279,17 @@ def End(attachee, args, evt_obj):
     args.remove_spell()
     return 0
 
+# End the spell if another spell is cast by the condition
+# target. The callback is invoked for targets of spells as
+# well, so it's necessary to check the spell packet to see
+# if the caster is the same as the attachee.
+def touchOtherCast(attachee, args, evt_obj):
+    spell_id = evt_obj.data1
+    packet = tpdp.SpellPacket(spell_id)
+    if packet.caster == attachee:
+        End(attachee, args, evt_obj)
+    return 0
+
 # Common code for handling touch attack charges.
 #
 # 1) Decrements number of charges if positive
@@ -241,8 +346,8 @@ class TouchModifier(PythonModifier):
     # Touch modifiers have at least 3 arguments
     #
     #  0: spell_id
-    #  1: duration, -1 to not display
-    #  2: num_charges, -1 for until duration expires
+    #  1: duration, negative to not display
+    #  2: num_charges, negative for until duration expires
     #
     # the given argument number is for additional arguments beyond
     # this.
@@ -252,7 +357,7 @@ class TouchModifier(PythonModifier):
     # An argument is reserved for time limited touch spells,
     # however, and the countdown hook can be added in such a case.
     def __init__(self, name, argn):
-        PythonModifier.__init__(self, name, 3+argn)
+        PythonModifier.__init__(self, name, 3+argn, 0)
 
         self.AddHook(ET_OnGetTooltip, EK_NONE, touchTooltip, ())
         self.AddHook(ET_OnGetEffectTooltip, EK_NONE, touchEffectTooltip, ())
@@ -267,7 +372,7 @@ class TouchModifier(PythonModifier):
                 touchTouchAttackAdded, ())
 
         # casting another spell ends held charge spells
-        self.AddHook(ET_OnD20Signal, EK_S_Spell_Cast, End, ())
+        self.AddHook(ET_OnD20Signal, EK_S_Spell_Cast, touchOtherCast, ())
 
         # modify the menus to allow for touch attacks
         self.AddHook(ET_OnConditionAdd, EK_NONE, touchAdd, ())

@@ -10,7 +10,7 @@ ID      Spell Name                  SC Page Status      Comments
 1050    Sound Lance                 196     merge0      but spell ignores Silence spell I belive
 1051    Critical Strike              56     functional  spell_utils done
 1052    Camouflage                   43     merge0      spell_utils done
-1053    Appraising Touch             15     merge0      spell_utils done; new particles
+1053    Appraising Touch             15     rejected    spell_utils done; new particles
 1054    Phantom Threat              157     functional  check for ranged missing wonky; check for cannot be flanked missing (unsure if needed)
 1055    Distort Speech               69     finished    spell_utils done, needs new particles
 1056    Distract                     69     finished    spell_utils done
@@ -133,23 +133,6 @@ Temple+ Beta nightly 2674+ needed atm!
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
 
-Latest Changes:
-Added a python script(wf_ray_fix.py) that fixes WF(Ray) and switched all my ray spells to use it. Spells that do no call that script are NOT affected by this fix.
-
-The two major advantages of this fix are you can a) now see it in the to hit history and b) it does not temporarily modify any attributes but behaves like the feat should behave in the first place.
-This fix only works with temple+ !!
-
-If you want to use the fix for your spells please feel free to do so.
-
-Simply add in your ray spell in the "def OnBeginSpellCast(spell):" section the lines:
-############   Weapon Focus Ray Fix   ############
-    spell.caster.condition_add('Wf Ray Fix', 0)
-############ Weapon Focus Ray Fix End ############
-
-and be sure to have the python script in your overrides\scr folder.
-
-Please be sure that if you use such fixes to mark them in your code, because if the bug gets fixed you need to be able to find it easily so you can remove it without too much troubles.
-
 Missing Spells
 Bard 1: Joyful Noise(1060)
 Bard 2: Whirling Blade (1083)
@@ -164,3 +147,11 @@ Clr 3: Light of Venya
 The Spell Compendium contains mass versions of spells that are in the PHB but not in ToEE:
 Bless Weapon (has a constants.py entry = 039)
 Align Weapon (no constants.py entry)
+
+Unique Modifier ID's:
+155 = Sirenes Grace
+156 = Sticky Fingers
+157 = Undersong
+162 = Curse of Ill Fortune
+163 = Curse of Impending Blades
+164 = Wave of Grief

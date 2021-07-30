@@ -36,7 +36,7 @@ coronaOfColdSpell = PythonModifier("sp-Corona of Cold", 4) # spell_id, duration,
 coronaOfColdSpell.AddHook(ET_OnTakingDamage, EK_NONE, coronaOfColdSpellFireResistance, ())
 coronaOfColdSpell.AddHook(ET_OnObjectEvent, EK_OnEnterAoE, coronaOfColdSpellOnEntered, ())
 coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, coronaOfColdSpellOnConditionAdd,())
-coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addDimiss, ())
+coronaOfColdSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addDismiss, ())
 coronaOfColdSpell.AddHook(ET_OnD20Signal, EK_S_Dismiss_Spells, spell_utils.checkRemoveSpell, ())
 coronaOfColdSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 coronaOfColdSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())

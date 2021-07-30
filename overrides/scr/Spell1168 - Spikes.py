@@ -23,13 +23,15 @@ def OnSpellEffect(spell):
         isWoodenMeleeWeapen = False
 
     if isWoodenMeleeWeapen:
-        spellTarget.obj.condition_add_with_args('sp-Spikes', spell.id, spell.duration, bonusDamage)
-        spellTarget.partsys_id = game.particles('sp-Heroism', spellTarget.obj)
+        mainhandWeapon.d20_status_init()
+        if not mainhandWeapon.condition_add_with_args('sp-Spikes', spell.id, spell.duration, bonusDamage, 0)
+            spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+            game.particles('Fizzle', spellTarget.obj)
     else:
         spellTarget.obj.float_text_line("Not a wooden melee weapon", tf_red)
         game.particles('Fizzle', spellTarget.obj)
-        spell.target_list.remove_target(spellTarget.obj)
 
+    spell.target_list.remove_target(spellTarget.obj)
     spell.spell_end(spell.id)
 
 def OnBeginRound(spell):

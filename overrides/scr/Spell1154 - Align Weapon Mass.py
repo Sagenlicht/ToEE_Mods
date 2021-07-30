@@ -30,11 +30,15 @@ def OnSpellEffect(spell):
         for spellTarget in spell.target_list:
             mainhandWeapon = spellTarget.obj.item_worn_at(item_wear_weapon_primary)
             if mainhandWeapon.obj_get_int(obj_f_type) == obj_t_weapon:
-                spellTarget.obj.condition_add_with_args('sp-Align Weapon', spell.id, spell.duration, alignType)
+                mainhandWeapon.d20_status_init()
+                if not mainhandWeapon.condition_add_with_args('sp-Align Weapon', spell.id, spell.duration, alignType, 0):
+                    spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+                    game.particles('Fizzle', spellTarget.obj)
             else:
                 spellTarget.obj.float_text_line("Weapon required", tf_red)
                 game.particles('Fizzle', spellTarget.obj)
                 targetsToRemove.append(spellTarget.obj)
+            targetsToRemove.append(spellTarget.obj)
     else:
         for spellTarget in spell.target_list:
             targetsToRemove.append(spellTarget.obj)

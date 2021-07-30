@@ -1,22 +1,21 @@
-School: Transmutation
-Level: Clr 3
-Level: Sor 3
-Level: Wiz 3
+School: Divination
+Level: Brd 1
+Level: Sor 1
+Level: Wiz 1
 Component: V
 Component: S
 Casting Time: 1 action
-Range: Touch
+Range: Personal
 Saving Throw: None
 Spell Resistance: No
 Projectile: No
 flags_Target: Range
-inc_flags_Target: Other
 inc_flags_Target: Self
+exc_flags_Target: Other
 exc_flags_Target: Dead
 exc_flags_Target: Non-critter
-mode_Target: Single
+mode_Target: Personal
 min_Target: 1
 max_Target: 1
 radius_Target: 0
 ai_type: ai_action_defensive
-choices: 3041 3042 3043 3044

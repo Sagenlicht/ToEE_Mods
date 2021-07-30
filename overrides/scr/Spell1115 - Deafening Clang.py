@@ -10,15 +10,17 @@ def OnSpellEffect(spell):
     
     spell.duration = 0 #current round
     spellTarget = spell.target_list[0]
+    mainhandWeapon = spellTarget.obj.item_worn_at(item_wear_weapon_primary)
 
-    if spell.caster.item_worn_at(item_wear_weapon_primary).obj_get_int(obj_f_type) == obj_t_weapon:
-        spellTarget.obj.condition_add_with_args('sp-Deafening Clang', spell.id, spell.duration, spell.dc)
+    if mainhandWeapon.obj_get_int(obj_f_type) == obj_t_weapon:
+        mainhandWeapon.d20_status_init()
+        mainhandWeapon.condition_add_with_args('sp-Deafening Clang', spell.id, spell.duration, spell.dc, 0)
         spellTarget.partsys_id = game.particles('sp-Sound Burst', spellTarget.obj)
     else:
         spell.caster.float_text_line("Weapon required", tf_red)
         game.particles('Fizzle', spell.caster)
-        spell.target_list.remove_target(spellTarget.obj)
 
+    spell.target_list.remove_target(spellTarget.obj)
     spell.spell_end(spell.id)
 
 

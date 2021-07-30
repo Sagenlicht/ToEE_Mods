@@ -1,4 +1,5 @@
 from toee import *
+from spell_utils import checkCategoryType
 
 def OnBeginSpellCast(spell):
     print "Heart Ripper OnBeginSpellCast"
@@ -7,24 +8,19 @@ def OnBeginSpellCast(spell):
 
 def OnSpellEffect(spell):
     print "Heart Ripper OnSpellEffect"
-    
+
     spell.duration = 0
     spellTarget = spell.target_list[0]
+    mcTypeImmunity = checkCategoryType(spellTarget.obj, mc_type_construct, mc_type_elemental, mc_type_plant, mc_type_ooze, mc_type_undead)
+    critImmunity = True if spellTarget.obj.d20_query(Q_Critter_Is_Immune_Critical_Hits) else False
 
-    #game.particles('sp-Sound Burst', spell.caster)
+    game.particles('sp-Slay Living', spellTarget.obj)
 
-    spellTargetRacialImmunity = False
-    immunityList = [mc_type_construct, mc_type_elemental, mc_type_plant, mc_type_ooze, mc_type_undead]
-
-    for spellTargetType in immunityList:
-        if spellTarget.obj.is_category_type(spellTargetType):
-            spellTargetRacialImmunity = True
-
-    if spellTarget.obj.d20_query(Q_Critter_Is_Immune_Critical_Hits):
-        spellTargetRacialImmunity = True
-    
-    if spellTargetRacialImmunity:
+    if mcTypeImmunity:
         spellTarget.obj.float_text_line("Unaffected due to Racial Immunity")
+        game.particles('Fizzle', spellTarget.obj)
+    elif critImmunity:
+        spellTarget.obj.float_text_line("Unaffected due to Critical Hit Immunity")
         game.particles('Fizzle', spellTarget.obj)
     else:
         if spellTarget.obj.saving_throw_spell(spell.dc, D20_Save_Fortitude, D20STD_F_NONE, spell.caster, spell.id):
@@ -39,11 +35,10 @@ def OnSpellEffect(spell):
                 game.particles('sp-Daze2', spellTarget.obj)
             else:
             ###### added, so xp will be granted ######
-                damageForXpDice = dice_new("1d1")
-                spellTarget.obj.damage(spell.caster, D20DT_UNSPECIFIED, damageForXpDice)
+                #damageForXpDice = dice_new("1d1")
+                #spellTarget.obj.damage(spell.caster, D20DT_UNSPECIFIED, damageForXpDice)
             ######       xp grant fix end       ######
-                game.particles('sp-Slay Living', spellTarget.obj)
-                spellTarget.obj.critter_kill() #needs a death ward check
+                spellTarget.obj.critter_kill_by_effect() #Death Ward protects from Heart Ripper
 
     spell.target_list.remove_target(spellTarget.obj)
     spell.spell_end(spell.id)
