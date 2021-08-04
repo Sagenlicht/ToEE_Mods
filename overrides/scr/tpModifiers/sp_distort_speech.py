@@ -31,9 +31,10 @@ def distortSpeechSpellDistortCheck(attachee, args, evt_obj):
         game.particles('Fizzle', attachee)
     return 0
 
-distortSpeechSpell = PythonModifier("sp-Distort Speech", 3) # spell_id, duration, verbalComponent
+distortSpeechSpell = PythonModifier("sp-Distort Speech", 4, False) # spell_id, duration, verbalComponent, empty
 distortSpeechSpell.AddHook(ET_OnGetCasterLevelMod, EK_NONE, distortSpeechSpellCheckIfVerbal,())
 distortSpeechSpell.AddHook(ET_OnD20Query, EK_Q_SpellInterrupted, distortSpeechSpellDistortCheck,())
+distortSpeechSpell.AddHook(ET_OnConditionAddPre, EK_NONE, spell_utils.replaceCondition, ())
 distortSpeechSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 distortSpeechSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
 distortSpeechSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())

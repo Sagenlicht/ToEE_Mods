@@ -8,7 +8,7 @@ def OnBeginSpellCast(spell):
 def OnSpellEffect(spell):
     print "Distort Speech OnSpellEffect"
     
-    spell.duration = 10 * spell.caster_level #1 round/casterlevel
+    spell.duration = 1 * spell.caster_level #1 round/casterlevel
     spellTarget = spell.target_list[0]
     
     #Saving Throw to negate
@@ -18,7 +18,7 @@ def OnSpellEffect(spell):
         spell.target_list.remove_target(spellTarget.obj)
     else:
         spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-        spellTarget.obj.condition_add_with_args('sp-Distort Speech', spell.id, spell.duration, 0)
+        spellTarget.obj.condition_add_with_args('sp-Distort Speech', spell.id, spell.duration, 0, 0)
         spellTarget.partsys_id = game.particles('sp-Scare', spellTarget.obj)
 
     spell.spell_end(spell.id)
