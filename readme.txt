@@ -11,7 +11,7 @@ ID      Spell Name                  SC Page Status      Comments
 1051    Critical Strike              56     functional  spell_utils done
 1052    Camouflage                   43     merge0      spell_utils done
 1053    Appraising Touch             15     rejected    spell_utils done; new particles
-1054    Phantom Threat              157     functional  check for ranged missing wonky; check for cannot be flanked missing (unsure if needed)
+1054    Phantom Threat              157     functional  check for ranged missing wonky; check for cannot be flanked missing (unsure if needed); spell_utils done
 1055    Distort Speech               69     finished    spell_utils done, needs new particles
 1056    Distract                     69     finished    spell_utils done
 1057    Focusing Chant               96     merge0      spell_utils done, new particles
@@ -33,7 +33,7 @@ ID      Spell Name                  SC Page Status      Comments
 1073    Lightfoot                   132     finished
 1074    Sniper's Shot               194     finished    spell_utils done; needs new particles?
 1075    Sonic Weapon                195     finished
-1076    Bonefiddle                   37     finished
+1076    Bonefiddle                   37     finished    spell_utils done; uses replaceCondition; needs new particles
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
 1078    Curse of Impending Blades    56     merge0      spell_utils done, new particles
 1079    Wave of Grief               236     merge0      spell_utils done
@@ -108,7 +108,7 @@ ID      Spell Name                  SC Page Status      Comments
 1150    Deific Vengeance             62     merge0      needs particles
 1151    Frost Breath                100     merge0      uses sp-Daze
 1152    Ghost Touch Armor           102     not working Uses 161 as Buff bonus type atm!
-1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp
+1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp; spell_utils done;
 1154    Align Weapon Mass             9     finished    Uses spell_radial_menu_options.mes
 1155    Bless Weapon Swift           31     WAT
 1156    Anarchic Storm               11     finished

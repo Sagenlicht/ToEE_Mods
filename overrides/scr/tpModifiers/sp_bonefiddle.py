@@ -19,7 +19,7 @@ def bonefiddleSpellBeginRound(attachee, args, evt_obj):
             damageType = D20DT_SONIC
             spellDamageDice = dice_new('1d6')
             spellDamageDice.number = 3
-            attachee.spell_damage(spellPacket.caster, damageType, spellDamageDice, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, args.get_arg(0)) #is there a way to change unknown to spell name in the history window?
+            attachee.spell_damage(spellPacket.caster, damageType, spellDamageDice, D20DAP_UNSPECIFIED, D20A_CAST_SPELL, args.get_arg(0))
     return 0
 
 def bonefiddleSpellSkillPenalty(attachee, args, evt_obj):
@@ -28,11 +28,12 @@ def bonefiddleSpellSkillPenalty(attachee, args, evt_obj):
     evt_obj.bonus_list.add(bonusValue, bonusType, "~Bonefiddle~[TAG_SPELLS_BONEFIDDLE] Penalty")
     return 0
 
-bonefiddleSpell = PythonModifier("sp-Bonefiddle",3) # spell_id, duration, spellDc
+bonefiddleSpell = PythonModifier("sp-Bonefiddle",4, False) # spell_id, duration, spellDc, empty
 bonefiddleSpell.AddHook(ET_OnBeginRound, EK_NONE, bonefiddleSpellBeginRound, ())
 bonefiddleSpell.AddHook(ET_OnGetSkillLevel, EK_SKILL_MOVE_SILENTLY, bonefiddleSpellSkillPenalty,())
 bonefiddleSpell.AddHook(ET_OnConditionAdd, EK_NONE, spell_utils.addConcentration, ())
 bonefiddleSpell.AddHook(ET_OnD20Signal, EK_S_Concentration_Broken, spell_utils.checkRemoveSpell, ())
+bonefiddleSpell.AddHook(ET_OnConditionAddPre, EK_NONE, spell_utils.replaceCondition, ())
 bonefiddleSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 bonefiddleSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
 bonefiddleSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())

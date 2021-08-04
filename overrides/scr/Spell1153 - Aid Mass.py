@@ -8,15 +8,19 @@ def OnBeginSpellCast(spell):
 def OnSpellEffect(spell):
     print "Aid Mass OnSpellEffect"
 
+    targetsToRemove = []
     spell.duration = 10 * spell.caster_level
-    tempHp = dice_new('1d8')
-    tempHp.bonus = min(spell.caster_level, 15)
-    tempHpAmount = tempHp.roll()
 
     for spellTarget in spell.target_list:
-        spellTarget.obj.condition_add_with_args('sp-Aid Mass', spell.id, spell.duration)
-        spellTarget.partsys_id = game.particles('sp-Aid', spellTarget.obj)
+        if spellTarget.obj.condition_add_with_args('sp-Aid Mass', spell.id, spell.duration, 0):
+            spellTarget.partsys_id = game.particles('sp-Aid', spellTarget.obj)
+        else:
+            spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+            game.particles('Fizzle', spellTarget.obj)
+            targetsToRemove.append(spellTarget.obj)
 
+    if targetsToRemove:
+        spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)
 
 def OnBeginRound(spell):
