@@ -13,7 +13,7 @@ ID      Spell Name                  SC Page Status      Comments
 1053    Appraising Touch             15     rejected    spell_utils done; new particles
 1054    Phantom Threat              157     functional  check for ranged missing wonky; check for cannot be flanked missing (unsure if needed); spell_utils done
 1055    Distort Speech               69     finished    spell_utils done, needs new particles
-1056    Distract                     69     finished    spell_utils done
+1056    Distract                     69     finished    spell_utils done, duplicate set
 1057    Focusing Chant               96     merge0      spell_utils done, new particles
 1058    Herald's Call               113     merge0      uses vanilla slow condition
 1059    Improvisation               121     finished    spell_utils done, needs new particles and sound
@@ -28,16 +28,16 @@ ID      Spell Name                  SC Page Status      Comments
 1068    Shock and Awe               189     finished
 1069    Sticky Fingers              206     merge0      spell_utils done
 1070    Undersong                   227     merge0      spell_utils done; new particles
-1071    Distract Assailant           69     finished
+1071    Distract Assailant           69     functional  spell_utils done; is a current round debuff, but misses dispel remove option
 1072    Insightfull Feint           124     functional  needs sound and different buff symbol; Unsure how to limit to feints, limited to combat atm
-1073    Lightfoot                   132     finished
+1073    Lightfoot                   132     finished    spell_utils done
 1074    Sniper's Shot               194     finished    spell_utils done; needs new particles?
 1075    Sonic Weapon                195     finished
 1076    Bonefiddle                   37     finished    spell_utils done; uses replaceCondition; needs new particles
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
 1078    Curse of Impending Blades    56     merge0      spell_utils done, new particles
 1079    Wave of Grief               236     merge0      spell_utils done
-1080    Harmonic Chorus             110     finished    needs new buff symbol + sound; dismiss missing
+1080    Harmonic Chorus             110     finished    spell_utils done; needs new buff symbol + sound
 1081    Iron Silence                125     finished
 1082    War Cry                     236     WAT         should be swift; uses panicked condition
 1084    Bladeweave                   31     finished    Uses dazed condition
@@ -53,8 +53,8 @@ ID      Spell Name                  SC Page Status      Comments
 1094    Wounding Whispers           242     finished
 1095    Dirge of Discord             66     finished
 1096    Allegro                       9     merge0      spell_utils done
-1097    Find the Gap                 91     functional
-1098    Wraithstrike                243     functional
+1097    Find the Gap                 91     functional  spell_utils done
+1098    Wraithstrike                243     functional  spell_utils done, reworked to set touch attack in a cheesy way
 1099    Resonating Bolt             174     finished
 1100    Resistance, Greater         174     merge0      spell_utils done
 1101    Fugue                       100     functional  DC40+ (attack an ally) disabled as it is not working
@@ -152,6 +152,10 @@ Unique Modifier ID's:
 155 = Sirenes Grace
 156 = Sticky Fingers
 157 = Undersong
+158 = used
+159 = used
+161 = Storm Spells
 162 = Curse of Ill Fortune
 163 = Curse of Impending Blades
 164 = Wave of Grief
+165 = Distract

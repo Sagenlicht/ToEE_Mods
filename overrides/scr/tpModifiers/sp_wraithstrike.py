@@ -17,6 +17,7 @@ def wraithstrikeSpellAddTouchFlag(attachee, args, evt_obj):
         #evt_obj.bonus_list.add_cap(33 , 0, 1, "~Wraithstrike~[TAG_SPELLS_WRAITHSTRIKE]")
     return 0
 
+# Swift spells with a current round duration do not need a duplicate check
 wraithstrikeSpell = PythonModifier("sp-Wraithstrike", 3) # spell_id, duration, empty
 #wraithstrikeSpell.AddHook(ET_OnGetAcModifierFromAttacker, EK_NONE, wraithstrikeSpellAddTouchFlag,())
 wraithstrikeSpell.AddHook(ET_OnToHitBonus2, EK_NONE, wraithstrikeSpellAddTouchFlag,())

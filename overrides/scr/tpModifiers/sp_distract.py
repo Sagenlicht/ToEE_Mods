@@ -7,7 +7,7 @@ print "Registering sp-Distract"
 
 def distractSpellPenaltyToSkills(attachee, args, evt_obj):
     bonusValue = -4 #Distract gives -4 penalty to Concentration, Listen, Search and Spot checks
-    bonusType = 0 #ID 0 = Untyped (stacking)
+    bonusType = 165 #ID 165 = New ID for Distract
     evt_obj.bonus_list.add(bonusValue, bonusType, "~Distract~[TAG_SPELLS_DISTRACT] penalty")
     return 0
 
@@ -17,7 +17,7 @@ def distractSpellTurnBasedStatusInit(attachee, args, evt_obj):
         evt_obj.tb_status.hourglass_state = 2 # Limited to a Standard or Move Action only
     return 0
 
-distractSpell = PythonModifier("sp-Distract", 2) # spell_id, duration
+distractSpell = PythonModifier("sp-Distract", 3, False) # spell_id, duration, empty
 distractSpell.AddHook(ET_OnTurnBasedStatusInit, EK_NONE, distractSpellTurnBasedStatusInit, ())
 distractSpell.AddHook(ET_OnGetSkillLevel, EK_SKILL_CONCENTRATION, distractSpellPenaltyToSkills,())
 distractSpell.AddHook(ET_OnGetSkillLevel, EK_SKILL_LISTEN, distractSpellPenaltyToSkills,())

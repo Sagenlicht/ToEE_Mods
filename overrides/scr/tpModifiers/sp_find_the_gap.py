@@ -26,8 +26,9 @@ def findTheGapSpellResetFlag(attachee, args, evt_obj):
     args.set_arg(2, 0)
     return 0
 
-findTheGapSpell = PythonModifier("sp-Find the Gap", 4) # spell_id, duration, notFirstAttack, empty
+findTheGapSpell = PythonModifier("sp-Find the Gap", 4, False) # spell_id, duration, notFirstAttack, empty
 findTheGapSpell.AddHook(ET_OnGetAcModifierFromAttacker , EK_NONE, findTheGapSpellCheckTouchAttack,())
+findTheGapSpell.AddHook(ET_OnConditionAddPre, EK_NONE, spell_utils.replaceCondition, ())
 findTheGapSpell.AddHook(ET_OnBeginRound, EK_NONE, findTheGapSpellResetFlag, ())
 findTheGapSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
 findTheGapSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())

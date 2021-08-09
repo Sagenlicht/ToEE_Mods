@@ -9,7 +9,7 @@ def OnSpellEffect(spell):
     print "Distract OnSpellEffect"
     
     targetsToRemove = []
-    spell.duration = spell.caster_level #1 round/cl
+    spell.duration = 1 * spell.caster_level #1 round/cl
     game.particles('sp-Sound Burst', spell.caster)
 
     for spellTarget in spell.target_list:
@@ -24,7 +24,7 @@ def OnSpellEffect(spell):
                 targetsToRemove.append(spellTarget.obj)
             else:
                 spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-                spellTarget.obj.condition_add_with_args('sp-distract', spell.id, spell.duration)
+                spellTarget.obj.condition_add_with_args('sp-distract', spell.id, spell.duration, 0)
                 spellTarget.partsys_id = game.particles('sp-scare', spellTarget.obj)
 
     spell.target_list.remove_list(targetsToRemove)
