@@ -11,21 +11,18 @@ def OnSpellEffect(spell):
     spell.duration = 10 * spell.caster_level # 1 min/cl
     spellTarget = spell.target_list[0]
 
-    checkOutdoor = game.is_outdoor()
-    dayTime = game.time.time_game_in_hours(game.time)
-    if dayTime in range(6,18): #includes 6 excludes 18
-        daylightDispel = True
-    else:
-        daylightDispel = False
-
-    if checkOutdoor and daylightDispel:
+    #Veil of Shadow is dispelled by daylight
+    if game.is_outdoor() and game.is_daytime():
         spellTarget.obj.float_text_line("Dispelled by daylight")
         game.particles('Fizzle', spellTarget.obj)
         spell.target_list.remove_target(spellTarget.obj)
     else:
-        spellTarget.partsys_id = game.particles('sp-Veil of Shadow', spell.caster)
-        spellTarget.obj.condition_add_with_args('sp-Veil of Shadow', spell.id, spell.duration)
-
+        if spellTarget.obj.condition_add_with_args('sp-Veil of Shadow', spell.id, spell.duration):
+            spellTarget.partsys_id = game.particles('sp-Veil of Shadow', spell.caster)
+        else:
+            spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
+            game.particles('Fizzle', spellTarget.obj)
+            spell.target_list.remove_target(spellTarget.obj)
     spell.spell_end(spell.id)
 
 def OnBeginRound(spell):

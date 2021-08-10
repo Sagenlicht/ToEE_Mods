@@ -32,7 +32,7 @@ ID      Spell Name                  SC Page Status      Comments
 1072    Insightfull Feint           124     functional  needs sound and different buff symbol; Unsure how to limit to feints, limited to combat atm
 1073    Lightfoot                   132     finished    spell_utils done
 1074    Sniper's Shot               194     finished    spell_utils done; needs new particles?
-1075    Sonic Weapon                195     finished
+1075    Sonic Weapon                195     merge_item
 1076    Bonefiddle                   37     finished    spell_utils done; uses replaceCondition; needs new particles
 1077    Cloud of Bewilderment        48     finished    uses nauseated condition
 1078    Curse of Impending Blades    56     merge0      spell_utils done, new particles
@@ -41,10 +41,10 @@ ID      Spell Name                  SC Page Status      Comments
 1081    Iron Silence                125     finished
 1082    War Cry                     236     WAT         should be swift; uses panicked condition
 1084    Bladeweave                   31     finished    Uses dazed condition
-1085    Fell the Greatest Foe        90     finished
+1085    Fell the Greatest Foe        90     finished    spell_utils done
 1086    Fire Shuriken                92     finished    Uses Protos ID 4998 (spell_compendium_protos.tab) 
 1087    Phantom Foe                 156     functional  Threat check is not perfect
-1088    Veil of Shadow              228     finished
+1088    Veil of Shadow              228     finished    spell_utils done
 1089    Curse of Imp. Blades, Mass   57     merge0      spell_utils done, uses single target version condition of spell; new particles
 1090    Dissonant Chord              69     merge0
 1091    Haunting Tune               110     finished
@@ -59,7 +59,7 @@ ID      Spell Name                  SC Page Status      Comments
 1100    Resistance, Greater         174     merge0      spell_utils done
 1101    Fugue                       100     functional  DC40+ (attack an ally) disabled as it is not working
 1102    Sirine's Grace              191     merge0      spell_utils done
-1103    Dolorous Blow                70     finished
+1103    Dolorous Blow                70     merge_item
 1104    Bolts of Bedevilment         37     WIP
 1105    Cacophonic Burst             41     merge0
 1106    Wail of Doom                233     finished
@@ -71,7 +71,7 @@ ID      Spell Name                  SC Page Status      Comments
 1112    Strategic Charge            210     WAT
 1113    Blessed Aim                  31     merge0
 1114    Clear Mind                   47     finished
-1115    Deafening Clang              59     WAT; WIP    does not deafen
+1115    Deafening Clang              59     merge_item  uses helper condition to remove deafness
 1116    Grave Strike                107     needs cpp
 1118    Faith Healing                87     merge0
 1119    Summon Undead I             215     finished
@@ -85,18 +85,18 @@ ID      Spell Name                  SC Page Status      Comments
 1127    Cloak of Bravery             47     finished
 1128    Divine Protection            70     merge0      spell_utils done
 1129    Quick March                 164     merge0      spell_utils done
-1130    Shield of Warding           188     finished
+1130    Shield of Warding           188     merge_item  permanency issue!!
 1131    Blessing of Bahamut          31     merge0      spell_utils done
 1132    Diamondsteel                        works with next temple version; finished
 1133    Righteous Fury              177     finished
-1134    Undead Bane Weapon          226     functional  is stacking with Weapon Bane; needs chain rework
+1134    Undead Bane Weapon          226     merge_item  check stacking issue
 1135    Weapon of the Deity         237     WIP
 1136    Axiomatic Storm              22     finished
 1137    Holy Storm                  115     finished
 1138    Unholy Storm                227     finished
 1139    Summon Undead III           215     finished
 1140    Visage of the Deity, lesser 231     merge0      spell_utils done
-1141    Lawful Sword                131     finished    needs chain rework
+1141    Lawful Sword                131     merge_item
 1142    Summon Undead IV            215     finished
 1143    Castigate                    44     WIP         can hear missing
 1144    Summon Undead V             215     finished
@@ -104,13 +104,13 @@ ID      Spell Name                  SC Page Status      Comments
 1146    Foundation of Stone          98     WIP         Needs check if own round
 1147    Nightshield                 148     merge0      spell_utils done
 1148    Nimbus of Light             148     finished
-1149    Brambles                     38     finished
+1149    Brambles                     38     merge_item
 1150    Deific Vengeance             62     merge0      needs particles
 1151    Frost Breath                100     merge0      uses sp-Daze
 1152    Ghost Touch Armor           102     not working Uses 161 as Buff bonus type atm!
 1153    Aid Mass                      8     finished    can't use original aid effect, due to changed max temp hp; spell_utils done;
-1154    Align Weapon Mass             9     finished    Uses spell_radial_menu_options.mes
-1155    Bless Weapon Swift           31     WAT
+1154    Align Weapon Mass             9     merge_item
+1155    Bless Weapon Swift           31     merge_item
 1156    Anarchic Storm               11     finished
 1157    Clutch of Orcus              49     finished
 1158    Conviction Mass              52     merge0
@@ -123,9 +123,9 @@ ID      Spell Name                  SC Page Status      Comments
 1165    Resist Energy Mass          174     merge0      uses resist elements condition
 1166    Nauseating Breath           146     finished    uses nauseated-condition
 1167    Slashing Darkness           191     merge0
-1168    Spikes                      202     finished
+1168    Spikes                      202     merge_item
 1169    Tremor                      223     
-1170    Weapon of Energy            236     
+1170    Weapon of Energy            236     merge_item
 1171    Storm of Elemental Fury     
 
 
