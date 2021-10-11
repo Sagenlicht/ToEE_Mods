@@ -18,7 +18,7 @@ def harmonicChorusSpellBonusToCasterLevel(attachee, args, evt_obj):
 #Harmonic Chorus requires concentration and therefor I will skip
 #Duplicate check. This means that you can't add a second Harmonic
 #Chorus from a different Bard (which would not stack anyways)
-#To prolong the duration of the spell , but this looks like
+#To prolong the duration of the spell , but this looks like an
 #Unlikely edge case to me.
 harmonicChorusSpell = PythonModifier("sp-Harmonic Chorus", 3) # spell_id, duration, empty
 harmonicChorusSpell.AddHook(ET_OnGetCasterLevelMod, EK_NONE, harmonicChorusSpellBonusToCasterLevel, ())
