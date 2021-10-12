@@ -1,0 +1,5 @@
+ID_string: ENERGIZED_SHIELD_LESSER
+effect_type: 0
+texture_file: art\interface\player_conditions\buffs\spell heroism.tga
+help_topic: TAG_SPELLS_ENERGIZED_SHIELD_LESSER
+tooltip_base_text: Energized Shield Lesser

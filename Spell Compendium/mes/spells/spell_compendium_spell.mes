@@ -66,6 +66,7 @@
 {1114}{Clear Mind}
 {1115}{Deafening Clang}
 {1116}{Grave Strike}
+{1117}{Rhino's Rush}
 {1118}{Faith Healing}
 {1119}{Summon Undead I}
 {1120}{Angelskin}
@@ -121,6 +122,8 @@
 {1171}{Storm of Elemental Fury}
 {1172}{Acid Fog}
 {1173}{Touch of Madness}
+{1174}{Energized Shield Lesser}
+{1175}{Energized Shield}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -188,6 +191,7 @@
 {6114} Clear Mind {[Abjuration] You gain a +4 sacred bonus on saving throws made against mind-affecting spells and effects.}
 {6115} Deafening Clang {[Transmutation][Sonic] The weapon deals 1d6 points of sonic damage with each successful hit, and any creature struck by the weapon must succeed on a Fortitude saving throw or be deafened for 1 minute.}
 {6116} Grave Strike {[Divination][Good] For 1 round, you can deliver sneak attacks against undead as if they were not immune to extra damage from sneak attacks.}
+{6117} Rhino's Rush {[Transmutation] Next Charge Attack in current round deals double damage.
 {6118} Faith Healing {[Conjuration](Healing) Heal 1d8 + level (max. 5) on target that worships same deity.}
 {6119} Summon Undead I {[Conjuration](Summoning)[Evil] You summon an undead creature.}
 {6120} Angelskin {[Abjuration][Good] Target gains damage reduction 5/evil.}
@@ -243,3 +247,5 @@
 {6171} Storm of Elemental Fury {[Conjuration](Summoning) TBD}
 {6172} Acid Fog {[Conjuration](Creation)[Acid] While inside Acid Fog, targets are concealed, can only move 5 feet, are immune to ranged attacks and take 2d6 acid damage every turn.}
 {6173} Touch of Madness {[Enchantment][Mind-Affecting] Target must make a Will Saving Throw after a successful touch attack or be dazed for 1 round/level.}
+{6174} Energized Shield Lesser {Abjuration Touched Shield grants elemental resistance 5 and deals 1d6 damage of chosen element when Shield Bashing.}
+{6175} Energized Shield {Abjuration Touched Shield grants elemental resistance 10 and deals 2d6 damage of chosen element when Shield Bashing.}

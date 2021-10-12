@@ -73,6 +73,7 @@ ID      Spell Name                  SC Page Status      Comments
 1114    Clear Mind                   47     finished
 1115    Deafening Clang              59     merge_item  uses helper condition to remove deafness
 1116    Grave Strike                107     needs cpp
+1117    Rhinos Rush                 176     finished    uses apply_criticial_multiplier as a workaround to deal double damage on normal hits
 1118    Faith Healing                87     merge0
 1119    Summon Undead I             215     finished
 1120    Angelskin                    11     merge0      spell_utils done
@@ -127,6 +128,10 @@ ID      Spell Name                  SC Page Status      Comments
 1169    Tremor                      223     
 1170    Weapon of Energy            236     merge_item
 1171    Storm of Elemental Fury     
+1172    Acid Fog                    
+1173    Touch of Madness            
+1174    Energized Shield, Lesser            WIP
+1175    Energized Shield                    WIP
 
 
 Temple+ Beta nightly 2674+ needed atm!

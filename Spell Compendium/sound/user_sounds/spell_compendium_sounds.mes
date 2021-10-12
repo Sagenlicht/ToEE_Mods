@@ -1384,3 +1384,25 @@
 {29466}{} // spell projectile in-flight
 {29467}{} // spell hit
 {29468}{} // spell struck
+
+// [1174] *[Energized Shield Lesser]
+{29480}{} // spell begin
+{29481}{} // spell end
+{29482}{} // spell effect
+{29483}{} // spell new round
+{29484}{} // spell projectile begin
+{29485}{} // spell projectile end
+{29486}{} // spell projectile in-flight
+{29487}{} // spell hit
+{29488}{} // spell struck
+
+// [1175] *[Energized Shield]
+{29500}{} // spell begin
+{29501}{} // spell end
+{29502}{} // spell effect
+{29503}{} // spell new round
+{29504}{} // spell projectile begin
+{29505}{} // spell projectile end
+{29506}{} // spell projectile in-flight
+{29507}{} // spell hit
+{29508}{} // spell struck

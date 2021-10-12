@@ -468,6 +468,13 @@ Range:               Personal
 Target:             Weapon touched
 Duration:      1 round}
 
+{6117} Rhino's Rush {Next Charge Attack in current round deals double damage.
+School:          Transmutation
+Casting:         1  swift action [V,S]
+Range:               Personal
+Target:             Self
+Duration:      1 round}
+
 {6118} Faith Healing {Heal 1d8 + level (max. 5) on target that worships same deity.
 
 School:          Conjuration(Healing)
@@ -855,3 +862,17 @@ Casting:         1 action [V,S]
 Range:               Touch 
 Target:             One living creature
 Duration:      1 round/level,  Save: Will negates,  SR: Yes}
+
+{6174} Energized Shield Lesser {Touched Shield grants elemental resistance 5 and deals 1d6 damage of chosen element when Shield Bashing.
+School:          Abjuration
+Casting:         1 action ['V', 'S']
+Range:               Touch 
+Target:             Single
+Duration:      1,  Save: None negates,  SR: No}
+
+{6175} Energized Shield {Touched Shield grants elemental resistance 10 and deals 2d6 damage of chosen element when Shield Bashing.
+School:          Abjuration
+Casting:         1 action ['V', 'S']
+Range:               Touch 
+Target:             Single
+Duration:      1,  Save: None negates,  SR: No}

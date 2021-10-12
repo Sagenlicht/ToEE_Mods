@@ -1,5 +1,5 @@
-ID_string: RHINOS_RUSH
+ID_string: RHINO'S_RUSH
 effect_type: 0
-texture_file: art\interface\player_conditions\buffs\spell true strike.tga
+texture_file: art\interface\player_conditions\buffs\Spell Bull Strength.tga
 help_topic: TAG_SPELLS_RHINOS_RUSH
 tooltip_base_text: Rhino's Rush

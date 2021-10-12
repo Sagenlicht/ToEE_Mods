@@ -65,6 +65,7 @@
 {1114}{Clear Mind}
 {1115}{Deafening Clang}
 {1116}{Grave Strike}
+{1117}{Rhinos Rush}
 {1118}{Faith Healing}
 {1119}{Summon Undead I}
 {1120}{Angelskin}
@@ -120,6 +121,8 @@
 {1171}{Storm of Elemental Fury}
 {1172}{Acid Fog}
 {1173}{Touch of Madness}
+{1174}{Energized Shield Lesser}
+{1175}{Energized Shield}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -186,6 +189,7 @@
 {6114}{Clear Mind}
 {6115}{Deafening Clang}
 {6116}{Grave Strike}
+{6117}{Rhino's Rush}
 {6118}{Faith Healing}
 {6119}{Summon Undead I}
 {6120}{Angelskin}
@@ -241,6 +245,8 @@
 {6171}{Storm of Elemental Fury}
 {6172}{Acid Fog}
 {6173}{Touch of Madness}
+{6174}{Energized Shield Lesser}
+{6175}{Energized Shield}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -307,6 +313,7 @@
 {21114}{TAG_SPELLS_CLEAR_MIND}
 {21115}{TAG_SPELLS_DEAFENING_CLANG}
 {21116}{TAG_SPELLS_GRAVE_STRIKE}
+{21117}{TAG_SPELLS_RHINOS_RUSH}
 {21118}{TAG_SPELLS_FAITH_HEALING}
 {21119}{TAG_SPELLS_SUMMON_UNDEAD_I}
 {21120}{TAG_SPELLS_ANGELSKIN}
@@ -362,3 +369,5 @@
 {21171}{TAG_SPELLS_STORM_OF_ELEMENTAL_FURY}
 {21172}{TAG_SPELLS_ACID_FOG}
 {21173}{TAG_SPELLS_TOUCH_OF_MADNESS}
+{21174}{TAG_SPELLS_ENERGIZED_SHIELD_LESSER}
+{21175}{TAG_SPELLS_ENERGIZED_SHIELD}
