@@ -123,6 +123,7 @@
 {1173}{Touch of Madness}
 {1174}{Energized Shield Lesser}
 {1175}{Energized Shield}
+{1176}{Draconic Might}
 
 {6050}{Sound Lance}
 {6051}{Critical Strike}
@@ -247,6 +248,7 @@
 {6173}{Touch of Madness}
 {6174}{Energized Shield Lesser}
 {6175}{Energized Shield}
+{6176}{Draconic Might}
 
 {21050}{TAG_SPELLS_SOUND_LANCE}
 {21051}{TAG_SPELLS_CRITICAL_STRIKE}
@@ -371,3 +373,4 @@
 {21173}{TAG_SPELLS_TOUCH_OF_MADNESS}
 {21174}{TAG_SPELLS_ENERGIZED_SHIELD_LESSER}
 {21175}{TAG_SPELLS_ENERGIZED_SHIELD}
+{21176}{TAG_SPELLS_DRACONIC_MIGHT}

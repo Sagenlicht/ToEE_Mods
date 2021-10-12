@@ -132,9 +132,10 @@ ID      Spell Name                  SC Page Status      Comments
 1173    Touch of Madness            
 1174    Energized Shield, Lesser            WIP
 1175    Energized Shield                    WIP
+1176    Draconic Might               72     finished    
 
 
-Temple+ Beta nightly 2674+ needed atm!
+Temple+ Beta nightly 3149+ needed atm!
 
 Bonus Types: 151 Alchemical; 153 Sacred; 154 Profane; 160 Storm effects; 161 Ghost Touch Armor Property (needs to be verified that this is not in the game already!)
 
@@ -143,8 +144,8 @@ Bard 1: Joyful Noise(1060)
 Bard 2: Whirling Blade (1083)
 Assassin 3: Fangs of the Vampire King, Spider Poison(funnily not listed on dndtools, but its in the book.)
 Bard 5: Bolts of Bedevilment(1104)
-Pal 1: Grave Strike(1116), Rhino's Rush (1117), Lionheart, Divine Sacrifice
-Pal 4: Draconic Might (Unsure how to do immunity), Sacred Haven
+Pal 1: Grave Strike(1116), Lionheart, Divine Sacrifice
+Pal 4: Sacred Haven
 Clr 1: Light of Lunia
 Clr 2: Light of Mercuria
 Clr 3: Light of Venya

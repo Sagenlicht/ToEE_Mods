@@ -1406,3 +1406,14 @@
 {29506}{} // spell projectile in-flight
 {29507}{} // spell hit
 {29508}{} // spell struck
+
+// [1176] *[Draconic Might]
+{29520}{} // spell begin
+{29521}{} // spell end
+{29522}{} // spell effect
+{29523}{} // spell new round
+{29524}{} // spell projectile begin
+{29525}{} // spell projectile end
+{29526}{} // spell projectile in-flight
+{29527}{} // spell hit
+{29528}{} // spell struck

@@ -124,6 +124,7 @@
 {1173}{Touch of Madness}
 {1174}{Energized Shield Lesser}
 {1175}{Energized Shield}
+{1176}{Draconic Might}
 
 // Spell Descriptions
 {6050} Sound Lance {[Evocation] Projectile of intense sonic energy that deals 1d8/level (max 10d8) sonic damage.}
@@ -247,5 +248,6 @@
 {6171} Storm of Elemental Fury {[Conjuration](Summoning) TBD}
 {6172} Acid Fog {[Conjuration](Creation)[Acid] While inside Acid Fog, targets are concealed, can only move 5 feet, are immune to ranged attacks and take 2d6 acid damage every turn.}
 {6173} Touch of Madness {[Enchantment][Mind-Affecting] Target must make a Will Saving Throw after a successful touch attack or be dazed for 1 round/level.}
-{6174} Energized Shield Lesser {Abjuration Touched Shield grants elemental resistance 5 and deals 1d6 damage of chosen element when Shield Bashing.}
-{6175} Energized Shield {Abjuration Touched Shield grants elemental resistance 10 and deals 2d6 damage of chosen element when Shield Bashing.}
+{6174} Energized Shield Lesser {[Abjuration] Touched Shield grants elemental resistance 5 and deals 1d6 damage of chosen element when Shield Bashing.}
+{6175} Energized Shield {[Abjuration] Touched Shield grants elemental resistance 10 and deals 2d6 damage of chosen element when Shield Bashing.}
+{6176} Draconic Might {[Transmutation] Gain +4 enhancement bonus to Charisma, Constitution, Strength and Natural Armor. Immune to sleep and paralysis effects.}

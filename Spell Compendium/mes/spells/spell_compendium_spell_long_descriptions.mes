@@ -865,14 +865,21 @@ Duration:      1 round/level,  Save: Will negates,  SR: Yes}
 
 {6174} Energized Shield Lesser {Touched Shield grants elemental resistance 5 and deals 1d6 damage of chosen element when Shield Bashing.
 School:          Abjuration
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Touch 
 Target:             Single
-Duration:      1,  Save: None negates,  SR: No}
+Duration:      1 round/level,  Save: None,  SR: No}
 
 {6175} Energized Shield {Touched Shield grants elemental resistance 10 and deals 2d6 damage of chosen element when Shield Bashing.
 School:          Abjuration
-Casting:         1 action ['V', 'S']
+Casting:         1 action [V,S]
 Range:               Touch 
 Target:             Single
-Duration:      1,  Save: None negates,  SR: No}
+Duration:      1 round/level,  Save: None,  SR: No}
+
+{6176} Draconic Might {Gain +4 enhancement bonus to Charisma, Constitution, Strength and Natural Armor. Immune to sleep and paralysis effects.
+School:          Transmutation
+Casting:         1 action [V,S]
+Range:               Touch 
+Target:             Single
+Duration:      1 min/level,  Save: None,  SR: No}
