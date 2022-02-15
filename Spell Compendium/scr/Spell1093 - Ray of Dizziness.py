@@ -23,7 +23,9 @@ def OnEndProjectile( spell, projectile, index_of_target ):
     spell.duration = 1 * spell.caster_level # 1 round/casterlevel
     game.particles_end(projectile.obj_get_int(obj_f_projectile_part_sys_id))
 
-    if spell.caster.perform_touch_attack(spellTarget.obj) & D20CAF_HIT:
+    attackResult = spell.caster.perform_touch_attack(spellTarget.obj)
+
+    if attackResult & D20CAF_HIT:
         spellTarget.partsys_id = game.particles('sp-Shout-Hit', spellTarget.obj)
         spellTarget.obj.condition_add_with_args('sp-Ray of Dizziness', spell.id, spell.duration)
     else:

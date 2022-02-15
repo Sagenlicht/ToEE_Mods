@@ -11,7 +11,7 @@ def OnSpellEffect(spell):
     spell.duration = 1 # Inspire Courage must be used in the same round
     spellTarget = spell.target_list[0]
 
-    spellTarget.obj.condition_add_with_args('sp-Inspirational Boost', spell.id, spell.duration)
+    spellTarget.obj.condition_add_with_args('sp-Inspirational Boost', spell.id, spell.duration, 0, 0, 0)
     spellTarget.partsys_id = game.particles('Bardic-Inspire Greatness', spellTarget.obj )
 
     spell.spell_end(spell.id)

@@ -20,8 +20,8 @@ def OnSpellEffect(spell):
         game.particles('Fizzle', spellTarget.obj)
         spell.target_list.remove_target(spellTarget.obj)
     else:
-        if spellTarget.obj.condition_add_with_args('sp-Bonefiddle', spell.id, spell.duration, spell.dc, 0):
-            spellTarget.partsys_id = game.particles('sp-Phantasmal Killer', spellTarget.obj)
+        if spellTarget.obj.condition_add_with_args("sp-Bonefiddle", spell.id, spell.duration, spell.dc, 0):
+            spellTarget.partsys_id = game.particles("sp-Bonefiddle", spellTarget.obj)
         else:
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30000)
             game.particles('Fizzle', spellTarget.obj)

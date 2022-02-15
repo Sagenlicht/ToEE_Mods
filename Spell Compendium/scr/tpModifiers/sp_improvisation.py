@@ -2,7 +2,8 @@ from templeplus.pymod import PythonModifier
 from toee import *
 import tpdp
 from utilities import *
-import spell_utils
+from spell_utils import SpellPythonModifier, getSpellHelpTag
+
 print "Registering sp-Improvisation"
 
 #Args:
@@ -61,8 +62,12 @@ def reducePool(attachee, args):
 
 def applyBonus(args, evt_obj):
     bonusValue = args.get_arg(2)
-    bonusType = 14 #ID 14 = Luck Bonus
-    evt_obj.bonus_list.add(bonusValue, bonusType, "~Improvisation~[TAG_SPELLS_IMPROVISATION] ~Luck~[TAG_MODIFIER_LUCK] Bonus")
+    bonusType = bonus_type_luck
+    bonusHelpTag = game.get_mesline("mes\\bonus_description.mes", bonusType)
+    spellId = args.get_arg(0)
+    spellHelpTag = getSpellHelpTag(spellId)
+    evt_obj.bonus_list.add(bonusValue, bonusType, "{} : {}".format(bonusHelpTag, spellHelpTag))
+    return 0
 
 def improvisationSpellAbilityCheckBonus(attachee, args, evt_obj):
     if args.get_arg(4): #check if enabled
@@ -84,17 +89,9 @@ def improvisationSpellAttackBonus(attachee, args, evt_obj):
         reducePool(attachee, args)
     return 0
 
-improvisationSpell = PythonModifier("sp-Improvisation", 7) # spell_id, duration, bonusValue, bonusPool, activateAbility, activateSkill, activateAttack
+improvisationSpell = SpellPythonModifier("sp-Improvisation", 7) #spellId, duration, bonusValue, bonusPool, activateAbility, activateSkill, activateAttack
 improvisationSpell.AddHook(ET_OnConditionAdd, EK_NONE, improvisationSpellConditionAdd, ())
 improvisationSpell.AddHook(ET_OnBuildRadialMenuEntry, EK_NONE, improvisationSpellRadial, ())
 improvisationSpell.AddHook(ET_OnGetAbilityCheckModifier, EK_NONE, improvisationSpellAbilityCheckBonus,())
 improvisationSpell.AddHook(ET_OnGetSkillLevel, EK_NONE, improvisationSpellSkillCheckBonus, ())
 improvisationSpell.AddHook(ET_OnToHitBonus2, EK_NONE, improvisationSpellAttackBonus, ())
-improvisationSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
-improvisationSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
-improvisationSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
-improvisationSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
-improvisationSpell.AddSpellDispelCheckStandard()
-improvisationSpell.AddSpellTeleportPrepareStandard()
-improvisationSpell.AddSpellTeleportReconnectStandard()
-improvisationSpell.AddSpellCountdownStandardHook()

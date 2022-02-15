@@ -37,7 +37,6 @@ def OnSpellEffect(spell):
             else:
                 spellTarget.obj.float_text_line("Weapon required", tf_red)
                 game.particles('Fizzle', spellTarget.obj)
-                targetsToRemove.append(spellTarget.obj)
             targetsToRemove.append(spellTarget.obj)
     else:
         for spellTarget in spell.target_list:

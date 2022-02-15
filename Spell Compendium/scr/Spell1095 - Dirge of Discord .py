@@ -22,7 +22,7 @@ def OnSpellEffect(spell):
         else:
             spellTarget.partsys_id = game.particles('sp-Shout-Hit', spellTarget.obj)
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-            spellTarget.obj.condition_add_with_args('sp-Dirge of Discord', spell.id, spell.duration, spell.dc)
+            spellTarget.obj.condition_add_with_args('sp-Dirge of Discord', spell.id, spell.duration, spell.dc, 0)
 
     spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)

@@ -12,7 +12,7 @@ def OnSpellEffect(spell):
     spell.duration = 0
 
     wisdomDamageDice = dice_new('1d6')
-    spellDurationDice = dice_new('1d4')
+    nauseatedDurationDice = dice_new('1d4')
 
     game.particles('sp-Sound Burst', spell.caster)
 
@@ -21,13 +21,14 @@ def OnSpellEffect(spell):
         if spellTarget.obj.saving_throw_spell(spell.dc, D20_Save_Fortitude, D20STD_F_NONE, spell.caster, spell.id): #success
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30001)
             game.particles('Fizzle', spellTarget.obj)
-            targetsToRemove.append(spellTarget.obj)
         else:
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
             wisdomDamage = wisdomDamageDice.roll()
-            spellDuration = spellDurationDice.roll()
-            spellTarget.obj.condition_add_with_args('sp-Loves Lament', spell.id, spellDuration, wisdomDamage)
-            spellTarget.obj.condition_add('Nauseated Condition', spellDuration)
+            spellTarget.obj.condition_add_with_args("Temp_Ability_Loss", stat_wisdom, wisdomDamage)
+            nauseatedDuration = nauseatedDurationDice.roll()
+            persistentFlag = 0
+            spellTarget.obj.condition_add_with_args("Nauseated", nauseatedDuration, persistentFlag, 0)
+        targetsToRemove.append(spellTarget.obj)
 
     spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)

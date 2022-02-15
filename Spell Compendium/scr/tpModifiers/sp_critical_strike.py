@@ -2,57 +2,63 @@ from templeplus.pymod import PythonModifier
 from toee import *
 import tpdp
 from utilities import *
-import spell_utils
+from spell_utils import SpellPythonModifier, getSpellHelpTag
+
 print "Registering sp-Critical Strike"
 
+def verifyCriticalStrikeConditions(attackPacket):
+    flags = attackPacket.get_flags()
+    weaponUsed = attackPacket.get_weapon_used()
+    target = attackPacket.target
+    attacker = attackPacket.attacker
+
+    if weaponUsed.obj_get_int(obj_f_type) != obj_t_weapon:
+        return False
+    elif attacker.can_sneak_attack(target):
+        return True
+    return False
+
+
 def criticalStrikeSpellModifyThreatRange(attachee, args, evt_obj):
-    if evt_obj.attack_packet.get_flags() & D20CAF_RANGED: #only melee attacks qualify for Critical Strike
-        return 0
-    if evt_obj.attack_packet.get_weapon_used().obj_get_int(obj_f_type) == obj_t_weapon: #Keen requires weapon
-        weaponKeenRange = evt_obj.attack_packet.get_weapon_used().obj_get_int(obj_f_weapon_crit_range)
-        bonusType = 12 #ID 12 = Enhancement
-        evt_obj.bonus_list.add(weaponKeenRange, bonusType, "~Critical Strike~[TAG_SPELLS_CRITICAL_STRIKE] Bonus")
+    attackPacket = evt_obj.attack_packet
+    if verifyCriticalStrikeConditions(attackPacket):
+        weaponKeenRange = attackPacket.get_weapon_used().obj_get_int(obj_f_weapon_crit_range)
+        bonusType = bonus_type_enhancement
+        bonusHelpTag = game.get_mesline("mes\\bonus_description.mes", bonusType)
+        spellId = args.get_arg(0)
+        spellHelpTag = getSpellHelpTag(spellId)
+        evt_obj.bonus_list.add(weaponKeenRange, bonusType, "{} : {}".format(bonusHelpTag, spellHelpTag))
     return 0
 
 def criticalStrikeSpellBonusToConfirmCrit(attachee, args, evt_obj):
-    if evt_obj.attack_packet.get_flags() & D20CAF_RANGED: #only melee attacks qualify for Critical Strike
-        return 0
-    bonus = 4 #+4 to confirm crits
-    bonusType = 18 #ID 18 = Insight
-    evt_obj.bonus_list.add(bonus, bonusType,"~Critical Strike~[TAG_SPELLS_CRITICAL_STRIKE] Insight Bonus")
+    attackPacket = evt_obj.attack_packet
+    if verifyCriticalStrikeConditions(attackPacket):
+        bonusValue = 4 #+4 to confirm crits
+        bonusType = bonus_type_insight
+        bonusHelpTag = game.get_mesline("mes\\bonus_description.mes", bonusType)
+        spellId = args.get_arg(0)
+        spellHelpTag = getSpellHelpTag(spellId)
+        evt_obj.bonus_list.add(bonusValue, bonusType, "{} : {}".format(bonusHelpTag, spellHelpTag))
     return 0
 
 def criticalStrikeSpellBonusToDamage(attachee, args, evt_obj):
-    if evt_obj.attack_packet.get_flags() & D20CAF_RANGED: #only melee attacks qualify for Critical Strike
-        return 0
-    target =  evt_obj.attack_packet.target
-    #Check if opponent is immnue to precision damage
-    immunityList = [mc_type_construct, mc_type_ooze, mc_type_plant, mc_type_undead]
-    if any(target.is_category_type(critterType) for critterType in immunityList):
-        racialImmunity = True
-    elif target.is_category_subtype(mc_subtype_incorporeal):
-        racialImmunity = True
+    attackPacket = evt_obj.attack_packet
+    if verifyCriticalStrikeConditions(attackPacket):
+        target =  attackPacket.target
+        #Check if opponent is immnue to precision based damage
+        if target.d20_query(Q_Critter_Is_Immune_Critical_Hits):
+            #evt_obj.damage_packet.bonus_list.add_zeroed(325) #ID 325 = Creature Immune to ~Sneak Attack~[TAG_CLASS_FEATURES_ROGUE_SNEAK_ATTACK]
+            evt_obj.damage_packet.bonus_list.add_zeroed(375) #ID 375 = NEW!
+        else:
+            bonusDice = dice_new('1d6') #Critical Strike Bonus Damage
+            damageType = D20DT_UNSPECIFIED
+            damageMesId = 3000 #ID3000 added in damage.mes
+            evt_obj.damage_packet.add_dice(bonusDice, damageType, damageMesId)
     else:
-        racialImmunity = False
-    if racialImmunity:
-        return 0
-    #target needs to be denied its dexterity bonus to AC for whatever reason or be flanked
-    if target.d20_query(Q_Helpless) == 1 or target.d20_query(Q_Flatfooted) == 1 or (evt_obj.attack_packet.get_flags() & D20CAF_FLANKED):
-        bonusDice = dice_new('1d6') #Critical Strike Bonus Damage
-        damageType = D20DT_UNSPECIFIED
-        damageMesId = 3000 #ID3000 added in damage.mes
-        evt_obj.damage_packet.add_dice(bonusDice, damageType, damageMesId)
+        evt_obj.damage_packet.bonus_list.add_zeroed(376) #ID 376 = NEW!
     return 0
 
-criticalStrikeSpell = PythonModifier("sp-Critical Strike", 2) # spell_id, duration
+criticalStrikeSpell = SpellPythonModifier("sp-Critical Strike") # spell_id, duration, empty
 criticalStrikeSpell.AddHook(ET_OnGetCriticalHitRange, EK_NONE, criticalStrikeSpellModifyThreatRange,())
 criticalStrikeSpell.AddHook(ET_OnConfirmCriticalBonus, EK_NONE, criticalStrikeSpellBonusToConfirmCrit,())
 criticalStrikeSpell.AddHook(ET_OnDealingDamage, EK_NONE, criticalStrikeSpellBonusToDamage,())
-criticalStrikeSpell.AddHook(ET_OnGetTooltip, EK_NONE, spell_utils.spellTooltip, ())
-criticalStrikeSpell.AddHook(ET_OnGetEffectTooltip, EK_NONE, spell_utils.spellEffectTooltip, ())
-criticalStrikeSpell.AddHook(ET_OnD20Query, EK_Q_Critter_Has_Spell_Active, spell_utils.queryActiveSpell, ())
-criticalStrikeSpell.AddHook(ET_OnD20Signal, EK_S_Killed, spell_utils.spellKilled, ())
-criticalStrikeSpell.AddSpellDispelCheckStandard()
-criticalStrikeSpell.AddSpellTeleportPrepareStandard()
-criticalStrikeSpell.AddSpellTeleportReconnectStandard()
-criticalStrikeSpell.AddSpellCountdownStandardHook()

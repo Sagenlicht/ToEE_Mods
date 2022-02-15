@@ -14,13 +14,13 @@ def OnSpellEffect(spell):
     game.particles('sp-Sound Burst', spell.caster)
 
     for spellTarget in spell.target_list:
-        targetsToRemove.append(spellTarget.obj)
         if spellTarget.obj.saving_throw_spell(spell.dc, D20_Save_Will, D20STD_F_NONE, spell.caster, spell.id): #success
             game.particles('Fizzle', spellTarget.obj)
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30001)
+            targetsToRemove.append(spellTarget.obj)
         else:
             spellTarget.obj.float_mesfile_line('mes\\spell.mes', 30002)
-            spellTarget.obj.condition_add('Shaken Condition', spell.duration)
+            spellTarget.obj.condition_add("sp-Haunting Tune", spell.duration)
 
     spell.target_list.remove_list(targetsToRemove)
     spell.spell_end(spell.id)

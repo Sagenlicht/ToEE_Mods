@@ -159,9 +159,13 @@ Unique Modifier ID's:
 156 = Sticky Fingers
 157 = Undersong
 158 = used
-159 = used
+159 = Focusing Chant
 161 = Storm Spells
 162 = Curse of Ill Fortune
 163 = Curse of Impending Blades
 164 = Wave of Grief
 165 = Distract
+180 = Dexteriy replacing ranged bonus
+190 = Minor Marshal Aura
+191 = Major Marshal Aura
+192 = Draconic Aura
